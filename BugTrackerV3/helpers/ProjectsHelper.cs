@@ -25,6 +25,13 @@ namespace BugTrackerV3.helpers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        public List<ApplicationUser> ProjectUsersByRole(int projectId, string role)
+        {
+            UserRolesHelper uHelper = new UserRolesHelper();
+            var users = uHelper.UsersInRole(role);
+            return users.Where(m => m.Projects.Select(p => p.Id).Contains(projectId)).ToList();
+        }
+
         public bool IsUserOnProject(string userId, int projectId)
         {
             var project = db.Projects.Find(projectId);

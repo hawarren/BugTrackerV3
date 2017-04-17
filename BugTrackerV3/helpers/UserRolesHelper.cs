@@ -14,7 +14,7 @@ namespace BugTrackerV3.helpers
     {
         private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         private ApplicationDbContext db = new ApplicationDbContext();
-        pr
+        
 
         public bool IsUserinRole(string userId, string roleName)
         {
