@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BugTrackerV3.Models;
 using BugTrackerV3.helpers;
+using Microsoft.AspNet.Identity;
 
 namespace BugTrackerV3.Controllers
 {
@@ -29,9 +30,13 @@ namespace BugTrackerV3.Controllers
                 vm.ProjectManager = p.PMID != null ? db.Users.Find(p.PMID) : null;
                 model.Add(vm);
             }
+            //var userId = User.Identity.GetUserId();
+                
+
+            //helpers.UserRolesHelper helper = new helpers.UserRolesHelper();
+            //helper.AddUserToRole(userId, "Submitter");
 
             return View(model);
-            //return View(db.Projects.ToList());
         }
 
         // GET: Projects/Details/5
