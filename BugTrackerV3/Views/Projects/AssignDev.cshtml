@@ -1,10 +1,12 @@
-﻿@model BugTrackerV3.Models.AdminProjectViewModel
+﻿@model BugTrackerV3.Models.ProjectDEVViewModel
 
 @{
-    ViewBag.Title = "Assign Project Manager";
+    ViewBag.Title = "Assign Developer";
 }
 
-<h2>@Model.Project.Name</h2>
+<h2>
+    Assign Developers to @Model.Project.Name
+</h2>
 
 
 @using (Html.BeginForm())
@@ -12,16 +14,16 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Project</h4>
+        <h4>@Model.Project.Name</h4>
         <hr />
         
-        @Html.HiddenFor(item => item.Project.Id)
         @Html.HiddenFor(item => item.Project.Name)
+        @Html.HiddenFor(item => item.Project.Id)
 
         <div class="form-group">
-            @Html.LabelFor(item => item.PMUsers, "Project Managers", htmlAttributes: new { @class = "form-control" })
+            @Html.LabelFor(item => item.DevUsers, "Developers", htmlAttributes: new { @class = "form-control" })
             <div class="col-md-10">
-                @Html.DropDownListFor(item => item.SelectedUser, Model.PMUsers, null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(item => item.SelectedUsers, Model.DevUsers, null, htmlAttributes: new { @class = "form-control" })
 
             </div>
         </div>

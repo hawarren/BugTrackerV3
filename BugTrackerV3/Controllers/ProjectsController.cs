@@ -77,7 +77,7 @@ namespace BugTrackerV3.Controllers
             // return View(adminVm.Project.Id);
             return View(adminVm);
         }
-
+        //Get
         public ActionResult AssignDEV(int id)
         {
             ProjectDEVViewModel vm = new ProjectDEVViewModel();
@@ -92,7 +92,7 @@ namespace BugTrackerV3.Controllers
             return View(vm);
         }
 
-
+        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AssignDEV(ProjectDEVViewModel model)

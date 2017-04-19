@@ -79,6 +79,7 @@ namespace BugTrackerV3.Migrations
             userManager.AddToRole(userId, "Submitter");
             userManager.AddToRole(userId, "Developer");
 
+            //seeding dummypm
             if (!context.Users.Any(u => u.Email == "DummyProjectManager@gmail.com"))
             {
                 userManager.Create(new ApplicationUser
@@ -92,12 +93,12 @@ namespace BugTrackerV3.Migrations
             }
 
 
-            //adding all roles to hanifwarren
+            //adding all roles to dummyPM except Admin
             var userId2 = userManager.FindByEmail("DummyProjectManager@gmail.com").Id;
            
-            userManager.AddToRole(userId, "ProjectManager");
-            userManager.AddToRole(userId, "Submitter");
-            userManager.AddToRole(userId, "Developer");
+            userManager.AddToRole(userId2, "ProjectManager");
+            userManager.AddToRole(userId2, "Submitter");
+            userManager.AddToRole(userId2, "Developer");
 
 
 
@@ -117,6 +118,13 @@ namespace BugTrackerV3.Migrations
                     DisplayName = "Imatest1"
                 }, "Abc&123!");
             }
+
+            //adding all roles to dummyPM except Admin
+            var userId3 = userManager.FindByEmail("testuser1@btracker.com").Id;
+
+            userManager.AddToRole(userId3, "ProjectManager");
+            userManager.AddToRole(userId3, "Submitter");
+            userManager.AddToRole(userId3, "Developer");
 
 
             if (!context.Users.Any(u => u.Email == "testuser2@btracker.com"))

@@ -38,22 +38,22 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().AssignedToUser.FirstName)
+                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().AssignedToUserId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().OwnerUser.FirstName)
+                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().OwnerUserId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Project.Name)
+                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().ProjectId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketPriority.Name)
+                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketPriorityId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketStatus.Name)
+                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketStatusId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketType.Name)
+                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketTypeId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)

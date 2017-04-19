@@ -1,37 +1,42 @@
 ﻿@model IEnumerable<BugTrackerV3.Models.ProjectPMViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create a new project", "Create")
 </p>
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Project.Name)
-            </th>*@
+        <th>
+            Project Name
+        </th>
         <th>
             Project Manager
+        </th>
+        <th>
+            Actions
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-
-            @if (item.ProjectManager != null)
-            {
-                @Html.DisplayFor(modelItem => item.ProjectManager.FirstName) @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
-            }
+            <td>@Html.DisplayFor(modelItem => item.Project.Name)</td>
             <td>
+                @if (item.ProjectManager != null)
                 {
-                Not Assigned
+                    @Html.DisplayFor(modelItem => item.ProjectManager.FirstName) @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
                 }
-
+                else
+                {
+                <div>No Project Manager Assigned</div>
+                }
+                </td>
+                <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Project.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Project.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Project.Id })
