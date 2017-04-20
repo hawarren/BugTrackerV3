@@ -12,12 +12,13 @@ using BugTrackerV3.helpers;
 
 namespace BugTrackerV3.Controllers
 {
+    [Authorize]
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tickets
-        [Authorize]
+        
         public ActionResult Index()
         {
             //find the id of the current user
@@ -122,7 +123,6 @@ namespace BugTrackerV3.Controllers
             if (ModelState.IsValid)
             {
                 ticket.OwnerUserId = User.Identity.GetUserId();
-                //ticket.TicketPriorityId = 3;
                 ticket.TicketPriorityId = db.TicketPrioritys.FirstOrDefault(n => n.Name == "Low").Id;
                 ticket.TicketStatusId = 1;
                 ticket.Created = DateTimeOffset.Now;

@@ -30,11 +30,7 @@ namespace BugTrackerV3.Controllers
                 vm.ProjectManager = p.PMID != null ? db.Users.Find(p.PMID) : null;
                 model.Add(vm);
             }
-            //var userId = User.Identity.GetUserId();
-                
-
-            //helpers.UserRolesHelper helper = new helpers.UserRolesHelper();
-            //helper.AddUserToRole(userId, "Submitter");
+           
 
             return View(model);
         }
@@ -54,6 +50,7 @@ namespace BugTrackerV3.Controllers
             return View(project);
         }
 
+        [Authorize(Roles ="Admin")]
         //GET: Assign Project Manager
         public ActionResult AssignPM(int Id)
         {
@@ -176,6 +173,7 @@ namespace BugTrackerV3.Controllers
                 return RedirectToAction("Index");
             }
             return View(project);
+            
         }
 
         // GET: Projects/Delete/5

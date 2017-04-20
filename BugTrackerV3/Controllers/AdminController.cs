@@ -33,6 +33,22 @@ namespace BugTrackerV3.Controllers
 
             return View(users);
         }
+        // GET: Admin
+        public ActionResult ManageUserRoles()
+        {
+            List<UsersViewModel> users = new List<UsersViewModel>();
+            var dbUsers = db.Users.ToList();
+
+            foreach (var usr in dbUsers)
+            {
+                UsersViewModel vm = new UsersViewModel();
+                vm.User = usr;
+                vm.Roles = helper.ListUserRoles(usr.Id).ToList();
+                users.Add(vm);
+            }
+
+            return View(users);
+        }
 
         public ActionResult AddUserRole()
         {

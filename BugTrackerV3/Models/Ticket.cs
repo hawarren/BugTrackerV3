@@ -38,9 +38,9 @@ namespace BugTrackerV3.Models
         public int TicketPriorityId { get; set; }
         [Display(Name = "Ticket Type")]
         public int TicketTypeId { get; set; }
-        [Display(Name = "Owner/Creator of Ticket")]
+        [Display(Name = "Owner/Submitter of Ticket")]
         public string OwnerUserId { get; set; }
-        [Display(Name = "Person Ticket Assigned To")]
+        [Display(Name = "Developer Ticket Assigned To")]
         public string AssignedToUserId { get; set; }
 
         public virtual Project Project { get; set; }
