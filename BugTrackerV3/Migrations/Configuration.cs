@@ -30,6 +30,7 @@ namespace BugTrackerV3.Migrations
             //    );
             //
 
+
             //seeding the roles
             var roleManager = new RoleManager<IdentityRole>(
            new RoleStore<IdentityRole>(context));
@@ -55,6 +56,74 @@ namespace BugTrackerV3.Migrations
             }
 
 
+            //Seeding the ticket types
+            if (!context.TicketTypes.Any(r => r.Name == "Bug"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Bug" });
+            }
+
+            if (!context.TicketTypes.Any(r => r.Name == "Project Task"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Project Task" });
+            }
+
+            if (!context.TicketTypes.Any(r => r.Name == "Software Update"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Software Update" });
+            }
+
+
+            //seeding the ticket priorities
+            if (!context.TicketPrioritys.Any(r => r.Name == "Low"))
+
+            {
+                context.TicketPrioritys.Add(new TicketPriority { Name = "Low" });
+            }
+
+            if (!context.TicketPrioritys.Any(r => r.Name == "Medium"))
+            {
+                context.TicketPrioritys.Add(new TicketPriority { Name = "Medium" });
+            }
+
+            if (!context.TicketPrioritys.Any(r => r.Name == "High"))
+            {
+                context.TicketPrioritys.Add(new TicketPriority { Name = "High" });
+            }
+
+            if (!context.TicketPrioritys.Any(r => r.Name == "ExtremeDanger"))
+            {
+                context.TicketPrioritys.Add(new TicketPriority { Name = "ExtremeDanger" });
+            }
+
+
+            //seeding the ticket status
+            if (!context.TicketStatus.Any(r => r.Name == "Open"))
+            {
+                context.TicketStatus.Add(new TicketStatus { Name = "Open" });
+            }
+
+
+            if (!context.TicketStatus.Any(r => r.Name == "New"))
+            {
+                context.TicketStatus.Add(new TicketStatus { Name = "New" });
+            }
+
+            if (!context.TicketStatus.Any(r => r.Name == "Closed"))
+            {
+                context.TicketStatus.Add(new TicketStatus { Name = "Closed" });
+            }
+
+            if (!context.TicketStatus.Any(r => r.Name == "WontFix"))
+            {
+                context.TicketStatus.Add(new TicketStatus { Name = "WontFix" });
+            }
+            if (!context.TicketStatus.Any(r => r.Name == "UnderReview"))
+            {
+                context.TicketStatus.Add(new TicketStatus { Name = "UnderReview" });
+            }
+
+
+
             //seeding hanifwarren as the admin
             var userManager = new UserManager<ApplicationUser>(
             new UserStore<ApplicationUser>(context));
@@ -63,7 +132,7 @@ namespace BugTrackerV3.Migrations
             {
                 userManager.Create(new ApplicationUser
                 {
-                    UserName = "hanifwarren@gmail.com",
+                    UserName = "hanifwarren",
                     Email = "hanifwarren@gmail.com",
                     FirstName = "Hanif",
                     LastName = "Warren",
@@ -86,6 +155,7 @@ namespace BugTrackerV3.Migrations
                 {
                     UserName = "DummyProjectManager@gmail.com",
                     Email = "DummyProjectManager@gmail.com",
+            
                     FirstName = "DummyPM",
                     LastName = "ProjectManager",
                     DisplayName = "Dummy Project Manager"
@@ -196,69 +266,137 @@ namespace BugTrackerV3.Migrations
                 }, "Abc&123!");
             }
 
-            //Seeding the ticket types
-            if (!context.TicketTypes.Any(r => r.Name == "Bug"))
-            {
-                context.TicketTypes.Add(new TicketType { Name = "Bug" });
-            }
 
-            if (!context.TicketTypes.Any(r => r.Name == "Project Task"))
+            //seeding the devs
+            //added multiple with obvious naming scheme
+            if (!context.Users.Any(u => u.Email == "testdev1@btracker.com"))
             {
-                context.TicketTypes.Add(new TicketType { Name = "Project Task" });
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testdev1",
+                    Email = "testdev1@btracker.com",
+                    FirstName = "Firstdev1",
+                    LastName = "Lastdev1",
+                    DisplayName = "dev1"
+                }, "Abc&123!");
             }
-
-            if (!context.TicketTypes.Any(r => r.Name == "Software Update"))
-            {
-                context.TicketTypes.Add(new TicketType { Name = "Software Update" });
-            }
-
-            //seeding the ticket priorities
-            if (!context.TicketPrioritys.Any(r => r.Name == "Low"))
-
-            {
-                context.TicketPrioritys.Add(new TicketPriority { Name = "Low" });
-            }
-
-            if (!context.TicketPrioritys.Any(r => r.Name == "Medium"))
-            {
-                context.TicketPrioritys.Add(new TicketPriority { Name = "Medium" });
-            }
-
-            if (!context.TicketPrioritys.Any(r => r.Name == "High"))
-            {
-                context.TicketPrioritys.Add(new TicketPriority { Name = "High" });
-            }
-
-            if (!context.TicketPrioritys.Any(r => r.Name == "ExtremeDanger"))
-            {
-                context.TicketPrioritys.Add(new TicketPriority { Name = "ExtremeDanger" });
-            }
-
-            //seeding the ticket status
-            if (!context.TicketStatus.Any(r => r.Name == "Open"))
-            {
-                context.TicketStatus.Add(new TicketStatus { Name = "Open" });
-            }
+            var userdev1 = userManager.FindByEmail("testdev1@btracker.com").Id;
+            userManager.AddToRole(userdev1, "Developer");
 
 
-            if (!context.TicketStatus.Any(r => r.Name == "New"))
+            if (!context.Users.Any(u => u.Email == "testdev2@btracker.com"))
             {
-                context.TicketStatus.Add(new TicketStatus { Name = "New" });
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testdev2",
+                    Email = "testdev2@btracker.com",
+                    FirstName = "Firstdev2",
+                    LastName = "LastDev2",
+                    DisplayName = "Dev2"
+                }, "Abc&123!");
             }
+            var userdev2 = userManager.FindByEmail("testdev2@btracker.com").Id;
+            userManager.AddToRole(userdev2, "Developer");
 
-            if (!context.TicketStatus.Any(r => r.Name == "Closed"))
-            {
-                context.TicketStatus.Add(new TicketStatus { Name = "Closed" });
-            }
 
-            if (!context.TicketStatus.Any(r => r.Name == "WontFix"))
+            if (!context.Users.Any(u => u.Email == "testdev3@btracker.com"))
             {
-                context.TicketStatus.Add(new TicketStatus { Name = "WontFix" });
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testdev3",
+                    Email = "testdev3@btracker.com",
+                    FirstName = "Firstdev3",
+                    LastName = "Lastdev3",
+                    DisplayName = "dev3"
+                }, "Abc&123!");
             }
-            if (!context.TicketStatus.Any(r => r.Name == "UnderReview"))
+            var userdev3 = userManager.FindByEmail("testdev3@btracker.com").Id;
+            userManager.AddToRole(userdev3, "Developer");
+
+
+            if (!context.Users.Any(u => u.Email == "testdev4@btracker.com"))
             {
-                context.TicketStatus.Add(new TicketStatus { Name = "UnderReview" });
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testdev4",
+                    Email = "testdev4@btracker.com",
+                    FirstName = "Firstdev4",
+                    LastName = "Lastdev4",
+                    DisplayName = "dev4"
+                }, "Abc&123!");
             }
+            var userdev4 = userManager.FindByEmail("testdev4@btracker.com").Id;
+            userManager.AddToRole(userdev4, "Developer");
+
+            //.......................................
+
+            //.............................................
+
+
+
+
+            //seeding the devs
+            //added multiple with obvious naming scheme
+            if (!context.Users.Any(u => u.Email == "testPMan1@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testPMan1",
+                    Email = "testPMan1@btracker.com",
+                    FirstName = "FirstPMan1",
+                    LastName = "LastPMan1",
+                    DisplayName = "PMan1"
+                }, "Abc&123!");
+            }
+            var userPMan1 = userManager.FindByEmail("testPMan1@btracker.com").Id;
+            userManager.AddToRole(userPMan1, "ProjectManager");
+
+
+            if (!context.Users.Any(u => u.Email == "testPMan2@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testPMan2",
+                    Email = "testPMan2@btracker.com",
+                    FirstName = "FirstPMan2",
+                    LastName = "LastPMan2",
+                    DisplayName = "PMan2"
+                }, "Abc&123!");
+            }
+            var userPMan2 = userManager.FindByEmail("testPMan2@btracker.com").Id;
+            userManager.AddToRole(userPMan2, "ProjectManager");
+
+
+            if (!context.Users.Any(u => u.Email == "testPMan3@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testPMan3",
+                    Email = "testPMan3@btracker.com",
+                    FirstName = "FirstPMan3",
+                    LastName = "LastPMan3",
+                    DisplayName = "PMan3"
+                }, "Abc&123!");
+            }
+            var userPMan3 = userManager.FindByEmail("testPMan3@btracker.com").Id;
+            userManager.AddToRole(userPMan3, "ProjectManager");
+
+
+            if (!context.Users.Any(u => u.Email == "testPMan4@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "testPMan4",
+                    Email = "testPMan4@btracker.com",
+                    FirstName = "FirstPMan4",
+                    LastName = "LastPMan4",
+                    DisplayName = "PMan4"
+                }, "Abc&123!");
+            }
+            var userPMan4 = userManager.FindByEmail("testPMan4@btracker.com").Id;
+            userManager.AddToRole(userPMan4, "ProjectManager");
+
+
 
 
 

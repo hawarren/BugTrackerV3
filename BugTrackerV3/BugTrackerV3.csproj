@@ -274,6 +274,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Manage\ChangeProfile.cshtml" />
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
+    <Content Include="Views\Admin\RemoveUserRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

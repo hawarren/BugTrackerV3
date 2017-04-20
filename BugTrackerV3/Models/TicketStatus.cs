@@ -10,6 +10,7 @@ namespace BugTrackerV3.Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Ticket Status")]
         public string Name { get; set; }
     }
 }

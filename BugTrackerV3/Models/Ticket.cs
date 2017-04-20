@@ -34,7 +34,7 @@ namespace BugTrackerV3.Models
         public int ProjectId { get; set; }
         [Display(Name = "Status")]
         public int TicketStatusId { get; set; }
-        [Display(Name = "Priority")]
+        [Display(Name = "Ticket Priority")]
         public int TicketPriorityId { get; set; }
         [Display(Name = "Ticket Type")]
         public int TicketTypeId { get; set; }

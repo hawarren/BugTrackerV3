@@ -52,7 +52,7 @@ namespace BugTrackerV3.Controllers
 
         public ActionResult AddUserRole()
         {
-            ViewBag.Users = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
             ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
             return View();
         }
@@ -66,6 +66,38 @@ namespace BugTrackerV3.Controllers
 
         }
 
+        public ActionResult RemoveUserRole()
+        {
+            ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
+            ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
+            return View();
+
+            //trying this code from manageusers
+            //List<UsersViewModel> users = new List<UsersViewModel>();
+            //var dbUsers = db.Users.ToList();
+
+            //foreach (var usr in dbUsers)
+            //{
+            //    UsersViewModel vm = new UsersViewModel();
+            //    vm.User = usr;
+            //    vm.Roles = helper.ListUserRoles(usr.Id).ToList();
+            //    users.Add(vm);
+            //}
+
+            //return View(users);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveUserRole(string Users, string Roles)
+        {
+            if (helper.IsUserinRole(Users, Roles))
+            {
+                helper.RemoveUserFromRole(Users, Roles);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("RemoveUserRole");
+        }
 
     }
 }
