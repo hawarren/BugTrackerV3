@@ -9,12 +9,15 @@
 <p>
     @Html.ActionLink("Add Role", "AddUserRole")
 </p>
+<p>
+    @Html.ActionLink("Remove Role", "RemoveUserRole")
+</p>
 <table class="table">
     <thead>
 
         <tr>
             <th>
-                First Name
+                Display Name
             </th>
             <th>
                 Last Name
@@ -34,7 +37,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(m => item.User.FirstName)
+                    @Html.DisplayFor(m => item.User.DisplayName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelitem => item.User.LastName)

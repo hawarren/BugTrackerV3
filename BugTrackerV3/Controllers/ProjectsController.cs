@@ -80,21 +80,31 @@ namespace BugTrackerV3.Controllers
             return View(adminVm);
         }
         //Get
+        [Authorize(Roles="Admin, ProjectManager")]
         public ActionResult AssignDEV(int id)
         {
+            string PM = User.Identity.GetUserId();
+            if (PM == db.Projects.Find(id).PMID)
+            //|| UserRolesHelper.IsUserinRole(PM, "admin") != true)
+            {
+                return RedirectToAction("Index");
+            }
             ProjectDEVViewModel vm = new ProjectDEVViewModel();
-            UserRolesHelper helper = new UserRolesHelper();
-            ProjectsHelper phelper = new ProjectsHelper();
+                UserRolesHelper helper = new UserRolesHelper();
+                ProjectsHelper phelper = new ProjectsHelper();
 
-            var dev = helper.UsersInRole("Developer");
-            var projdev = phelper.ProjectUsersByRole(id, "Developer").Select(u => u.Id).ToArray();
-            vm.DevUsers = new MultiSelectList(dev, "Id", "FirstName", projdev);
-            vm.Project = db.Projects.Find(id);
+                var dev = helper.UsersInRole("Developer");
+                var projdev = phelper.ProjectUsersByRole(id, "Developer").Select(u => u.Id).ToArray();
+                vm.DevUsers = new MultiSelectList(dev, "Id", "FirstName", projdev);
+                vm.Project = db.Projects.Find(id);
 
-            return View(vm);
+                return View(vm);
+            
+            
         }
 
         //POST
+        [Authorize(Roles = "Admin, ProjectManager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AssignDEV(ProjectDEVViewModel model)

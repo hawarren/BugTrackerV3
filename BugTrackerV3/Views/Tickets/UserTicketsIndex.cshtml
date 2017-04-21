@@ -2,16 +2,16 @@
 @model BugTrackerV3.Models.TicketIndexViewModel
 
 @{
-    ViewBag.Title = "View All Tickets for your Role";
+    ViewBag.Title = "View All Tickets belonging to you";
 }
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
-<h2>Tickets Assigned, by Role</h2>
+<h2>Tickets Assigned to this user</h2>
 
 
 @{
     if (User.IsInRole("Admin"))
     {
-        <h3>Admin Tickets View</h3>
+        <h3>Admin Tickets</h3>
         <table class="table">
             <thead>
 
@@ -101,10 +101,8 @@
 
 
 @{
-    if (!User.IsInRole("Admin"))
+    if (User.IsInRole("ProjectManager"))
     {
-        if (User.IsInRole("ProjectManager"))
-        {
         <h3>Project Manager Tickets</h3>
         <table class="table">
             <thead>
@@ -190,17 +188,14 @@
             </tbody>
 
         </table>
-            }
-        }
     }
+}
 
 
 
 @{
-    if (!User.IsInRole("Admin"))
+    if (User.IsInRole("Developer"))
     {
-        if (User.IsInRole("Developer"))
-        {
         <h3>Developer Tickets</h3>
         <table class="table">
             <thead>
@@ -286,17 +281,14 @@
             </tbody>
 
         </table>
-            }
-        }
     }
+}
 
 
 
 @{
-    if (!User.IsInRole("Admin"))
+    if (User.IsInRole("Submitter"))
     {
-        if (User.IsInRole("Submitter"))
-        {
         <h3>Submitter Tickets</h3>
         <table class="table">
             <thead>
@@ -380,9 +372,8 @@
             </tbody>
 
         </table>
-            }
-        }
     }
+}
 
 
 

@@ -62,7 +62,7 @@ namespace BugTrackerV3.Controllers
         public ActionResult AddUserRole(string Users, string Roles)
         {
             helper.AddUserToRole(Users, Roles);
-            return RedirectToAction("Index");
+            return RedirectToAction("ManageUserRoles");
 
         }
 
@@ -72,7 +72,7 @@ namespace BugTrackerV3.Controllers
             ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
             return View();
 
-            //trying this code from manageusers
+            ////trying this code from manageusers
             //List<UsersViewModel> users = new List<UsersViewModel>();
             //var dbUsers = db.Users.ToList();
 
@@ -80,7 +80,8 @@ namespace BugTrackerV3.Controllers
             //{
             //    UsersViewModel vm = new UsersViewModel();
             //    vm.User = usr;
-            //    vm.Roles = helper.ListUserRoles(usr.Id).ToList();
+            //    usrRoles = 
+            //    vm.Roles = new SelectList(helper.ListUserRoles(usr.Id).ToList();
             //    users.Add(vm);
             //}
 
@@ -94,7 +95,7 @@ namespace BugTrackerV3.Controllers
             if (helper.IsUserinRole(Users, Roles))
             {
                 helper.RemoveUserFromRole(Users, Roles);
-                return RedirectToAction("Index");
+                return RedirectToAction("ManageUserRoles");
             }
             return RedirectToAction("RemoveUserRole");
         }

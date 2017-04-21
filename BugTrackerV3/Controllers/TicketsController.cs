@@ -18,14 +18,16 @@ namespace BugTrackerV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tickets
-        
+
         public ActionResult Index()
         {
             //find the id of the current user
             var userId = User.Identity.GetUserId();
+
             TicketIndexViewModel model = new TicketIndexViewModel();
             //use roles helper to check for the roles
             UserRolesHelper helper = new UserRolesHelper();
+
 
             if (User.IsInRole("Admin"))
             {
@@ -71,11 +73,102 @@ namespace BugTrackerV3.Controllers
                         .Include(t => t.TicketType);
                 model.SubTickets = tickets.ToList();
             }
-                       
+
 
             return View(model);
-            
+
         }
+
+
+        // GET: Tickets for that user only
+
+        public ActionResult UserTicketsIndex()
+        {
+            //find the id of the current user
+            var userId = User.Identity.GetUserId();
+
+            TicketIndexViewModel model = new TicketIndexViewModel();
+            //use roles helper to check for the roles
+            UserRolesHelper helper = new UserRolesHelper();
+
+
+            if (User.IsInRole("Admin"))
+            {
+
+                var tickets = db.Tickets.Include(t => t.AssignedToUser)
+                        .Include(t => t.OwnerUser)
+                        .Include(t => t.Project)
+                        .Include(t => t.TicketPriority)
+                        .Include(t => t.TicketStatus)
+                        .Include(t => t.TicketType);
+                model.AdminTickets = tickets.ToList();
+               
+            }
+            if (User.IsInRole("Developer"))
+            {
+
+                var tickets = db.Tickets.Include(t => t.AssignedToUser)
+                        .Include(t => t.OwnerUser)
+                        .Include(t => t.Project)
+                        .Include(t => t.TicketPriority)
+                        .Include(t => t.TicketStatus)
+                        .Include(t => t.TicketType)
+                        .Include(t => t.ProjectId);
+                tickets = tickets.Where(s => s.AssignedToUserId == userId);
+                model.DevTickets = tickets.ToList();
+
+
+
+
+
+                /*DevTickets is a list of tickets,so
+                 * for each ticket
+                 * find the projectID
+                 * Add ProjectID to a List "PK"
+                 * for each PK
+                 * find all tickets where ProjectID is PK
+                 * Add those tickets to ProjectTickets.
+                 * 
+                */
+               //foreach (m in model.DevTickets)
+               // {
+               //     PK = db.Projects.Where(m => m.ProjectId);
+
+               // }
+
+            }
+            if (User.IsInRole("ProjectManager"))
+            {
+
+                var tickets = db.Tickets.Include(t => t.AssignedToUser)
+                        .Include(t => t.OwnerUser)
+                        .Include(t => t.Project)
+                        .Include(t => t.TicketPriority)
+                        .Include(t => t.TicketStatus)
+                        .Include(t => t.TicketType);
+                tickets = tickets.Where(s => s.Project.PMID == userId);
+                model.PMTickets = tickets.ToList();
+            }
+            if (User.IsInRole("Submitter"))
+            {
+
+                var tickets = db.Tickets.Include(t => t.AssignedToUser)
+                        .Include(t => t.OwnerUser)
+                        .Include(t => t.Project)
+                        .Include(t => t.TicketPriority)
+                        .Include(t => t.TicketStatus)
+                        .Include(t => t.TicketType);
+                tickets = tickets.Where(s => s.OwnerUserId == userId);
+                model.SubTickets = tickets.ToList();
+            }
+
+
+            return View(model);
+
+        }
+
+
+
 
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
@@ -105,7 +198,7 @@ namespace BugTrackerV3.Controllers
             //ViewBag.TicketPriorityId = new SelectList(db.TicketPrioritys, "Id", "Name");
             //ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name");
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
-            
+
             //ViewBag.ProjectName = db.Projects.Find(ViewBag.ProjectId).Name;
 
             return View();
@@ -138,7 +231,7 @@ namespace BugTrackerV3.Controllers
             ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
             return View(ticket);
-           
+
         }
 
         // GET: Tickets/Edit/5

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<BugTrackerV3.Models.ProjectPMViewModel>
-
-@{
+@using Microsoft.AspNet.Identity;
+@using BugTrackerV3.helpers;
     ViewBag.Title = "Projects";
 }
 
@@ -25,7 +25,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Project.Name)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Name)
+            </td>
             <td>
                 @if (item.ProjectManager != null)
                 {
@@ -33,15 +35,32 @@
                 }
                 else
                 {
-                <div>No Project Manager Assigned</div>
-                }
-                </td>
-                <td>
-                @Html.ActionLink("Edit Project Name", "Edit", new { id = item.Project.Id }) |
-                @Html.ActionLink("View Project Details", "Details", new { id = item.Project.Id }) |
-                @Html.ActionLink("Delete Project", "Delete", new { id = item.Project.Id })
-            </td>
-        </tr>
-    }
+                    <div>No Project Manager Assigned</div>
 
+                }
+            </td>
+            
+                @{
+                   // BugTrackerV3.helpers.UserRolesHelper helper = new UserRolesHelper();
+                    // if (User.Identity.GetUserId() == item.ProjectManager.Id || helper.IsUserinRole(User.Identity.GetUserId(), "Admin") == true)
+                    if (User.Identity.GetUserId() == item.ProjectManager.Id || User.IsInRole("Admin"))
+                    {
+                        
+                    <td>
+                        @Html.ActionLink("View Project Details", "Details", new { id = item.Project.Id })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit Project Name", "Edit", new { id = item.Project.Id })
+                    </td>
+                    }
+                }
+
+                
+
+                <td>
+
+                    @Html.ActionLink("Delete Project", "Delete", new { id = item.Project.Id });
+                </td>
+            </tr>
+                    }
 </table>

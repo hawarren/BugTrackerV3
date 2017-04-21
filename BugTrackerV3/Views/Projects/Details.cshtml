@@ -39,6 +39,7 @@
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().ProjectId)
+
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
@@ -71,6 +72,14 @@
             </tr>
         </thead>
         <tbody>
+            @if (Model.Tickets == null)
+            {
+                <tr>
+                    <td>
+                        No Tickets yet, feel free to add one.
+                    </td>
+                </tr>
+            }
             @foreach (var item in Model.Tickets)
             {
                 <tr>
@@ -111,6 +120,9 @@
                     </td>
                 </tr>
             }
+
+            
+
         </tbody>
     </table>
 
