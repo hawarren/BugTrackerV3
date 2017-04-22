@@ -178,7 +178,7 @@
     </Compile>
     <Compile Include="helpers\ProjectsHelper.cs" />
     <Compile Include="helpers\UserRolesHelper.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Controllers\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminProjectViewModel.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -279,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -237,6 +237,18 @@ namespace BugTrackerV3.Controllers
         // GET: Tickets/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
+            /////////////////wip code, clean up once I get it working
+                       
+            //creates helper object to check for developer role
+            UserRolesHelper helper = new UserRolesHelper();         
+            var dev = helper.UsersInRole("Developer");
+            
+            //UsersInRole helper gets a list of users in a role
+            //        public ICollection<ApplicationUser> UsersInRole(string roleName)
+                       
+            ///////////////// end of wip code
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -246,7 +258,8 @@ namespace BugTrackerV3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
+            //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
+            ViewBag.AssignedToUserId = new SelectList(dev, "Id", "FirstName", ticket.AssignedToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPrioritys, "Id", "Name", ticket.TicketPriorityId);

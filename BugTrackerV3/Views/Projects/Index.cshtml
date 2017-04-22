@@ -41,9 +41,7 @@
             </td>
             
                 @{
-                   // BugTrackerV3.helpers.UserRolesHelper helper = new UserRolesHelper();
-                    // if (User.Identity.GetUserId() == item.ProjectManager.Id || helper.IsUserinRole(User.Identity.GetUserId(), "Admin") == true)
-                    if (User.Identity.GetUserId() == item.ProjectManager.Id || User.IsInRole("Admin"))
+                   if (User.Identity.GetUserId() == item.ProjectManager.Id || User.IsInRole("Admin"))
                     {
                         
                     <td>
