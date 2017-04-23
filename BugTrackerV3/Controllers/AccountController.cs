@@ -71,15 +71,27 @@ namespace BugTrackerV3.Controllers
         {
             if (!ModelState.IsValid)
             {
-
-                
                 
                 return View(model);
             }
+            //copied code from blog start
+            ApplicationUser user = UserManager.FindByEmail(model.Email);
+            string userName;
+            if (user != null)
+            {
+                userName = user.UserName;
+            }
+            else
+            {
+                userName = "";
+            }
+            //end of copied code
+
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //edited model.Email to userName because the signmanager expects a username not email.
+            var result = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -89,7 +101,7 @@ namespace BugTrackerV3.Controllers
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
+                case SignInStatus.Failure:                   
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -171,7 +183,7 @@ namespace BugTrackerV3.Controllers
 
                     helpers.UserRolesHelper helper = new helpers.UserRolesHelper();
                     helper.AddUserToRole(user.Id, "Submitter");
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
