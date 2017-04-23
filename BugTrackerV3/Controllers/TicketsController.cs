@@ -113,7 +113,8 @@ namespace BugTrackerV3.Controllers
                         .Include(t => t.TicketPriority)
                         .Include(t => t.TicketStatus)
                         .Include(t => t.TicketType)
-                        .Include(t => t.ProjectId);
+                        //.Include(t => t.ProjectId)
+                        ;
                 tickets = tickets.Where(s => s.AssignedToUserId == userId);
                 model.DevTickets = tickets.ToList();
 
