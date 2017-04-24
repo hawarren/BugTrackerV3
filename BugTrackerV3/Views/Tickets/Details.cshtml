@@ -96,3 +96,26 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<div>
+    @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="TicketId" value="@Model.Id" />
+        <textarea name="Body"></textarea>
+        <input type="submit" value="Add Comment" />
+    }
+
+</div>
+@foreach (var comment in Model.TicketComments)
+{
+    <ul>
+        <li>
+            <h3> Posted by @comment.User.DisplayName at @comment.Created.ToString("MMM. dd, yyyy hh:mmtt") : </h3> 
+        
+            @comment.Comment
+        </li>
+    </ul>
+
+}

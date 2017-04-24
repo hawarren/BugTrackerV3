@@ -19,7 +19,7 @@ Requirements
 	□	All ticket lists must be searchable by text fields (full text search)(DONE DONE)
 	□	All ticket lists must be paged (we don’t want 150,000 tickets on one page)(DONE DONE)
 	□	Project Managers must be able to edit tickets belonging to their Projects and assign them to Developers (DONE DONE)
-	□	Developers must be able to edit tickets to which they are assigned
+	□	Developers must be able to edit tickets to which they are assigned (DONE DONE)
 
 □	Ticket Comments ....
 	□	Administrators must be able to add Comments to any ticket

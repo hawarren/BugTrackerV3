@@ -1,0 +1,60 @@
+﻿@model BugTrackerV3.Models.TicketComment
+    @using Microsoft.AspNet.Identity;
+    {
+
+    }
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TicketComment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin") || User.Identity.GetUserId() == Model.UserId)
+    {
+        <div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        </div>                                                            
+    }
+    @Html.ActionLink("Leave a comment", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
