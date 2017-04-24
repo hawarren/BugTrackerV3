@@ -12,7 +12,7 @@ Requirements
 
 □	Tickets  ....
 	□	Project Managers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)
-	□	Developers must be able to view a list of all tickets belonging to the projects to which they are assigned (INCOMPLETE)***
+	□	Developers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)***
 	□	Developers must be able to view a list of all tickets to which they are assigned (DONE DONE)
 	□	Submitters must be able to view a list of all tickets which they own(DONE DONE)
 	□	All ticket lists must be sortable by column heading(DONE DONE)

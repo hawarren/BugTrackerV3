@@ -285,6 +285,7 @@
     <Content Include="Views\TicketComments\Details.cshtml" />
     <Content Include="Views\TicketComments\Edit.cshtml" />
     <Content Include="Views\TicketComments\Index.cshtml" />
+    <Content Include="Views\Tickets\DevProjIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

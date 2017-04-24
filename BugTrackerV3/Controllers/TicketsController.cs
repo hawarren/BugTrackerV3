@@ -10,6 +10,7 @@ using BugTrackerV3.Models;
 using Microsoft.AspNet.Identity;
 using BugTrackerV3.helpers;
 
+
 namespace BugTrackerV3.Controllers
 {
     [Authorize]
@@ -79,9 +80,49 @@ namespace BugTrackerV3.Controllers
 
         }
 
+        // GET: List all Tickets for all projects for that dev.
+        [Authorize(Roles = "Developer")]
+        public ActionResult DevProjIndex()
+        {
+            //find the id of the current user
+            string devUserId = User.Identity.GetUserId();
+
+            TicketIndexViewModel model = new TicketIndexViewModel();
+            //use roles helper to check for the roles
+            ProjectsHelper phelper = new ProjectsHelper();
+            //user ProjectsHelper to get a list of projects the dev is on.
+           List<Project> devProjects = phelper.ListUserProjects(devUserId).ToList();
+            //use linq with selectmany to get all tickets on each project.
+            if (devProjects.Count() == 0)
+            {
+                return RedirectToAction("Index");
+            }
+            var devProjTickets = devProjects.SelectMany(t => t.Tickets).AsQueryable();
+            {
+                
+                var tickets = devProjTickets.Include(t => t.AssignedToUser)
+                        .Include(t => t.OwnerUser)
+                        .Include(t => t.Project)
+                        .Include(t => t.TicketPriority)
+                        .Include(t => t.TicketStatus)
+                        .Include(t => t.TicketType);
+                //tickets = tickets.Where(t => t.Project.Id == phelper.ListUserProjects(devUserId).id;
+
+                model.DevTickets = tickets.ToList();
+
+            }
+
+
+            return View(model);
+
+        }
+
+
+
+
 
         // GET: Tickets for that user only
-
+        [Authorize]
         public ActionResult UserTicketsIndex()
         {
             //find the id of the current user
@@ -277,7 +318,13 @@ namespace BugTrackerV3.Controllers
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
             if (ModelState.IsValid)
-            {
+            {   
+                //Use ProjectsHelper to
+                //add developer to project once they are assigned to a ticket
+                ProjectsHelper phelper = new ProjectsHelper();
+                phelper.AddUserToProject(ticket.AssignedToUserId, ticket.ProjectId);
+                phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
+                // ticket.AssignedToUserId
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

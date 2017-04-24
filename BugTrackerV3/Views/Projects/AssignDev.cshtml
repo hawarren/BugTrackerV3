@@ -23,7 +23,7 @@
         <div class="form-group">
             @Html.LabelFor(item => item.DevUsers, "Developers", htmlAttributes: new { @class = "form-control" })
             <div class="col-md-10">
-                @Html.DropDownListFor(item => item.SelectedUsers, Model.DevUsers, null, htmlAttributes: new { @class = "form-control" })
+                @Html.ListBoxFor(item => item.SelectedUsers, (MultiSelectList)Model.DevUsers, null)
 
             </div>
         </div>
