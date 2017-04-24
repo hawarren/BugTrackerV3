@@ -200,9 +200,9 @@ namespace BugTrackerV3.Controllers
             //ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name");
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
 
-            //ViewBag.ProjectName = db.Projects.Find(ViewBag.ProjectId).Name;
+            ViewBag.ProjectName = db.Projects.Find(ticket.ProjectId).Name;
 
-            return View();
+            return View(ticket);
         }
 
         // POST: Tickets/Create
@@ -239,15 +239,15 @@ namespace BugTrackerV3.Controllers
         public ActionResult Edit(int? id)
         {
 
-
+            
             /////////////////wip code, clean up once I get it working
                        
             //creates helper object to check for developer role
             UserRolesHelper helper = new UserRolesHelper();         
+            //UsersInRole helper gets a list of users in a role
+            //  signature is      public ICollection<ApplicationUser> UsersInRole(string roleName)
             var dev = helper.UsersInRole("Developer");
             
-            //UsersInRole helper gets a list of users in a role
-            //        public ICollection<ApplicationUser> UsersInRole(string roleName)
                        
             ///////////////// end of wip code
             if (id == null)

@@ -1,4 +1,5 @@
 ﻿@model BugTrackerV3.Models.Project
+    @using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Details";
@@ -113,10 +114,23 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Updated)
                     </td>
+                    
                     <td>
-                        @Html.ActionLink("Edit", "Edit", "Tickets", new { id = item.Id }, null) |
-                        @Html.ActionLink("Details", "Details", "Tickets", new { id = item.Id }, null) |
-                        @Html.ActionLink("Delete", "Delete", "Tickets", new { id = item.Id }, null)
+                        <div> @Html.ActionLink("Details", "Details", "Tickets", new { id = item.Id }, null)|</div>
+                     @{
+                         if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
+                         {
+                             <div>
+                         @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null) |
+                        </div>
+                                 }
+                         if (User.IsInRole("Admin"))
+                         {
+                            <div> 
+                            @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
+                         </div>
+                         }
+                         }
                     </td>
                 </tr>
             }
@@ -129,8 +143,8 @@
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Change Project Name", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to Project List", "Index") |
     @Html.ActionLink("Add a Ticket", "Create", "Tickets", new { projectId = Model.Id }, null) I
     @Html.ActionLink("Assign PM", "AssignPM", new { id = Model.Id })  |
     @Html.ActionLink("Add Developers", "AssignDEV", new { id = Model.Id })

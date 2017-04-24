@@ -7,13 +7,13 @@
 <h2>Create Ticket</h2>
 
 
+@*TODO: Include project name in the view so user can see the project they're creating a ticket on.*@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Ticket</h4>
-
+        @*<h4>Ticket</h4>*@
 
         <hr />
         @Html.HiddenFor(m => m.ProjectId)
