@@ -52,6 +52,13 @@ namespace BugTrackerV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Comment,Created,TicketId,UserId")] TicketComment ticketComment)
         {
+            if (ticketComment.Ticket.AssignedToUserId == User.Identity.GetUserId() 
+                || ticketComment.Ticket.OwnerUserId == User.Identity.GetUserId()
+                 || ticketComment.Ticket.Project.PMID == User.Identity.GetUserId()
+                 || User.IsInRole("Admin")
+                 )
+            {
+
             if (ModelState.IsValid)
             {
                 var user = db.Users.Find(User.Identity.GetUserId());
@@ -60,6 +67,7 @@ namespace BugTrackerV3.Controllers
                 db.TicketComments.Add(ticketComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
             }
 
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
