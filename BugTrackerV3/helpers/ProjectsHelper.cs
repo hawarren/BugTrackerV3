@@ -9,8 +9,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using BugTrackerV3.Models;
 using System.Data.Entity.Validation;
-using System.Linq;
-using System.Web;
 
 
 /* With the ProjectsHelper class, methods exist to help you
