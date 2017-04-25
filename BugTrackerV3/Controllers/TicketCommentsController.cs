@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerV3.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BugTrackerV3.Controllers
 {
@@ -53,6 +54,9 @@ namespace BugTrackerV3.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                ticketComment.User = user;
+                ticketComment.Created = DateTimeOffset.Now;
                 db.TicketComments.Add(ticketComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
