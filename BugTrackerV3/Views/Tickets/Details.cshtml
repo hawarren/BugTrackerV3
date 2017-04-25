@@ -1,5 +1,5 @@
 ﻿@model BugTrackerV3.Models.Ticket
-
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Details";
 }
@@ -11,19 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AssignedToUser.FirstName)
+            @Html.DisplayNameFor(model => model.AssignedToUser.DisplayName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssignedToUser.FirstName)
+            @Html.DisplayFor(model => model.AssignedToUser.DisplayName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OwnerUser.FirstName)
+            @Html.DisplayNameFor(model => model.OwnerUser.DisplayName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OwnerUser.FirstName)
+            @Html.DisplayFor(model => model.OwnerUser.DisplayName)
         </dd>
 
         <dt>
@@ -97,6 +97,13 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
+@if (Model.AssignedToUserId == User.Identity.GetUserId()
+                || Model.OwnerUserId == User.Identity.GetUserId()
+                 || Model.Project.PMID == User.Identity.GetUserId()
+                 || User.IsInRole("Admin")
+                 )
+{
+
 <div>
     @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
     {
@@ -108,6 +115,9 @@
     }
 
 </div>
+}
+
+
 @foreach (var comment in Model.TicketComments)
 {
     <ul>
