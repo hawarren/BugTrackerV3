@@ -52,6 +52,7 @@ namespace BugTrackerV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Comment,Created,TicketId,UserId")] TicketComment ticketComment)
         {
+            ticketComment.Ticket = db.Tickets.Find(ticketComment.TicketId);
             if (ticketComment.Ticket.AssignedToUserId == User.Identity.GetUserId() 
                 || ticketComment.Ticket.OwnerUserId == User.Identity.GetUserId()
                  || ticketComment.Ticket.Project.PMID == User.Identity.GetUserId()

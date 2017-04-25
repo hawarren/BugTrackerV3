@@ -41,9 +41,9 @@ namespace BugTrackerV3.Controllers
         // GET: TicketAttachments/Create
         public ActionResult Create( string TicketId)
         {
-            ViewBag.TicketId = TicketId;
-            //ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
+            //made the dropdown show only 
+            ViewBag.TicketId = new SelectList(db.Tickets.Where(t => t.Id.ToString() == TicketId), "Id", "Title");
+            ViewBag.UserId = new SelectList(db.Users.Where(t => t.Id == User.Identity.GetUserId()), "Id", "FirstName");
             return View();
         }
 
@@ -61,13 +61,13 @@ namespace BugTrackerV3.Controllers
                  || User.IsInRole("Admin")
                  )
             {
-                if (fileAdded != null)
-                {
-
+                
                     if (ModelState.IsValid)
                 {
-                    //code to get the url from uploaded file
-                    var fileName = Path.GetFileName(fileAdded.FileName);
+                    if (fileAdded != null && fileAdded.ContentLength > 0)
+                    { 
+                        //code to get the url from uploaded file
+                        var fileName = Path.GetFileName(fileAdded.FileName);
                     fileAdded.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
                     ticketAttachment.FilePath = "/Uploads/" + fileName;
                     
@@ -75,12 +75,13 @@ namespace BugTrackerV3.Controllers
                     db.TicketAttachments.Add(ticketAttachment);
                     db.SaveChanges();
                     return RedirectToAction("Index");
+                    }
                 }
 
-                ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
-                ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketAttachment.UserId);
+                ViewBag.TicketId = new SelectList(db.Tickets.Where(t => t.Id == ticketAttachment.TicketId), "Id", "Title");
+                ViewBag.UserId = new SelectList(db.Users.Where(t => t.Id == User.Identity.GetUserId()), "Id", "FirstName");
                 return View(ticketAttachment);
-            }
+            
                 }
             return View(ticketAttachment);
         }

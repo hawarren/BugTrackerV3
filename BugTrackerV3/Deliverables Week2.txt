@@ -29,10 +29,10 @@ Requirements
 
 
 □   Ticket Attachments  ....
-	□	Administrators must be able to add Attachments to any ticket
-	□	Project Managers must be able to add Attachments to tickets belonging to Projects to which they are assigned
-	□	Developers must be able to add Attachments to tickets to which they are assigned
-	□	Submitters must be able to add Attachments to tickets they own
+	□	Administrators must be able to add Attachments to any ticket(DONE DONE)
+	□	Project Managers must be able to add Attachments to tickets belonging to Projects to which they are assigned(DONE DONE)
+	□	Developers must be able to add Attachments to tickets to which they are assigned(DONE DONE)
+	□	Submitters must be able to add Attachments to tickets they own(DONE DONE)
 
 
 

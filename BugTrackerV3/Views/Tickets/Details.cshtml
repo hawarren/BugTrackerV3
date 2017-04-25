@@ -95,6 +95,7 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null)
 </p>
 
 @if (Model.AssignedToUserId == User.Identity.GetUserId()
