@@ -94,6 +94,9 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Add a Ticket", "Create", "TicketAttachments", new { id = Model.Id}, null) |
+    @Html.ActionLink("Add a Ticket (not really)", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) I
+
     @Html.ActionLink("Back to List", "Index")
 </p>
 

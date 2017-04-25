@@ -39,9 +39,10 @@ namespace BugTrackerV3.Controllers
         }
 
         // GET: TicketAttachments/Create
-        public ActionResult Create()
+        public ActionResult Create( string TicketId)
         {
-            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
+            ViewBag.TicketId = TicketId;
+            //ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
@@ -51,24 +52,25 @@ namespace BugTrackerV3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FilePath,Description,Created,FileUrl,UserId,TicketId")] TicketAttachment ticketAttachment HttpPostedFileBase fileUpload)
+        public ActionResult Create([Bind(Include = "Id,FilePath,Description,Created,UserId,TicketId")] TicketAttachment ticketAttachment, HttpPostedFileBase fileAdded)
         {
+            ticketAttachment.Ticket = db.Tickets.Find(ticketAttachment.TicketId);
             if (ticketAttachment.Ticket.AssignedToUserId == User.Identity.GetUserId()
                 || ticketAttachment.Ticket.OwnerUserId == User.Identity.GetUserId()
                  || ticketAttachment.Ticket.Project.PMID == User.Identity.GetUserId()
                  || User.IsInRole("Admin")
                  )
             {
+                if (fileAdded != null)
+                {
 
                     if (ModelState.IsValid)
                 {
-                    var fileName = Path.GetFileName(fileUpload.FileName);
-                    fileUpload.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    //code to get the url from uploaded file
+                    var fileName = Path.GetFileName(fileAdded.FileName);
+                    fileAdded.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
                     ticketAttachment.FilePath = "/Uploads/" + fileName;
-
-
-
-
+                    
 
                     db.TicketAttachments.Add(ticketAttachment);
                     db.SaveChanges();
@@ -79,6 +81,7 @@ namespace BugTrackerV3.Controllers
                 ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketAttachment.UserId);
                 return View(ticketAttachment);
             }
+                }
             return View(ticketAttachment);
         }
 
@@ -104,7 +107,7 @@ namespace BugTrackerV3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FilePath,Description,Created,FileUrl,UserId,TicketId")] TicketAttachment ticketAttachment)
+        public ActionResult Edit([Bind(Include = "Id,FilePath,Description,Created,UserId,TicketId")] TicketAttachment ticketAttachment)
         {
             if (ModelState.IsValid)
             {
