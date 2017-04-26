@@ -66,18 +66,7 @@ namespace BugTrackerV3.Controllers
 
         }
 
-        public ActionResult RemoveUserRole(ApplicationUser IdUser)
-        {
-
-            // ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
-            ViewBag.User = IdUser;
-            ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
-            return View();
-                        
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //get
         public ActionResult RemoveUserRole(string Users, string Roles)
         {
             if (helper.IsUserinRole(Users, Roles))
@@ -86,7 +75,24 @@ namespace BugTrackerV3.Controllers
                 return RedirectToAction("ManageUserRoles");
             }
             return RedirectToAction("RemoveUserRole");
+
+            //ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
+            //ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
+            //return View();
+
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult RemoveUserRole(string Users, string Roles)
+        //{
+        //    if (helper.IsUserinRole(Users, Roles))
+        //    {
+        //        helper.RemoveUserFromRole(Users, Roles);
+        //        return RedirectToAction("ManageUserRoles");
+        //    }
+        //    return RedirectToAction("RemoveUserRole");
+        //}
 
     }
 }

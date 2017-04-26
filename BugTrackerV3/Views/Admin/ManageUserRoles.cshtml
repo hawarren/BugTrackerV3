@@ -51,11 +51,18 @@
                 <td>
                     @foreach (var role in item.Roles)
                 {
-                        <p>@role</p>
-                        //TODO: make actionlink for each user role that removes it and returns to index
-                        @Html.ActionLink("Remove from @role", "RemoveUserRole", new { IdUser = item.User } )
+                        <p>
+                            <div>
+
+                            @role |
+                            </div>
+                       
+                        @*//TODO: make actionlink for each user role that removes it and returns to index*@
+                        @Html.ActionLink("Remove from role", "RemoveUserRole", new { Users = item.User.Id, Roles = role }, null )
+                        </p>
                     }
                 </td>
+
             </tr>
         }
     </tbody>
