@@ -66,12 +66,19 @@ namespace BugTrackerV3.Controllers
 
         }
 
-        public ActionResult RemoveUserRole(ApplicationUser IdUser)
+        public ActionResult RemoveUserRole()
         {
 
-            // ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
-            ViewBag.User = IdUser;
-            ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
+            //ViewBag.User = IdUser.ToString();
+            //ViewBag.Role = role;
+            //// helpers.UserRolesHelper rhelper = new helpers.UserRolesHelper();
+            ////var ThisUserRoles = rhelper.ListUserRoles(IdUser); 
+
+             ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
+            ////ViewBag.User = IdUser;
+             ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
+            ////ViewBag.Roles = new SelectList(rhelper.ListUserRoles(IdUser), "Name", "Name");
+            
             return View();
                         
         }
