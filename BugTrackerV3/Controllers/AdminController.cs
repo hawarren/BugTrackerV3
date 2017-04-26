@@ -50,10 +50,32 @@ namespace BugTrackerV3.Controllers
             return View(users);
         }
 
-        public ActionResult AddUserRole()
+        public ActionResult AddUserRole(string IdUser)
         {
-            ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
-            ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
+            helpers.UserRolesHelper uhelper = new helpers.UserRolesHelper();
+            AdminViewModel.AdminUserViewModel myUser = new AdminViewModel.AdminUserViewModel();
+            //Generate a list of roles the user is NOT in, using a foreach loop.
+            List<string> nonRoles = new List<string>();
+            var AllRoles = db.Roles.Select(m => m.Name);
+            List<string> myRoles = uhelper.ListUserRoles(IdUser).ToList();
+            foreach (var comp in AllRoles)
+            {
+               if (myRoles.Contains(comp) == false)
+                {
+                    nonRoles.Add(comp);
+                }
+               
+            };
+            //code to convert the list of strings to a selectlist
+            ViewBag.Roles = nonRoles.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x                                       
+                                  });
+            ViewBag.CurrentRoles = myRoles.ToList();
+            ViewBag.Users = new MultiSelectList(db.Users.Where(u => u.Id == IdUser), "Id", "DisplayName");
+          //  ViewBag.Roles = new MultiSelectList(nonRoles, "Name", "Name");
+           
             return View();
         }
 
@@ -61,8 +83,13 @@ namespace BugTrackerV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddUserRole(string Users, string Roles)
         {
-            helper.AddUserToRole(Users, Roles);
+            if (!helper.IsUserinRole(Users, Roles))
+            {
+                helper.AddUserToRole(Users, Roles);
             return RedirectToAction("ManageUserRoles");
+            }
+           // return View();
+            return RedirectToAction("ManageUserRoles", new { idUser = Users });
 
         }
 

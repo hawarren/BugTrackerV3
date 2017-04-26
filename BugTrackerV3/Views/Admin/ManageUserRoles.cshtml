@@ -3,15 +3,10 @@
 @{
     ViewBag.Title = "Manage User Roles";
 }
-}
+
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
-<h2>Users and Roles</h2>
-<p>
-    @Html.ActionLink("Add Role", "AddUserRole")
-</p>
-<p>
-    @Html.ActionLink("Remove Role", "RemoveUserRole")
-</p>
+<h2>User and Role Management Console</h2>
+
 <table class="table">
     <thead>
 
@@ -19,9 +14,7 @@
             <th>
                 Display Name
             </th>
-            @*<th>
-                Last Name
-            </th>*@
+           
             <th>
                 Email Address
             </th>
@@ -53,14 +46,19 @@
                 {
                         <p>
                             <div>
+                                @role |
+                            
 
-                            @role |
+                            @Html.ActionLink("Remove this Role", "RemoveUserRole", new { Users = item.User.Id, Roles = role }, null)
                             </div>
-                       
-                        @*//TODO: make actionlink for each user role that removes it and returns to index*@
-                        @Html.ActionLink("Remove from role", "RemoveUserRole", new { Users = item.User.Id, Roles = role }, null )
                         </p>
                     }
+                </td>
+                <td>
+
+                            <div>
+                                @Html.ActionLink("Add Another Role", "AddUserRole", new { IdUser = item.User.Id }, null)
+                            </div>
                 </td>
 
             </tr>
