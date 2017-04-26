@@ -66,26 +66,14 @@ namespace BugTrackerV3.Controllers
 
         }
 
-        public ActionResult RemoveUserRole()
+        public ActionResult RemoveUserRole(ApplicationUser IdUser)
         {
-            ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
+
+            // ViewBag.Users = new SelectList(db.Users, "Id", "DisplayName");
+            ViewBag.User = IdUser;
             ViewBag.Roles = new SelectList(db.Roles, "Name", "Name");
             return View();
-
-            ////trying this code from manageusers
-            //List<UsersViewModel> users = new List<UsersViewModel>();
-            //var dbUsers = db.Users.ToList();
-
-            //foreach (var usr in dbUsers)
-            //{
-            //    UsersViewModel vm = new UsersViewModel();
-            //    vm.User = usr;
-            //    usrRoles = 
-            //    vm.Roles = new SelectList(helper.ListUserRoles(usr.Id).ToList();
-            //    users.Add(vm);
-            //}
-
-            //return View(users);
+                        
         }
 
         [HttpPost]

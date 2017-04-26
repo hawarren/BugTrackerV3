@@ -234,6 +234,8 @@ namespace BugTrackerV3.Controllers
             Ticket ticket = new Ticket();
             ticket.ProjectId = projectId;
 
+
+            //SelectList is the defined type, the list of items have to be a List of SelectList
             //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName");
             //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName");
             //ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name");
