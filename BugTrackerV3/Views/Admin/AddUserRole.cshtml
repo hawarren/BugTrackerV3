@@ -10,30 +10,84 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div>This user is in the following roles:</div>
+
+
+
+
+
+    <table class="table">
+        <thead>
+
+            <tr>
+               
+                <th>
+                    Roles
+                </th>
+                @*<th>
+                    Actions
+                </th>*@
+            </tr>
+        </thead>
+        <tbody>
+
+            @*@foreach (var item in ViewBag.CurrentRoles)
+
+            {*@
+                <tr>
+                   
+                    <td>
+                        @foreach (var role in ViewBag.CurrentRoles)
+                        {
+                            <p>
+                                <div>
+                                    @role
+
+                                </div>
+                            </p>
+
+                                    @*@Html.ActionLink("Remove this Role", "RemoveUserRole", new { Users = ViewBag.Users.Id, Roles = role }, null)*@
+                        }
+                    </td>
+                   
+
+                </tr>
+            @*}*@
+        </tbody>
+    </table>
+
+
+
+
+
 
     <div class="form-group">
-        @Html.Label("Users", "Choose a User", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.Label("Users", "Selected User", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("Users", null, htmlAttributes: new { @class = "form-control" })
+          
         </div>
     </div>
 
-        <div class="form-group">
-            @Html.Label("Roles", "Choose a Role", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.Label("Roles", "Add Another Role", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "form-control" })
+
+
+
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
-    
+    </div>
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to User List", "ManageUserRoles")
 </div>
 
 @section Scripts {

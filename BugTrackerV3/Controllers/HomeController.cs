@@ -19,7 +19,7 @@ namespace BugTrackerV3.Controllers
                 UserRolesHelper helper = new UserRolesHelper();
                 if (helper.IsUserinRole(CurrentUser, "Admin"))
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("ManageUserRoles", "Admin");
                 }
             }
 
