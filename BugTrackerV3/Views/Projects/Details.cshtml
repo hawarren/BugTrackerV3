@@ -26,10 +26,13 @@
         </dt>
 
         <dd>
-            @foreach (var users in Model.Users)
+            @foreach (var item in Model.Users)
             {
-                <p>@users.FirstName @users.LastName Email: @users.Email</p>
+                <p>
+                @Html.DisplayFor(userItem => item.DisplayName)
+                </p>
             }
+              
         </dd>
 
     </dl>
@@ -153,7 +156,7 @@
 
 <p>
     @Html.ActionLink("Change Project Name", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Assign PM", "AssignPM", new { id = Model.Id })  |
+    @Html.ActionLink("Assign A Project Manager", "AssignPM", new { id = Model.Id })  |
     @Html.ActionLink("Add Developers", "AssignDEV", new { id = Model.Id })
 </p>
     }

@@ -11,7 +11,7 @@ Requirements
 	□	Authenticated users must be able to view a list of all tickets DONE DONE checked
 
 □	Tickets  ....
-	□	Project Managers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)
+	□	Project Managers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE) checked
 	□	Developers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)***
 	□	Developers must be able to view a list of all tickets to which they are assigned (DONE DONE)
 	□	Submitters must be able to view a list of all tickets which they own(DONE DONE)
@@ -43,4 +43,8 @@ Monday, March 20, 2017 (finished April ?, 2017)
 
 
 
+
+Bugs to Address:
+
 Notes: after break make sure admin sees only 1 list in tickets view (low priority)
+-Makes "Users on Projects show" in Project/details

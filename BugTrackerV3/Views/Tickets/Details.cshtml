@@ -94,8 +94,9 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null)
+    @Html.ActionLink("Back to Tickets List", "Index") |
+    @Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) |
+    @Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null)
 </p>
 
 @if (Model.AssignedToUserId == User.Identity.GetUserId()
