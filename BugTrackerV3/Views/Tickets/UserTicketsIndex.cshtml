@@ -291,6 +291,13 @@
     if (User.IsInRole("Submitter"))
     {
         <h3>Submitter Tickets</h3>
+        if (Model.SubTickets.Count() == 0)
+        {
+            <p>You don't have any tickets yet. Feel free to add some!</p>
+        }
+        else
+        {
+
         <table class="table">
             <thead>
 
@@ -373,6 +380,7 @@
             </tbody>
 
         </table>
+        }
     }
 }
 

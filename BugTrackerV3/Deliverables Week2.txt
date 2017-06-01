@@ -5,10 +5,10 @@ Project
 Bug Tracker: Week 2
 Requirements
 □	Tickets ....
-	□	Submitters must be able to create tickets DONE DONE
-	□	New tickets are owned by the user who enters them DONE DONE
-	□	New tickets are initially unassigned DONE DONE
-	□	Authenticated users must be able to view a list of all tickets DONE DONE
+	□	Submitters must be able to create tickets DONE DONE Checked
+	□	New tickets are owned by the user who enters them DONE DONE checked
+	□	New tickets are initially unassigned DONE DONE checked
+	□	Authenticated users must be able to view a list of all tickets DONE DONE checked
 
 □	Tickets  ....
 	□	Project Managers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)
@@ -39,3 +39,8 @@ Requirements
 Deliverable Date
 Monday, March 20, 2017 (finished April ?, 2017)
 *Make the project excellent
+
+
+
+
+Notes: after break make sure admin sees only 1 list in tickets view (low priority)

@@ -143,13 +143,18 @@
 </div>
 
 <p>
-    @Html.ActionLink("Change Project Name", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to Project List", "Index") |
     @Html.ActionLink("Add a Ticket", "Create", "Tickets", new { projectId = Model.Id }, null) I
+</p>
+@{ 
+
+    if (User.Identity.GetUserId() == Model.PMID || User.IsInRole("Admin"))
+    {
+
+<p>
+    @Html.ActionLink("Change Project Name", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Assign PM", "AssignPM", new { id = Model.Id })  |
     @Html.ActionLink("Add Developers", "AssignDEV", new { id = Model.Id })
-
-
-
-
 </p>
+    }
+    }  
