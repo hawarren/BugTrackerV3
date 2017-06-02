@@ -54,3 +54,23 @@ Notes: after break make sure admin sees only 1 list in tickets view (low priorit
 ****************************
 bootstrap notes
 -Bootstrap is downloadable in two forms, within which you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.
+
+Containers
+Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to padding and more, neither container is nestable.
+
+Use .container for a responsive fixed width container.
+
+<div class="container">
+  ...
+</div>
+Use .container-fluid for a full width container, spanning the entire width of your viewport.
+
+<div class="container-fluid">
+  ...
+</div>
+
+****
+(this should help with portfolio experience/education) sections being different heights with that extra margin issue.
+http://getbootstrap.com/css/#grid-responsive-resets
+Responsive column resets
+With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a .clearfix and our responsive utility classes.
