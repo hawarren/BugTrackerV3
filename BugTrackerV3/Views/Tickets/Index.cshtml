@@ -6,6 +6,7 @@
 }
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
 <h2>Tickets Assigned, by Role</h2>
+<p>@Html.ActionLink("View only Your Tickets", "UserTicketsIndex", new { Id = Model.User.Id })</p>
 
 
 @{

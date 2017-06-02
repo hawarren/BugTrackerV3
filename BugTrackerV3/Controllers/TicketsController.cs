@@ -163,20 +163,6 @@ namespace BugTrackerV3.Controllers
 
 
 
-                /*DevTickets is a list of tickets,so
-                 * for each ticket
-                 * find the projectID
-                 * Add ProjectID to a List "PK"
-                 * for each PK
-                 * find all tickets where ProjectID is PK
-                 * Add those tickets to ProjectTickets.
-                 * 
-                */
-               //foreach (m in model.DevTickets)
-               // {
-               //     PK = db.Projects.Where(m => m.ProjectId);
-
-               // }
 
             }
             if (User.IsInRole("ProjectManager"))

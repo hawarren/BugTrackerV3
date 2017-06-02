@@ -6,6 +6,7 @@ using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using BugTrackerV3.Models;
+using System.Web.Mvc;
 
 namespace BugTrackerV3.helpers
 {
@@ -24,6 +25,9 @@ namespace BugTrackerV3.helpers
         {
             return userManager.GetRoles(userId);
         }
+
+       
+
 
         public bool AddUserToRole(string userId, string roleName)
         {
