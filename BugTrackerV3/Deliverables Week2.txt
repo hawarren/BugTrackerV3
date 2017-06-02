@@ -48,3 +48,9 @@ Bugs to Address:
 
 Notes: after break make sure admin sees only 1 list in tickets view (low priority)
 -Makes "Users on Projects show" in Project/details
+
+
+
+****************************
+bootstrap notes
+-Bootstrap is downloadable in two forms, within which you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.
