@@ -5,13 +5,13 @@ Project
 Bug Tracker: Week 2
 Requirements
 □	Tickets ....
-	□	Submitters must be able to create tickets DONE DONE
-	□	New tickets are owned by the user who enters them DONE DONE
-	□	New tickets are initially unassigned DONE DONE
-	□	Authenticated users must be able to view a list of all tickets DONE DONE
+	□	Submitters must be able to create tickets DONE DONE Checked
+	□	New tickets are owned by the user who enters them DONE DONE checked
+	□	New tickets are initially unassigned DONE DONE checked
+	□	Authenticated users must be able to view a list of all tickets DONE DONE checked
 
 □	Tickets  ....
-	□	Project Managers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)
+	□	Project Managers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE) checked
 	□	Developers must be able to view a list of all tickets belonging to the projects to which they are assigned (DONE DONE)***
 	□	Developers must be able to view a list of all tickets to which they are assigned (DONE DONE)
 	□	Submitters must be able to view a list of all tickets which they own(DONE DONE)
@@ -39,3 +39,40 @@ Requirements
 Deliverable Date
 Monday, March 20, 2017 (finished April ?, 2017)
 *Make the project excellent
+
+
+
+
+
+Bugs to Address:
+
+Notes: after break make sure admin sees only 1 list in tickets view (low priority)
+-Makes "Users on Projects show" in Project/details
+
+
+
+****************************
+bootstrap notes
+-Bootstrap is downloadable in two forms, within which you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.
+
+Containers
+Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to padding and more, neither container is nestable.
+
+Use .container for a responsive fixed width container.
+
+<div class="container">
+  ...
+</div>
+Use .container-fluid for a full width container, spanning the entire width of your viewport.
+
+<div class="container-fluid">
+  ...
+</div>
+
+****
+(this should help with portfolio experience/education) sections being different heights with that extra margin issue.
+http://getbootstrap.com/css/#grid-responsive-resets
+Responsive column resets
+With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a .clearfix and our responsive utility classes.
+
+*was adding striped table when I left off.

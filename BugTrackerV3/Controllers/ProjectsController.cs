@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BugTrackerV3.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

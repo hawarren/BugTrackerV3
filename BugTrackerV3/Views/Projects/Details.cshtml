@@ -26,10 +26,13 @@
         </dt>
 
         <dd>
-            @foreach (var users in Model.Users)
+            @foreach (var item in Model.Users)
             {
-                <p>@users.FirstName @users.LastName Email: @users.Email</p>
+                <p>
+                @Html.DisplayFor(userItem => item.DisplayName)
+                </p>
             }
+              
         </dd>
 
     </dl>
@@ -116,18 +119,23 @@
                     </td>
                     
                     <td>
-                        <div> @Html.ActionLink("Details", "Details", "Tickets", new { id = item.Id }, null)|</div>
+                         <button type="button" class="btn btn-info">
+                        <div> @Html.ActionLink("Details", "Details", "Tickets", new { id = item.Id }, null)</div>
+                             </button>
                      @{
                          if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
                          {
                              <div>
-                         @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null) |
+                                  <button type="button" class="btn btn-default">
+                         @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null) 
+                                      </button>
                         </div>
                                  }
                          if (User.IsInRole("Admin"))
                          {
-                            <div> 
+                            <div>  <button type="button" class="btn btn-danger">
                             @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
+                                </button>
                          </div>
                          }
                          }
@@ -143,13 +151,18 @@
 </div>
 
 <p>
-    @Html.ActionLink("Change Project Name", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to Project List", "Index") |
     @Html.ActionLink("Add a Ticket", "Create", "Tickets", new { projectId = Model.Id }, null) I
-    @Html.ActionLink("Assign PM", "AssignPM", new { id = Model.Id })  |
-    @Html.ActionLink("Add Developers", "AssignDEV", new { id = Model.Id })
-
-
-
-
 </p>
+@{ 
+
+    if (User.Identity.GetUserId() == Model.PMID || User.IsInRole("Admin"))
+    {
+
+<p>
+    @Html.ActionLink("Change Project Name", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Assign A Project Manager", "AssignPM", new { id = Model.Id })  |
+    @Html.ActionLink("Add Developers", "AssignDEV", new { id = Model.Id })
+</p>
+    }
+    }  
