@@ -93,10 +93,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Tickets List", "Index") |
-    @Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) |
-    @Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null)
+   <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Back to Tickets List", "Index") </button>
+    <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
 </p>
 
 @if (Model.AssignedToUserId == User.Identity.GetUserId()

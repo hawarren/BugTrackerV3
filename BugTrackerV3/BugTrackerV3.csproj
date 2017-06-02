@@ -4646,7 +4646,7 @@
     <Content Include="Views\Manage\ChangeProfile.cshtml" />
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
     <Content Include="Views\Admin\RemoveUserRole.cshtml" />
-    <Content Include="Views\Tickets\UserTicketsIndex.cshtml" />
+    <None Include="Views\Tickets\UserTicketsIndex.cshtml.old" />
     <Content Include="Views\TicketComments\Create.cshtml" />
     <Content Include="Views\TicketComments\Delete.cshtml" />
     <Content Include="Views\TicketComments\Details.cshtml" />
@@ -4661,6 +4661,7 @@
     <Content Include="Views\Shared\_LayoutGentelella.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Tickets\UserTicketsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
