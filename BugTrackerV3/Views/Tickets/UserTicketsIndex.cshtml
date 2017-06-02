@@ -88,9 +88,8 @@
                         </td>
                         <td>
                             <!--Standard Button -->
-                            <button type="button" class="btn btn-default">
                              <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button>
-                            </button>
+                          
                             <button type="button" class="btn btn-info">
                                 @Html.ActionLink("Details", "Details", new { id = item.Id })
                             </button>
@@ -186,9 +185,15 @@
                             @Html.DisplayFor(modelItem => item.Updated)
                         </td>
                         <td>
-                         <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                      <button type="button" class="btn btn-default">
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+                 </button>
+             <button type="button" class="btn btn-info">
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+                 </button>
+             <button type="button" class="btn btn-danger">
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+             </button>
                         </td>
                     </tr>
                 }
@@ -280,9 +285,15 @@
                             @Html.DisplayFor(modelItem => item.Updated)
                         </td>
                         <td>
-                         <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                           <button type="button" class="btn btn-default">
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+                 </button>
+             <button type="button" class="btn btn-info">
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+                 </button>
+             <button type="button" class="btn btn-danger">
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+             </button>
                         </td>
                     </tr>
                 }
@@ -378,9 +389,15 @@
                             @Html.DisplayFor(modelItem => item.Updated)
                         </td>
                         <td>
-                         <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button> |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                          <button type="button" class="btn btn-default">
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+                 </button>
+             <button type="button" class="btn btn-info">
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+                 </button>
+             <button type="button" class="btn btn-danger">
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+             </button>
                         </td>
                     </tr>
                 }
