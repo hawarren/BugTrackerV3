@@ -538,11 +538,6 @@
     <Content Include="Scripts\gentelellascripts\vendors\DateJS\README.md" />
     <Content Include="Scripts\gentelellascripts\vendors\DateJS\reports\coverage.json" />
     <Content Include="Scripts\gentelellascripts\vendors\DateJS\reports\lcov.info" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\.bower.json" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\bower.json" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\devbridge-autocomplete.jquery.json" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\package.json" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\readme.md" />
     <Content Include="Scripts\gentelellascripts\vendors\dropzone\.bower.json" />
     <Content Include="Scripts\gentelellascripts\vendors\dropzone\bower.json" />
     <Content Include="Scripts\gentelellascripts\vendors\dropzone\dist\readme.md" />
@@ -2320,13 +2315,6 @@
     <Content Include="Scripts\gentelellascripts\vendors\DateJS\src\i18n\zh-SG.js" />
     <Content Include="Scripts\gentelellascripts\vendors\DateJS\src\i18n\zh-TW.js" />
     <Content Include="Scripts\gentelellascripts\vendors\DateJS\src\i18n\zu-ZA.js" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\dist\jquery.autocomplete.js" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\dist\jquery.autocomplete.min.js" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\dist\license.txt" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\gruntfile.js" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\index.htm" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\license.txt" />
-    <Content Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\src\jquery.autocomplete.js" />
     <Content Include="Scripts\gentelellascripts\vendors\dropzone\dist\basic.css" />
     <Content Include="Scripts\gentelellascripts\vendors\dropzone\dist\dropzone-amd-module.js" />
     <Content Include="Scripts\gentelellascripts\vendors\dropzone\dist\dropzone.css" />
@@ -4683,7 +4671,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\gentelellascripts\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
     <TypeScriptCompile Include="Scripts\gentelellascripts\vendors\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
