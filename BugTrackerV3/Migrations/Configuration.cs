@@ -29,7 +29,7 @@ namespace BugTrackerV3.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
+            
 
             //seeding the roles
             var roleManager = new RoleManager<IdentityRole>(
