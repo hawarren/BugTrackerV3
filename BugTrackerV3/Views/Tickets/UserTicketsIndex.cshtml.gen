@@ -17,16 +17,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Gentelella Alela! | </title>
 	<!-- Bootstrap -->
-	<link href="~/Scripts/gentelellascripts/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!--<link href="~/Scripts/gentelellascripts/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
 	<!-- Font Awesome -->
-	<link href="~/Scripts/gentelellascripts/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!--<link href="~/Scripts/gentelellascripts/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
 	<!-- NProgress -->
-	<link href="~/Scripts/gentelellascripts/vendors/nprogress/nprogress.css" rel="stylesheet">
+	<!--<link href="~/Scripts/gentelellascripts/vendors/nprogress/nprogress.css" rel="stylesheet">-->
 	<!-- iCheck -->
-	<link href="~/Scripts/gentelellascripts/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	<!--<link href="~/Scripts/gentelellascripts/vendors/iCheck/skins/flat/green.css" rel="stylesheet">-->
 	<!-- Custom Theme Style -->
-	<link href="~/Scripts/gentelellascripts/build/css/custom.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+	<!--<link href="~/Scripts/gentelellascripts/build/css/custom.min.css" rel="stylesheet">-->
+	<!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />-->
 
 </head>
 
@@ -572,17 +572,17 @@
 
 
 
-						<script src="~/Scripts/gentelellascripts/vendors/jquery/dist/jquery.min.js"></script>
+						<!--<script src="~/Scripts/gentelellascripts/vendors/jquery/dist/jquery.min.js"></script>-->
 						<!-- Bootstrap -->
-						<script src="~/Scripts/gentelellascripts/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+						<!--<script src="~/Scripts/gentelellascripts/vendors/bootstrap/dist/js/bootstrap.min.js"></script>-->
 						<!-- FastClick -->
-						<script src="~/Scripts/gentelellascripts/vendors/fastclick/lib/fastclick.js"></script>
+						<!--<script src="~/Scripts/gentelellascripts/vendors/fastclick/lib/fastclick.js"></script>-->
 						<!-- NProgress -->
-						<script src="~/Scripts/gentelellascripts/vendors/nprogress/nprogress.js"></script>
+						<!--<script src="~/Scripts/gentelellascripts/vendors/nprogress/nprogress.js"></script>-->
 						<!-- iCheck -->
-						<script src="~/Scripts/gentelellascripts/vendors/iCheck/icheck.min.js"></script>
+						<!--<script src="~/Scripts/gentelellascripts/vendors/iCheck/icheck.min.js"></script>-->
 						<!-- Custom Theme Scripts -->
-						<script src="~/Scripts/gentelellascripts/build/js/custom.min.js"></script>
+						<!--<script src="~/Scripts/gentelellascripts/build/js/custom.min.js"></script>-->
 
 
 					}
