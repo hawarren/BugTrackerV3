@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTrackerV3.Models
+namespace BugTrackerV4.Models
 {
     public class AssignDevViewModel
     {

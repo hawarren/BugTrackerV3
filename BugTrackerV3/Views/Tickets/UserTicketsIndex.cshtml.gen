@@ -1,5 +1,5 @@
 ﻿
-@model BugTrackerV3.Models.TicketIndexViewModel
+@model BugTrackerV4.Models.TicketIndexViewModel
 
 @{
 	ViewBag.Title = "View All Tickets belonging to you";

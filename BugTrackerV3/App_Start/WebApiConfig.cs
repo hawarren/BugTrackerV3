@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http; 
 
-using System.Web.UI.WebControls;
+//using System.Web.UI.WebControls;
 
-namespace BugTrackerV3
+namespace BugTrackerV4
 {
-    public static class BugTrackerV3
+    public static class BugTrackerV4
     {
         public static void Register(HttpConfiguration config)
         {

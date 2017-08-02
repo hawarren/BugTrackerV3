@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BugTrackerV3.helpers;
+using BugTrackerV4.helpers;
 using Microsoft.AspNet.Identity;
 
-namespace BugTrackerV3.Controllers
+namespace BugTrackerV4.Controllers
 {
     public class HomeController : Controller
     {

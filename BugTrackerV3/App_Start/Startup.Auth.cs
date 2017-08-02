@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using BugTrackerV3.Models;
+using BugTrackerV4.Models;
 
-namespace BugTrackerV3
+namespace BugTrackerV4
 {
     public partial class Startup
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(BugTrackerV3.Startup))]
-namespace BugTrackerV3
+[assembly: OwinStartupAttribute(typeof(BugTrackerV4.Startup))]
+namespace BugTrackerV4
 {
     public partial class Startup
     {

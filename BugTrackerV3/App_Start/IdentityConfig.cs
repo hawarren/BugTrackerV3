@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using BugTrackerV3.Models;
+using BugTrackerV4.Models;
 
-namespace BugTrackerV3
+namespace BugTrackerV4
 {
     public class EmailService : IIdentityMessageService
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace BugTrackerV3.Controllers
+namespace BugTrackerV4.Controllers
 {
     public class DashboardController : Controller
     {

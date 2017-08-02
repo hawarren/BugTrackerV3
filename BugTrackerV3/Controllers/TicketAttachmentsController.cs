@@ -7,10 +7,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BugTrackerV3.Models;
+using BugTrackerV4.Models;
 using Microsoft.AspNet.Identity;
 
-namespace BugTrackerV3.Controllers
+namespace BugTrackerV4.Controllers
 {
     public class TicketAttachmentsController : Controller
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace BugTrackerV3.Models
+namespace BugTrackerV4.Models
 {
     public class TicketStatus
     {

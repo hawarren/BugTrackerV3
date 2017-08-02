@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace BugTrackerV3
+namespace BugTrackerV4
 {
     public class FilterConfig
     {
