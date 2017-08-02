@@ -210,9 +210,23 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomerControllers\AnalyticsController.cs" />
+    <Compile Include="Controllers\HomerControllers\AppViewsController.cs" />
+    <Compile Include="Controllers\HomerControllers\BoxTransitionsController.cs" />
+    <Compile Include="Controllers\HomerControllers\ChartsController.cs" />
+    <Compile Include="Controllers\HomerControllers\CommonViewsController.cs" />
+    <Compile Include="Controllers\HomerControllers\DashboardController.cs" />
+    <Compile Include="Controllers\HomerControllers\FormsController.cs" />
+    <Compile Include="Controllers\HomerControllers\GridSystemController.cs" />
+    <Compile Include="Controllers\HomerControllers\InterfaceController.cs" />
+    <Compile Include="Controllers\HomerControllers\LandingPageController.cs" />
+    <Compile Include="Controllers\HomerControllers\OptionsController.cs" />
+    <Compile Include="Controllers\HomerControllers\TablesController.cs" />
+    <Compile Include="Controllers\HomerControllers\WidgetsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TicketAttachmentsController.cs" />
@@ -255,6 +269,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\nprogress.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -376,6 +391,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
