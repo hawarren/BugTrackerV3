@@ -260,17 +260,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Libs\Gentelella\css\custom.css" />
-    <Content Include="Libs\Gentelella\css\custom.min.css" />
-    <Content Include="Libs\Gentelella\images\back_disabled.png" />
-    <Content Include="Libs\Gentelella\images\back_enabled.png" />
-    <Content Include="Libs\Gentelella\images\back_enabled_hover.png" />
-    <Content Include="Libs\Gentelella\images\forward_disabled.png" />
-    <Content Include="Libs\Gentelella\images\forward_enabled.png" />
-    <Content Include="Libs\Gentelella\images\forward_enabled_hover.png" />
-    <Content Include="Libs\Gentelella\images\loading.gif" />
-    <Content Include="Libs\Gentelella\js\custom.js" />
-    <Content Include="Libs\Gentelella\js\custom.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="BootstrapAndTemplates\Bootstrap-Admin-Template-master.zip" />
@@ -4648,7 +4637,7 @@
     <Content Include="Views\Manage\ChangeProfile.cshtml" />
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
     <Content Include="Views\Admin\RemoveUserRole.cshtml" />
-    <None Include="Views\Tickets\UserTicketsIndex.cshtml.old" />
+    <None Include="Views\Tickets\UserTicketsIndex.cshtml" />
     <Content Include="Views\TicketComments\Create.cshtml" />
     <Content Include="Views\TicketComments\Delete.cshtml" />
     <Content Include="Views\TicketComments\Details.cshtml" />
@@ -4660,10 +4649,9 @@
     <Content Include="Views\TicketAttachments\Details.cshtml" />
     <Content Include="Views\TicketAttachments\Edit.cshtml" />
     <Content Include="Views\TicketAttachments\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutGentelella.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Tickets\UserTicketsIndex.cshtml" />
+    <None Include="Views\Tickets\UserTicketsIndex.cshtml.gen" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
