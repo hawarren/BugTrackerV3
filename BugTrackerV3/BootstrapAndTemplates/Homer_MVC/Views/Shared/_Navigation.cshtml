@@ -1,0 +1,147 @@
+﻿<div id="navigation">
+    <div class="profile-picture">
+        <a href="@Url.Action("Index", "Dashboard")">
+            <img src="~/Images/profile.jpg" class="img-circle m-b" alt="logo">
+        </a>
+
+        <div class="stats-label text-color">
+            <span class="font-extra-bold font-uppercase">Robert Razer</span>
+
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    <small class="text-muted">Founder of App <b class="caret"></b></small>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                    <li><a href="contacts.html">Contacts</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li class="divider"></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </div>
+            <div id="sparkline1" class="small-chart m-t-sm"></div>
+            <div>
+                <h4 class="font-extra-bold m-b-xs">
+                    $260 104,200
+                </h4>
+                <small class="text-muted">Your income from the last year in sales product X.</small>
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav metismenu" id="side-menu">
+        <li class="@Html.IsSelected(controller: "Dashboard")">
+            <a href="@Url.Action("Index", "Dashboard")"> <span class="nav-label">Dashboard</span> <span class="label label-success pull-right">v.1</span> </a>
+        </li>
+        <li class="@Html.IsSelected(controller: "Analytics")">
+            <a href="@Url.Action("Index", "Analytics")"> <span class="nav-label">Analytics</span><span class="label label-warning pull-right">NEW</span> </a>
+        </li>
+        <li class="@Html.IsSelected(controller: "Interface")">
+            <a href="#"><span class="nav-label">Interface</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "PanelsDesign")"><a href="@Url.Action("PanelsDesign", "Interface")">Panels design</a></li>
+                <li class="@Html.IsSelected(action: "Typography")"><a href="@Url.Action("Typography", "Interface")">Typography</a></li>
+                <li class="@Html.IsSelected(action: "ColorsButtons")"><a href="@Url.Action("ColorsButtons", "Interface")">Colors & Buttons</a></li>
+                <li class="@Html.IsSelected(action: "Components")"><a href="@Url.Action("Components", "Interface")">Components</a></li>
+                <li class="@Html.IsSelected(action: "Alerts")"><a href="@Url.Action("Alerts", "Interface")">Alerts</a></li>
+                <li class="@Html.IsSelected(action: "Modals")"><a href="@Url.Action("Modals", "Interface")">Modals</a></li>
+                <li class="@Html.IsSelected(action: "LoadingButtons")"><a href="@Url.Action("LoadingButtons", "Interface")">Loading buttons</a></li>
+                <li class="@Html.IsSelected(action: "DraggablePanels")"><a href="@Url.Action("DraggablePanels", "Interface")">Draggable Panels</a></li>
+                <li class="@Html.IsSelected(action: "CodeEditor")"><a href="@Url.Action("CodeEditor", "Interface")">Code editor</a></li>
+                <li class="@Html.IsSelected(action: "EmailTemplate")"><a href="@Url.Action("EmailTemplate", "Interface")">Email template</a></li>
+                <li class="@Html.IsSelected(action: "List")"><a href="@Url.Action("List", "Interface")">List</a></li>
+                <li class="@Html.IsSelected(action: "Tour")"><a href="@Url.Action("Tour", "Interface")">Tour</a></li>
+                <li class="@Html.IsSelected(action: "IconsLibrary")"><a href="@Url.Action("IconsLibrary", "Interface")">Icons library</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "AppViews")">
+            <a href="#"><span class="nav-label">App views</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "Contacts")"><a href="@Url.Action("Contacts", "AppViews")">Contacts</a></li>
+                <li class="@Html.IsSelected(action: "Projects")"><a href="@Url.Action("Projects", "AppViews")">Projects</a></li>
+                <li class="@Html.IsSelected(action: "ProjectDetail")"><a href="@Url.Action("ProjectDetail", "AppViews")">Project detail</a></li>
+                <li class="@Html.IsSelected(action: "AppPlans")"><a href="@Url.Action("AppPlans", "AppViews")">App plans</a></li>
+                <li class="@Html.IsSelected(action: "SocialBoard")"><a href="@Url.Action("SocialBoard", "AppViews")">Social board</a></li>
+                <li class="@Html.IsSelected(action: "Faq")"><a href="@Url.Action("Faq", "AppViews")">FAQ</a></li>
+                <li class="@Html.IsSelected(action: "Timeline")"><a href="@Url.Action("Timeline", "AppViews")">Timeline</a></li>
+                <li class="@Html.IsSelected(action: "Notes")"><a href="@Url.Action("Notes", "AppViews")">Notes</a></li>
+                <li class="@Html.IsSelected(action: "ProfilePage")"><a href="@Url.Action("ProfilePage", "AppViews")">Profile</a></li>
+                <li class="@Html.IsSelected(action: "Mailbox")"><a href="@Url.Action("Mailbox", "AppViews")">Mailbox</a></li>
+                <li class="@Html.IsSelected(action: "EmailCompose")"><a href="@Url.Action("EmailCompose", "AppViews")">Email compose</a></li>
+                <li class="@Html.IsSelected(action: "EmailView")"><a href="@Url.Action("EmailView", "AppViews")">Email view</a></li>
+                <li class="@Html.IsSelected(action: "Blog")"><a href="@Url.Action("Blog", "AppViews")">Blog</a></li>
+                <li class="@Html.IsSelected(action: "BlogArticle")"><a href="@Url.Action("BlogArticle", "AppViews")">Blog article</a></li>
+                <li class="@Html.IsSelected(action: "Forum")"><a href="@Url.Action("Forum", "AppViews")">Forum</a></li>
+                <li class="@Html.IsSelected(action: "ForumDetails")"><a href="@Url.Action("ForumDetails", "AppViews")">Forum details</a></li>
+                <li class="@Html.IsSelected(action: "Gallery")"><a href="@Url.Action("Gallery", "AppViews")">Gallery</a></li>
+                <li class="@Html.IsSelected(action: "Calendar")"><a href="@Url.Action("Calendar", "AppViews")">Calendar</a></li>
+                <li class="@Html.IsSelected(action: "Invoice")"><a href="@Url.Action("Invoice", "AppViews")">Invoice</a></li>
+                <li class="@Html.IsSelected(action: "FileManager")"><a href="@Url.Action("FileManager", "AppViews")">File manager</a></li>
+                <li class="@Html.IsSelected(action: "ChatView")"><a href="@Url.Action("ChatView", "AppViews")">Chat view</a></li>
+                <li class="@Html.IsSelected(action: "Search")"><a href="@Url.Action("Search", "AppViews")">Search view</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "Charts")">
+            <a href="#"><span class="nav-label">Charts</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "ChartJs")"><a href="@Url.Action("ChartJs", "Charts")">ChartJs</a></li>
+                <li class="@Html.IsSelected(action: "FlotCharts")"><a href="@Url.Action("FlotCharts", "Charts")">Flot charts</a></li>
+                <li class="@Html.IsSelected(action: "InlineGraphs")"><a href="@Url.Action("InlineGraphs", "Charts")">Inline graphs</a></li>
+                <li class="@Html.IsSelected(action: "Chartist")"><a href="@Url.Action("Chartist", "Charts")">Chartist</a></li>
+                <li class="@Html.IsSelected(action: "C3Charts")"><a href="@Url.Action("C3Charts", "Charts")">C3 Charts</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "BoxTransitions")">
+            <a href="#"><span class="nav-label">Box transitions</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "Overview")"><a href="@Url.Action("Overview", "BoxTransitions")"><span class="label label-success pull-right">Start</span> Overview </a>  </li>
+                <li class="@Html.IsSelected(action: "ColumnsFromUp")"><a href="@Url.Action("ColumnsFromUp", "BoxTransitions")">Columns from up</a></li>
+                <li class="@Html.IsSelected(action: "ColumnsCustom")"><a href="@Url.Action("ColumnsCustom", "BoxTransitions")">Columns custom</a></li>
+                <li class="@Html.IsSelected(action: "PanelsZoom")"><a href="@Url.Action("PanelsZoom", "BoxTransitions")">Panels zoom</a></li>
+                <li class="@Html.IsSelected(action: "RowsFromDown")"><a href="@Url.Action("RowsFromDown", "BoxTransitions")">Rows from down</a></li>
+                <li class="@Html.IsSelected(action: "RowsFromRight")"><a href="@Url.Action("RowsFromRight", "BoxTransitions")">Rows from right</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "CommonViews")">
+            <a href="#"><span class="nav-label">Common views</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "Login")"><a href="@Url.Action("Login", "CommonViews")">Login</a></li>
+                <li class="@Html.IsSelected(action: "Register")"><a href="@Url.Action("Register", "CommonViews")">Register</a></li>
+                <li class="@Html.IsSelected(action: "Error_One")"><a href="@Url.Action("Error_One", "CommonViews")">Error 404</a></li>
+                <li class="@Html.IsSelected(action: "Error_Two")"><a href="@Url.Action("Error_Two", "CommonViews")">Error 505</a></li>
+                <li class="@Html.IsSelected(action: "LockScreen")"><a href="@Url.Action("LockScreen", "CommonViews")">Lock screen</a></li>
+                <li class="@Html.IsSelected(action: "PasswordRecovery")"><a href="@Url.Action("PasswordRecovery", "CommonViews")">Password recovery</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "Tables")">
+            <a href="#"><span class="nav-label">Tables</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "TablesDesign")"><a href="@Url.Action("TablesDesign", "Tables")">Tables design</a></li>
+                <li class="@Html.IsSelected(action: "DataTables")"><a href="@Url.Action("DataTables", "Tables")">Data tables</a></li>
+                <li class="@Html.IsSelected(action: "FooTable")"><a href="@Url.Action("FooTable", "Tables")">Foo Table</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "Widgets")">
+            <a href="@Url.Action("Index", "Widgets")"> <span class="nav-label">Widgets</span> <span class="label label-success pull-right">Special</span></a>
+        </li>
+        <li class="@Html.IsSelected(controller: "Forms")">
+            <a href="#"><span class="nav-label">Forms</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "FormsElements")"><a href="@Url.Action("FormsElements", "Forms")">Forms elements</a></li>
+                <li class="@Html.IsSelected(action: "FormsExtended")"><a href="@Url.Action("FormsExtended", "Forms")">Forms extended</a></li>
+                <li class="@Html.IsSelected(action: "TextEditor")"><a href="@Url.Action("TextEditor", "Forms")">Text editor</a></li>
+                <li class="@Html.IsSelected(action: "Wizard")"><a href="@Url.Action("Wizard", "Forms")">Wizard</a></li>
+                <li class="@Html.IsSelected(action: "Validation")"><a href="@Url.Action("Validation", "Forms")">Validation</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "Options")">
+            <a href="@Url.Action("Index", "Options")"> <span class="nav-label">Layout options</span></a>
+        </li>
+        <li class="@Html.IsSelected(controller: "GridSystem")">
+            <a href="@Url.Action("Index", "GridSystem")"> <span class="nav-label">Grid system</span></a>
+        </li>
+        <li class="@Html.IsSelected(controller: "LandingPage")">
+            <a href="@Url.Action("Index", "LandingPage")"> <span class="nav-label">Landing page</span></a>
+        </li>
+    </ul>
+</div>
