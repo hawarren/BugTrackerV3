@@ -285,9 +285,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="BootstrapAndTemplates\Bootstrap-Admin-Template-master.zip" />
     <Content Include="BootstrapAndTemplates\DataTables-1.10.15.zip" />
-    <Content Include="BootstrapAndTemplates\gentelella-master-admin-template.zip" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
