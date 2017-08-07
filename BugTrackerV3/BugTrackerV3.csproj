@@ -273,9 +273,7 @@
     <Content Include="Libs\Gentelella\js\custom.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="BootstrapAndTemplates\Bootstrap-Admin-Template-master.zip" />
     <Content Include="BootstrapAndTemplates\DataTables-1.10.15.zip" />
-    <Content Include="BootstrapAndTemplates\gentelella-master-admin-template.zip" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\gentelellascripts\build\css\custom.css" />
     <Content Include="Scripts\gentelellascripts\build\css\custom.min.css" />
