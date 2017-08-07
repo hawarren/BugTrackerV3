@@ -183,7 +183,7 @@ namespace BugTrackerV3.Controllers
 
                     helpers.UserRolesHelper helper = new helpers.UserRolesHelper();
                     helper.AddUserToRole(user.Id, "Submitter");
-                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
