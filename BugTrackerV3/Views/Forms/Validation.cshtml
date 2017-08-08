@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Validation";
+}
+
+<div class="small-header">
+    <div class="hpanel">
+        <div class="panel-body">
+            <div id="hbreadcrumb" class="pull-right">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li>
+                        <span>Forms</span>
+                    </li>
+                    <li class="active">
+                        <span>Validation </span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Validation
+            </h2>
+            <small>Build a form with validation functionality</small>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                        <a class="closebox"><i class="fa fa-times"></i></a>
+                    </div>
+                    jQuery Validation Plugin
+                </div>
+                <div class="panel-body">
+                    <p>
+                        The jQuery Validation Plugin provides drop-in validation for your existing forms, while making all kinds of customizations to fit your application really easy.
+                    </p>
+
+                    <form role="form" id="form">
+                        <div class="form-group"><label>Email</label> <input type="email" placeholder="Enter email" class="form-control" required></div>
+                        <div class="form-group"><label>Password</label> <input type="password" placeholder="Password" class="form-control" name="password"></div>
+                        <div class="form-group"><label>Url</label> <input type="text" placeholder="Enter email" class="form-control" name="url"></div>
+                        <div class="form-group"><label>Number</label> <input type="text" placeholder="Enter email" class="form-control" name="number"></div>
+                        <div class="form-group"><label>MaxLength</label> <input type="text" placeholder="Enter email" class="form-control" name="max"></div>
+                        <div>
+                            <button class="btn btn-sm btn-primary m-t-n-xs" type="submit"><strong>Submit</strong></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                        <a class="closebox"><i class="fa fa-times"></i></a>
+                    </div>
+                    Displaying Errors within Field Labels
+                </div>
+                <div class="panel-body">
+                    <p>
+
+                        With errorPlacement() function you can easily change placement for error. With message properties you can set your own text for error message.
+
+                    </p>
+
+                    <form role="form" id="form_2">
+                        <div class="form-group"><label for="name">First name</label> <input type="text" id="name" name="name" placeholder="Enter your name" class="form-control" required></div>
+                        <div class="form-group"><label for="last_name">Last name</label> <input type="text" id="last_name" placeholder="Enter your last name" class="form-control" name="last_name"></div>
+                        <div class="form-group"><label for="url">Official website</label> <input type="text" id="url" placeholder="www.example.com" class="form-control" name="url"></div>
+                        <div class="form-group"><label for="number">Phone number</label> <input type="text" id="number" placeholder="Phone number" class="form-control" name="number"></div>
+                        <div class="form-group"><label for="username">Username</label> <input type="text" id="username" placeholder="Login" class="form-control" name="username"></div>
+                        <div>
+                            <button class="btn btn-sm btn-primary m-t-n-xs" type="submit"><strong>Submit</strong></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <div class="panel-tools">
+                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                        <a class="closebox"><i class="fa fa-times"></i></a>
+                    </div>
+                    jQuery Validation Plugin
+                </div>
+                <div class="panel-body no-padding">
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>remote</td>
+                                <td>Requests a resource to check the element for validity.</td>
+                            </tr>
+                            <tr>
+                                <td>minlength</td>
+                                <td>Makes the element require a given minimum length.</td>
+                            </tr>
+                            <tr>
+                                <td>   maxlength</td>
+                                <td>Makes the element require a given maxmimum length.</td>
+                            </tr>
+                            <tr>
+                                <td> rangelength</td>
+                                <td> Makes the element require a given value range.</td>
+                            </tr>
+                            <tr>
+                                <td>  min</td>
+                                <td>  Makes the element require a given minimum.</td>
+                            </tr>
+                            <tr>
+                                <td>   max</td>
+                                <td> Makes the element require a given maximum.</td>
+                            </tr>
+                            <tr>
+                                <td> range</td>
+                                <td> Makes the element require a given value range.</td>
+                            </tr>
+                            <tr>
+                                <td> email</td>
+                                <td> Makes the element require a valid email</td>
+                            </tr>
+                            <tr>
+                                <td>  url</td>
+                                <td>  Makes the element require a valid url</td>
+                            </tr>
+                            <tr>
+                                <td>   date</td>
+                                <td> Makes the element require a date.</td>
+                            </tr>
+                            <tr>
+                                <td> dateISO</td>
+                                <td> Makes the element require an ISO date.</td>
+                            </tr>
+                            <tr>
+                                <td> number</td>
+                                <td> Makes the element require a decimal number.</td>
+                            </tr>
+                            <tr>
+                                <td> digits</td>
+                                <td>  Makes the element require digits only.</td>
+                            </tr>
+                            <tr>
+                                <td> creditcard</td>
+                                <td> Makes the element require a credit card number.</td>
+                            </tr>
+                            <tr>
+                                <td> equalTo</td>
+                                <td> Requires the element to be the same as another one</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/validation/js")
+
+    <script type="text/javascript">
+
+          $(function(){
+
+        $("#form").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 3
+                },
+                url: {
+                    required: true,
+                    url: true
+                },
+                number: {
+                    required: true,
+                    number: true
+                },
+                max: {
+                    required: true,
+                    maxlength: 4
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+
+        $("#form_2").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                username: {
+                    required: true,
+                    minlength: 5
+                },
+                url: {
+                    required: true,
+                    url: true
+                },
+                number: {
+                    required: true,
+                    number: true
+                },
+                last_name: {
+                    required: true,
+                    minlength: 6
+                }
+            },
+            messages: {
+                number: {
+                    required: "(Please enter your phone number)",
+                    number: "(Please enter valid phone number)"
+                },
+                last_name: {
+                    required: "This is custom message for required",
+                    minlength: "This is custom message for min length"
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            },
+            errorPlacement: function(error, element) {
+                $( element )
+                        .closest( "form" )
+                        .find( "label[for='" + element.attr( "id" ) + "']" )
+                        .append( error );
+            },
+            errorElement: "span",
+        });
+
+
+    });
+
+    </script>
+}
