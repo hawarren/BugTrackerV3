@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Blank.cshtml";
+    ViewBag.Title = "Error_Two";
+}
+
+<div class="error-container">
+    <i class="pe-7s-way text-success big-icon"></i>
+    <h1>500</h1>
+    <strong>Internal Server Error</strong>
+    <p>
+        The server encountered something unexpected that didn't allow it to complete the request. We apologize.
+    </p>
+    <a href="@Url.Action("Index", "Dashboard")" class="btn btn-xs btn-success">Go back to dashboard</a>
+</div>

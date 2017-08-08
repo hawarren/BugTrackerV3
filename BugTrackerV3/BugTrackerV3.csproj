@@ -336,6 +336,14 @@
     <Content Include="Vendor\peity\test\bin\screenshot" />
     <Content Include="Vendor\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\sweet-alert.scssc" />
     <Content Include="Vendor\toastr\build\toastr.js.map" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_LayoutHomer.cshtml" />
+    <Content Include="Views\Shared\_Layout_Blank.cshtml" />
+    <Content Include="Views\Shared\_Layout_Boxed.cshtml" />
+    <Content Include="Views\Shared\_Layout_Landing.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Right_Sidebar.cshtml" />
     <None Include="Views\Tickets\UserTicketsIndex.cshtml.old" />
     <Content Include="Views\TicketComments\Create.cshtml" />
     <Content Include="Views\TicketComments\Delete.cshtml" />
@@ -587,6 +595,19 @@
     <Folder Include="Vendor\xeditable\inputs-ext\address\" />
     <Folder Include="Vendor\xeditable\inputs-ext\typeaheadjs\lib\" />
     <Folder Include="Vendor\xeditable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
+    <Folder Include="Views\Analytics\" />
+    <Folder Include="Views\AppViews\" />
+    <Folder Include="Views\BoxTransitions\" />
+    <Folder Include="Views\Charts\" />
+    <Folder Include="Views\CommonViews\" />
+    <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\Forms\" />
+    <Folder Include="Views\GridSystem\" />
+    <Folder Include="Views\Interface\" />
+    <Folder Include="Views\LandingPage\" />
+    <Folder Include="Views\Options\" />
+    <Folder Include="Views\Tables\" />
+    <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
