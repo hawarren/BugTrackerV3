@@ -124,6 +124,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -344,6 +348,7 @@
     <Content Include="Views\Shared\_Layout_Landing.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Right_Sidebar.cshtml" />
+    <Content Include="Views\LandingPage\Index.cshtml" />
     <None Include="Views\Tickets\UserTicketsIndex.cshtml.old" />
     <Content Include="Views\TicketComments\Create.cshtml" />
     <Content Include="Views\TicketComments\Delete.cshtml" />
@@ -604,7 +609,6 @@
     <Folder Include="Views\Forms\" />
     <Folder Include="Views\GridSystem\" />
     <Folder Include="Views\Interface\" />
-    <Folder Include="Views\LandingPage\" />
     <Folder Include="Views\Options\" />
     <Folder Include="Views\Tables\" />
     <Folder Include="Views\Widgets\" />
