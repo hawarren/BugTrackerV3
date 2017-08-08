@@ -17,6 +17,10 @@ namespace BugTrackerV3
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                
+                //added from Homer, commented out for now
+                //defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
+
             );
         }
     }
