@@ -34,17 +34,7 @@
                 </button>
                 @Html.ActionLink("Bug Tracker Version 3", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("View All Projects", "Index", "Projects")</li>
-                    <li>@Html.ActionLink("View Your Tickets", "UserTicketsIndex", "Tickets")</li>
-                    <li>@Html.ActionLink("View All Tickets", "Index", "Tickets")</li>
-
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+          
     </div>
 
  <!-- Simple splash screen-->
@@ -71,14 +61,9 @@
 
         <!-- Footer-->
         @Html.Partial("_Footer")
-    </div>
-
-    <div class="container body-content">
-        @RenderBody()
+   
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Hanif Warren's ASP.NET Application</p>
-        </footer>
+        
     </div>
 
     @Scripts.Render("~/bundles/jquery")
