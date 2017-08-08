@@ -3,9 +3,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace Homer_MVC
+namespace BugTrackerV3.helpers
 {
-    public static class HMTLHelperExtensions
+    public static class HTMLHelperExtensions
     {
         public static string IsSelected(this HtmlHelper html, string controller = null, string action = null)
         {
