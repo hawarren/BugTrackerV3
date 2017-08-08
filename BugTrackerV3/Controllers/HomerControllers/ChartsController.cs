@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTrackerV4.Controllers
+namespace Homer_MVC.Controllers
 {
     public class ChartsController : Controller
     {

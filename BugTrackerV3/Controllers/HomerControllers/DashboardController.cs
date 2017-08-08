@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace BugTrackerV4.Controllers
+namespace Homer_MVC.Controllers
 {
     public class DashboardController : Controller
     {
