@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http; 
+using System.Web.Http;
 
-//using System.Web.UI.WebControls;
-
-namespace BugTrackerV4
+namespace BugTrackerV3.App_Start
 {
-    public static class BugTrackerV4
+    public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {

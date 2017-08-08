@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace BugTrackerV4
+namespace BugTrackerV3
 {
     public class RouteConfig
     {
@@ -13,17 +13,14 @@ namespace BugTrackerV4
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-
-
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                
+                //added from Homer, commented out for now
+                //defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
+
             );
         }
     }

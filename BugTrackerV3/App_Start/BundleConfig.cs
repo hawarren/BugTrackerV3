@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace BugTrackerV4
+namespace BugTrackerV3
 {
     public class BundleConfig
     {
@@ -28,8 +28,7 @@ namespace BugTrackerV4
                       "~/Content/site.css"));
 
 
-            // hw added for Homer Theme
-
+            //added from homer template
             // Homer style
             bundles.Add(new StyleBundle("~/bundles/homer/css").Include(
                       "~/Content/style.css", new CssRewriteUrlTransform()));
