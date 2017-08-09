@@ -2667,7 +2667,7 @@
     <Content Include="Vendor\sweetalert\README.md" />
     <Content Include="Vendor\xeditable\LICENSE-MIT" />
     <Content Include="Vendor\xeditable\README.md" />
-    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
     <Content Include="Views\Shared\_Layout_Boxed.cshtml" />
@@ -2706,6 +2706,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\_Layoutv2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
