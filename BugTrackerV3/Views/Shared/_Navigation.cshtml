@@ -1,7 +1,7 @@
 ﻿@using BugTrackerV3.helpers;
 <div id="navigation">
     <div class="profile-picture">
-         @Html.ActionLink("Return to Frontpage", "Home", "Index")
+         @Html.ActionLink("Return to Frontpage", "Index", "Home")
             <img src="~/Images/HanifWarrenHeadShot.jpg" class="img-circle m-b" alt="logo">
         </a>
 
@@ -26,7 +26,7 @@
 
                     @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 
-                <li>@Html.Partial("_LoginPartial")</li>
+                
                 </ul>
             </div>
             <div id="sparkline1" class="small-chart m-t-sm"></div>
@@ -43,9 +43,7 @@
 
         <li class="@Html.IsSelected(controller: "Dashboard")">
             <a href="@Url.Action("Index", "Dashboard")"> <span class="nav-label">Dashboard</span> <span class="label label-success pull-right">v.1</span> </a>
-        <li>
-        @Html.Partial("_LoginPartial")
-        </li>
+       
         </li>
         <li class="@Html.IsSelected(controller: "Analytics")">
             <a href="@Url.Action("Index", "Analytics")"> <span class="nav-label">Analytics</span><span class="label label-warning pull-right">NEW</span> </a>
