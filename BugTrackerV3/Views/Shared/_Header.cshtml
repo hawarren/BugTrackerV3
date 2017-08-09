@@ -2,17 +2,13 @@
 </div>
 <div id="logo" class="light-version">
     <span>
-        @*
-        @Html.Partial("_LoginPartial")
-            BugTracker Version 3*@
-
+          BugTracker Version 3
     </span>
 </div>
 <nav role="navigation">
     <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
     <div class="small-logo">
-        @*<span class="text-primary">HOMER APP @Html.Partial("_LoginPartial")</span>*@
-                <span class="text-primary"> @Html.Partial("_LoginPartial")</span>
+        <span class="text-primary">HOMER APP</span>
 
     </div>
     <form role="search" class="navbar-form-custom" method="post" action="#">
@@ -37,7 +33,7 @@
                 </li>
             </ul>
 
-            @Html.Partial("_LoginPartial")
+          
         </div>
     </div>
     <div class="navbar-right">
@@ -157,6 +153,36 @@
                 <a href="login.html">
                     <i class="pe-7s-upload pe-rotate-90"></i>
                 </a>
+            </li>
+                 <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    <i class="pe-7s-users"></i>
+                </a>
+                     <ul class="dropdown-menu hdropdown notification animated flipInX">
+                    <li>
+                        <a>
+                             @Html.Partial("_LoginPartial")
+                            @*<span class="label label-success">NEW</span> Login information goes here*@
+                        </a>
+                    </li>
+                         @*<li>
+                             <a>
+                                 <span class="label label-success">NEW</span> Login information goes here
+                             </a>
+                         </li>
+                         <li>
+                             <a>
+                                 <span class="label label-warning">WAR</span>If you can read this
+                             </a>
+                         </li>
+                         <li>
+                             <a>
+                                 <span class="label label-danger">ERR</span> You haven't finished the login portion
+                             </a>
+                         </li>
+                         <li class="summary"><a href="#">See all notifications</a></li>*@
+
+                     </ul>
             </li>
         </ul>
     </div>
