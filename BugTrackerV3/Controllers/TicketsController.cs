@@ -99,7 +99,7 @@ namespace BugTrackerV4.Controllers
             }
             var devProjTickets = devProjects.SelectMany(t => t.Tickets).AsQueryable();
             {
-                
+
                 var tickets = devProjTickets.Include(t => t.AssignedToUser)
                         .Include(t => t.OwnerUser)
                         .Include(t => t.Project)
@@ -143,7 +143,7 @@ namespace BugTrackerV4.Controllers
                         .Include(t => t.TicketStatus)
                         .Include(t => t.TicketType);
                 model.AdminTickets = tickets.ToList();
-               
+
             }
             if (User.IsInRole("Developer"))
             {
@@ -235,7 +235,7 @@ namespace BugTrackerV4.Controllers
         }
 
         // POST: Tickets/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -268,16 +268,16 @@ namespace BugTrackerV4.Controllers
         public ActionResult Edit(int? id)
         {
 
-            
+
             /////////////////wip code, clean up once I get it working
-                       
+
             //creates helper object to check for developer role
-            UserRolesHelper helper = new UserRolesHelper();         
+            UserRolesHelper helper = new UserRolesHelper();
             //UsersInRole helper gets a list of users in a role
             //  signature is      public ICollection<ApplicationUser> UsersInRole(string roleName)
             var dev = helper.UsersInRole("Developer");
-            
-                       
+
+
             ///////////////// end of wip code
             if (id == null)
             {
@@ -299,14 +299,14 @@ namespace BugTrackerV4.Controllers
         }
 
         // POST: Tickets/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 //Use ProjectsHelper to
                 //add developer to project once they are assigned to a ticket
                 ProjectsHelper phelper = new ProjectsHelper();
