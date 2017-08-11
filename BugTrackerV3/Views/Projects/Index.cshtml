@@ -1,6 +1,6 @@
-﻿@model IEnumerable<BugTrackerV4.Models.ProjectPMViewModel>
+﻿@model IEnumerable<BugTrackerV3.Models.ProjectPMViewModel>
 @using Microsoft.AspNet.Identity;
-@using BugTrackerV4.helpers;
+@using BugTrackerV3.helpers;
 @{
     ViewBag.Title = "Projects";
 }
@@ -48,7 +48,7 @@
                     //if (item.ProjectManager != null)
                     {
 
-                        if ((item.ProjectManager != null && User.Identity.GetUserId() == item.ProjectManager.Id) || 
+                        if ((item.ProjectManager != null && User.Identity.GetUserId() == item.ProjectManager.Id) ||
                             User.IsInRole("Admin"))
                         {
 

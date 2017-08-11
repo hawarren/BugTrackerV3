@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTrackerV4.Models
+namespace BugTrackerV3.Models
 {
     public class Ticket
     {

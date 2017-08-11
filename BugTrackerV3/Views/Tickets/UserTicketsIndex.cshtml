@@ -1,5 +1,5 @@
 ﻿
-@model BugTrackerV4.Models.TicketIndexViewModel
+@model BugTrackerV3.Models.TicketIndexViewModel
 
 @{
     ViewBag.Title = "View All Tickets belonging to you";
@@ -89,7 +89,7 @@
                         <td>
                             <!--Standard Button -->
                              <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button>
-                          
+
                             <button type="button" class="btn btn-info">
                                 @Html.ActionLink("Details", "Details", new { id = item.Id })
                             </button>
@@ -186,10 +186,10 @@
                         </td>
                         <td>
                       <button type="button" class="btn btn-default">
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-info">
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-danger">
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
@@ -252,7 +252,7 @@
 
                 @foreach (var item in Model.DevTickets)
                 {
-                    
+
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Project.Name)
@@ -286,10 +286,10 @@
                         </td>
                         <td>
                            <button type="button" class="btn btn-default">
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-info">
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-danger">
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
@@ -390,10 +390,10 @@
                         </td>
                         <td>
                           <button type="button" class="btn btn-default">
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-info">
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-danger">
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })

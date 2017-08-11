@@ -8,10 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace BugTrackerV4.Controllers
+namespace BugTrackerV3.Controllers
 {
     [Authorize]
     public class AccountController : Controller

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 
-namespace BugTrackerV4.Models
+namespace BugTrackerV3.Models
 {
     public class ProjectPMViewModel
     {

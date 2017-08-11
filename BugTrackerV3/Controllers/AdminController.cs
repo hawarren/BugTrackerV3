@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace BugTrackerV4.Controllers
+namespace BugTrackerV3.Controllers
 {
     [Authorize(Roles ="Admin")]
     public class AdminController : Controller

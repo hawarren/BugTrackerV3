@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 using System.Data.Entity.Validation;
 
 
@@ -17,7 +17,7 @@ using System.Data.Entity.Validation;
  * Get a list of users on a certain project
  * List projects to which a user is assigned
  */
-namespace BugTrackerV4.helpers
+namespace BugTrackerV3.helpers
 {
     public class ProjectsHelper
     {

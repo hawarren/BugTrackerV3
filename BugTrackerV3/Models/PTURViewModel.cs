@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BugTrackerV4.Models
+namespace BugTrackerV3.Models
 {
     /*this view model is for a page which list all projects, tickets, users, and roles
      * not sure which order, I just want admin to be able to have master view of everything

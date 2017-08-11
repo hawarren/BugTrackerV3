@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 using Microsoft.AspNet.Identity;
 
-namespace BugTrackerV4.Controllers
+namespace BugTrackerV3.Controllers
 {
     public class TicketCommentsController : Controller
     {

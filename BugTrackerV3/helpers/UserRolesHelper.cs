@@ -5,10 +5,10 @@ using System.Web;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 using System.Web.Mvc;
 
-namespace BugTrackerV4.helpers
+namespace BugTrackerV3.helpers
 {
     public class UserRolesHelper
     {

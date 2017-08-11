@@ -6,12 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BugTrackerV4.Models;
+using BugTrackerV3.Models;
 using Microsoft.AspNet.Identity;
-using BugTrackerV4.helpers;
+using BugTrackerV3.helpers;
 
 
-namespace BugTrackerV4.Controllers
+namespace BugTrackerV3.Controllers
 {
     [Authorize]
     public class TicketsController : Controller
