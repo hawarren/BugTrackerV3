@@ -2277,7 +2277,7 @@
     <Content Include="Views\AppViews\Notes.cshtml" />
     <Content Include="Views\AppViews\ProfilePage.cshtml" />
     <Content Include="Views\AppViews\ProjectDetail.cshtml" />
-    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\AppViews\Projects.cshtml" />
     <Content Include="Views\AppViews\Search.cshtml" />
     <Content Include="Views\AppViews\SocialBoard.cshtml" />
     <Content Include="Views\AppViews\Timeline.cshtml" />
@@ -2337,7 +2337,7 @@
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
-    <Content Include="Views\Projects\Index - OrigCopy.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -2668,8 +2668,6 @@
     <Content Include="Vendor\sweetalert\README.md" />
     <Content Include="Vendor\xeditable\LICENSE-MIT" />
     <Content Include="Vendor\xeditable\README.md" />
-    <Content Include="Views\AppViews\Projects - OrigCopy.cshtml" />
-    <Content Include="Views\Shared\_Register.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
@@ -2696,6 +2694,7 @@
     <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Tickets\DevProjIndex.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
+    <Content Include="Views\Tickets\Index.cshtml" />
     <Content Include="Views\Tickets\UserTicketsIndex.cshtml" />
     <Content Include="Views\Tickets\UserTicketsIndex.cshtml.old" />
     <Content Include="Views\Web.config" />
@@ -2709,8 +2708,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_Layoutv2.cshtml" />
-    <Content Include="Views\Shared\_Navigation - OrigCopy.cshtml" />
-    <Content Include="Views\Tickets\Index - OrigCopy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
