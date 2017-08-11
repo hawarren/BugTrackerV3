@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BugTrackerV3.Models.ProjectPMViewModel>
+@using Microsoft.AspNet.Identity;
+@using BugTrackerV3.helpers;
+@{
+    ViewBag.Title = "Projects";
+}
+
+<h2>View All Projects</h2>
+
+<p>
+    @Html.ActionLink("Create a new project", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Project Name
+        </th>
+        <th>
+            Project Manager
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item != null)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Name)
+                </td>
+                <td>
+                    @if (item.ProjectManager != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.ProjectManager.FirstName) @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
+                    }
+                    else
+                    {
+                        <div>No Project Manager Assigned</div>
+
+                    }
+                </td>
+
+                @{
+                    //if (item.ProjectManager != null)
+                    {
+
+                        if ((item.ProjectManager != null && User.Identity.GetUserId() == item.ProjectManager.Id) ||
+                            User.IsInRole("Admin"))
+                        {
+
+                            <td>
+                                @Html.ActionLink("Delete Project", "Delete", new { id = item.Project.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit Project Name", "Edit", new { id = item.Project.Id })
+                            </td>
+                        }
+                    }
+                }
+
+
+
+                <td>
+                    @Html.ActionLink("View Project Details", "Details", new { id = item.Project.Id })
+                </td>
+            </tr>
+                    }
+                    else
+                    {
+                        <div>You have no projects yet </div> }
+                    }
+</table>

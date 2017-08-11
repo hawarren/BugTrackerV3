@@ -2277,7 +2277,6 @@
     <Content Include="Views\AppViews\Notes.cshtml" />
     <Content Include="Views\AppViews\ProfilePage.cshtml" />
     <Content Include="Views\AppViews\ProjectDetail.cshtml" />
-    <Content Include="Views\AppViews\Projects.cshtml" />
     <Content Include="Views\AppViews\Search.cshtml" />
     <Content Include="Views\AppViews\SocialBoard.cshtml" />
     <Content Include="Views\AppViews\Timeline.cshtml" />
@@ -2670,6 +2669,8 @@
     <Content Include="Vendor\xeditable\README.md" />
     <Content Include="Views\AppViews\Projects - OrigCopy.cshtml" />
     <Content Include="Views\Shared\_Register.cshtml" />
+    <Content Include="Views\Projects\Index - Copy.cshtml" />
+    <Content Include="Views\AppViews\Projects.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
