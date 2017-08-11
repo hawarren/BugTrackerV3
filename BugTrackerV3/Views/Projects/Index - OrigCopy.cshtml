@@ -35,31 +35,30 @@
                 <td>
                     @if (item.ProjectManager != null)
                     {
-                        @Html.DisplayFor(modelItem => item.ProjectManager.FirstName)
-                        @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
+                    @Html.DisplayFor(modelItem => item.ProjectManager.FirstName)
+                    @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
                     }
                     else
                     {
-                        <div>No Project Manager Assigned</div>
+                    <div>No Project Manager Assigned</div>
 
                     }
                 </td>
 
                 @{
-                    //if (item.ProjectManager != null)
-            {
+                    {
 
-                if ((item.ProjectManager != null && User.Identity.GetUserId() == item.ProjectManager.Id) || User.IsInRole("Admin"))
-                {
+                        if ((item.ProjectManager != null && User.Identity.GetUserId() == item.ProjectManager.Id) || User.IsInRole("Admin"))
+                        {
 
-                    <td>
-                        @Html.ActionLink("Delete Project", "Delete", new { id = item.Project.Id })
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit Project Name", "Edit", new { id = item.Project.Id })
-                    </td>
-                }
-            }
+                            <td>
+                                @Html.ActionLink("Delete Project", "Delete", new { id = item.Project.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit Project Name", "Edit", new { id = item.Project.Id })
+                            </td>
+                        }
+                    }
                 }
 
 
@@ -68,7 +67,7 @@
                     @Html.ActionLink("View Project Details", "Details", new { id = item.Project.Id })
                 </td>
             </tr>
-        }
+                    }
         else
         {
             <div>You have no projects yet </div>
