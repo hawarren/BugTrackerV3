@@ -38,133 +38,157 @@
     @foreach (var item in Model)
     {
 
-    <div class="row projects">
-        <div class="col-lg-6">
-            <div class="hpanel hgreen">
-                <div class="panel-body">
-                    <span class="label label-success pull-right">NEW</span>
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <h4><a href=""> Desing project</a></h4>
+        <div class="row projects">
+            <div class="col-lg-12">
+                <div class="hpanel hgreen">
+                    <div class="panel-body">
+                        <span class="label label-success pull-right">NEW</span>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h4><a href=""> @Html.DisplayFor(modelItem => item.Project.Name)</a></h4>
 
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has..
-                            </p>
+                                <p>
+                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has..
+                                </p>
 
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="project-label">CLIENT</div>
-                                    <small>Hendrix Corp</small>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="project-label">VERSION</div>
-                                    <small>1.5.2</small>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="project-label">DEDLINE</div>
-                                    <small>12.06.2015</small>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="project-label">PROGRESS</div>
-                                    <div class="progress m-t-xs full progress-small">
-                                        <div style="width: 12%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="12" role="progressbar" class=" progress-bar progress-bar-success">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="project-label">Project Manager</div>
+                                        <small>
+                                            @if (item.ProjectManager != null)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.ProjectManager.FirstName)<div>  </div>  @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
+                                            }
+                                            else
+                                            {
+                                                <div>No Project Manager Assigned</div>
+
+                                            }
+                                        </small>
+                                    </div>
+                                    @*<div class="col-sm-3">
+                                        <div class="project-label">VERSION</div>
+                                        <small>1.5.2</small>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="project-label">DEDLINE</div>
+                                        <small>12.06.2015</small>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="project-label">PROGRESS</div>
+                                        <div class="progress m-t-xs full progress-small">
+                                            <div style="width: 12%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="12" role="progressbar" class=" progress-bar progress-bar-success">
+                                            </div>
                                         </div>
+                                    </div>*@
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="col-sm-4 project-info">
+                                <div class="project-action m-t-md">
+                                    <div class="btn-group">
+                                        <button class="btn btn-xs btn-default">@Html.ActionLink("View Project Details", "Details", new { id = item.Project.Id })</button>
+
+
+                                        @{
+                                            if ((item.ProjectManager != null && User.Identity.GetUserId() == item.ProjectManager.Id) || User.IsInRole("Admin"))
+                                            {
+
+                                                <button class="btn btn-xs btn-default">  @Html.ActionLink("Edit Project Name", "Edit", new { id = item.Project.Id })</button>
+                                                <button class="btn btn-xs btn-default">@Html.ActionLink("Delete Project", "Delete", new { id = item.Project.Id })</button>
+
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                @*<div class="project-value">
+                                        <h2 class="text-success">
+                                            $1 206,40
+                                        </h2>
+                                    </div>
+                                    <div class="project-people">
+                                        <img alt="logo" class="img-circle" src="~/Images/a1.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a2.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a3.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a4.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a5.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a6.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a7.jpg">
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        @*Additional information about project in footer*@
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-lg-6">
+                    <div class="hpanel hyellow">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <h4><a href=""> Project manager app</a></h4>
+                                    <p>
+                                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum..
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="project-label">CLIENT</div>
+                                            <small>Vito Company</small>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="project-label">VERSION</div>
+                                            <small>3.0.0</small>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="project-label">DEDLINE</div>
+                                            <small>16.10.2015</small>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="project-label">PROGRESS</div>
+                                            <div class="progress m-t-xs full progress-small">
+                                                <div style="width: 65%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class=" progress-bar progress-bar-warning">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 project-info">
+                                    <div class="project-action m-t-md">
+                                        <div class="btn-group">
+                                            <button class="btn btn-xs btn-default"> View</button>
+                                            <button class="btn btn-xs btn-default"> Edit</button>
+                                            <button class="btn btn-xs btn-default"> Delete</button>
+                                        </div>
+                                    </div>
+                                    <div class="project-value">
+                                        <h2 class="text-warning">
+                                            $3 600,20
+                                        </h2>
+                                    </div>
+                                    <div class="project-people">
+                                        <img alt="logo" class="img-circle" src="~/Images/a7.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a8.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a3.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a2.jpg">
+                                        <img alt="logo" class="img-circle" src="~/Images/a5.jpg">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 project-info">
-                            <div class="project-action m-t-md">
-                                <div class="btn-group">
-                                    <button class="btn btn-xs btn-default"> View</button>
-                                    <button class="btn btn-xs btn-default"> Edit</button>
-                                    <button class="btn btn-xs btn-default"> Delete</button>
-                                </div>
-                            </div>
-                            <div class="project-value">
-                                <h2 class="text-success">
-                                    $1 206,40
-                                </h2>
-                            </div>
-                            <div class="project-people">
-                                <img alt="logo" class="img-circle" src="~/Images/a1.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a2.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a3.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a4.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a5.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a6.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a7.jpg">
-                            </div>
+                        <div class="panel-footer">
+                            Additional information about project in footer
                         </div>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    Additional information about project in footer
-                </div>
-            </div>
+                </div>*@
         </div>
-        <div class="col-lg-6">
-            <div class="hpanel hyellow">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <h4><a href=""> Project manager app</a></h4>
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum..
-                            </p>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="project-label">CLIENT</div>
-                                    <small>Vito Company</small>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="project-label">VERSION</div>
-                                    <small>3.0.0</small>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="project-label">DEDLINE</div>
-                                    <small>16.10.2015</small>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="project-label">PROGRESS</div>
-                                    <div class="progress m-t-xs full progress-small">
-                                        <div style="width: 65%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class=" progress-bar progress-bar-warning">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 project-info">
-                            <div class="project-action m-t-md">
-                                <div class="btn-group">
-                                    <button class="btn btn-xs btn-default"> View</button>
-                                    <button class="btn btn-xs btn-default"> Edit</button>
-                                    <button class="btn btn-xs btn-default"> Delete</button>
-                                </div>
-                            </div>
-                            <div class="project-value">
-                                <h2 class="text-warning">
-                                    $3 600,20
-                                </h2>
-                            </div>
-                            <div class="project-people">
-                                <img alt="logo" class="img-circle" src="~/Images/a7.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a8.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a3.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a2.jpg">
-                                <img alt="logo" class="img-circle" src="~/Images/a5.jpg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    Additional information about project in footer
-                </div>
-            </div>
-        </div>
-    </div>
 
-    }
+                                            }
 
 
 </div>
@@ -173,27 +197,27 @@
 
 
 @*Original columns down here
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.*@
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .*@
 
 
-<div class="content">
+@*<div class="content">
 
     <div class="row projects">
         <div class="col-lg-6">
@@ -831,4 +855,4 @@
         </div>
     </div>
 
-</div>
+</div>*@
