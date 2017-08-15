@@ -2670,6 +2670,7 @@
     <Content Include="Views\Shared\_Register.cshtml" />
     <Content Include="Views\Projects\Index - Copy.cshtml" />
     <Content Include="Views\AppViews\Projects.cshtml" />
+    <Content Include="Views\Projects\Details - OrigCopy.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
