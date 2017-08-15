@@ -2280,7 +2280,6 @@
     <Content Include="Views\AppViews\Search.cshtml" />
     <Content Include="Views\AppViews\SocialBoard.cshtml" />
     <Content Include="Views\AppViews\Timeline.cshtml" />
-    <Content Include="Views\AppViews\ve-89B5.tmp" />
     <Content Include="Views\BoxTransitions\ColumnsCustom.cshtml" />
     <Content Include="Views\BoxTransitions\ColumnsFromUp.cshtml" />
     <Content Include="Views\BoxTransitions\Overview.cshtml" />
@@ -2699,7 +2698,6 @@
     <Content Include="Views\Tickets\Edit.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
     <Content Include="Views\Tickets\UserTicketsIndex.cshtml" />
-    <Content Include="Views\Tickets\UserTicketsIndex.cshtml.old" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Widgets\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />

@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Details";
 }
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
 
 <h2>Details</h2>
 
@@ -32,7 +33,7 @@
                 @Html.DisplayFor(userItem => item.DisplayName)
                 </p>
             }
-              
+
         </dd>
 
     </dl>
@@ -117,7 +118,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Updated)
                     </td>
-                    
+
                     <td>
                          <button type="button" class="btn btn-info">
                         <div> @Html.ActionLink("Details", "Details", "Tickets", new { id = item.Id }, null)</div>
@@ -127,7 +128,7 @@
                          {
                              <div>
                                   <button type="button" class="btn btn-default">
-                         @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null) 
+                         @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
                                       </button>
                         </div>
                                  }
@@ -143,7 +144,7 @@
                 </tr>
             }
 
-            
+
 
         </tbody>
     </table>
@@ -154,7 +155,7 @@
     @Html.ActionLink("Back to Project List", "Index") |
     @Html.ActionLink("Add a Ticket", "Create", "Tickets", new { projectId = Model.Id }, null) I
 </p>
-@{ 
+@{
 
     if (User.Identity.GetUserId() == Model.PMID || User.IsInRole("Admin"))
     {
@@ -165,4 +166,18 @@
     @Html.ActionLink("Add Developers", "AssignDEV", new { id = Model.Id })
 </p>
     }
-    }  
+}
+
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+
+}

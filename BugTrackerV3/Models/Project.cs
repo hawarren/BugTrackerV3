@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,11 +23,14 @@ namespace BugTrackerV3.Models
         [Display(Name = "Name of Project")]
         public string Name { get; set; }
 
+        //Project Description
+        public string ProjectDescription { get; set; }
+
         //this is the project manager ID, not a primary key
         public string PMID { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
-        }
-    
+    }
+
 }
