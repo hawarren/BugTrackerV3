@@ -5,7 +5,7 @@
 }
 
 
-<!DOCTYPE html>f
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,6 +31,12 @@
 <div class="main_container">
 
 
+<p>
+    <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Back to Tickets List", "Index") </button>
+    <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
+</p>
 <!-- page content -->
 <div class="right_col" role="main">
 <div class="">
@@ -207,37 +213,8 @@
             <button type="button" class="btn btn-info">@Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
         </p>*@
 
-        @if (Model.AssignedToUserId == User.Identity.GetUserId()
-             || Model.OwnerUserId == User.Identity.GetUserId()
-             || Model.Project.PMID == User.Identity.GetUserId()
-             || User.IsInRole("Admin")
-            )
-        {
-
-            <div>
-                @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-
-                    <input type="hidden" name="TicketId" value="@Model.Id" />
-                    <textarea name="Comment"></textarea>
-                    <input type="submit" value="Add Comment" /> }
-
-            </div>
-        }
 
 
-        @foreach (var comment in Model.TicketComments)
-        {
-            <ul>
-                <li>
-                    <h5> Posted by @comment.User.DisplayName at @comment.Created.ToString("MMM. dd, yyyy hh:mmtt") : </h5>
-
-                    @comment.Comment
-                </li>
-            </ul>
-
-        }
 
 
     </div>
@@ -247,15 +224,8 @@
 </div>
 <!-- /page content -->
 
-</div>
-</div>
-
-<p>
-    <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
-    <button type="button" class="btn btn-info">@Html.ActionLink("Back to Tickets List", "Index") </button>
-    <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
-    <button type="button" class="btn btn-info">@Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
-</p>
+@*</div>
+</div>*@
 
 @if (Model.AssignedToUserId == User.Identity.GetUserId()
      || Model.OwnerUserId == User.Identity.GetUserId()
@@ -274,18 +244,23 @@
             <input type="submit" value="Add Comment" /> }
 
     </div>
+
 }
 
+<h2>Comments:</h2>
 
 @foreach (var comment in Model.TicketComments)
-{
-    <ul>
-        <li>
-            <h3> Posted by @comment.User.DisplayName at @comment.Created.ToString("MMM. dd, yyyy hh:mmtt") : </h3>
+        {
+            <ul>
+                <li>
+                    <h5> Posted by @comment.User.DisplayName at @comment.Created.ToString("MMM. dd, yyyy hh:mmtt") : </h5>
 
-            @comment.Comment
-        </li>
-    </ul>
+                    @comment.Comment
+                </li>
+            </ul>
+
+        }
+
 
 }
 
@@ -296,7 +271,8 @@
 
 
 
-
+</div>
+</div>
 
 
 
