@@ -30,12 +30,12 @@
 
             <div id="hbreadcrumb" class="pull-right m-t-lg">
                 <ol class="hbreadcrumb breadcrumb">
-                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="@Url.Action("Index", "Projects")">Projects</a></li>
                     <li>
-                        <span>Tables</span>
+                        <span><a href="@Url.Action("Details", "Projects", new {Id = Model.Project.Id})">Project Tickets</a></span>
                     </li>
                     <li class="active">
-                        <span>Project detail</span>
+                        <span>Ticket detail</span>
                     </li>
                 </ol>
             </div>

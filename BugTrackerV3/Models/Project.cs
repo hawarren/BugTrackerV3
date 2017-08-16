@@ -24,6 +24,7 @@ namespace BugTrackerV3.Models
         public string Name { get; set; }
 
         //Project Description
+        [Display(Name = "Project Description")]
         public string ProjectDescription { get; set; }
 
         //this is the project manager ID, not a primary key

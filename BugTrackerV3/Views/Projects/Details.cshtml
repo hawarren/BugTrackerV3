@@ -13,24 +13,34 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Name) :
+        </dt>
+       
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDescription) :
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.ProjectDescription)
         </dd>
     </dl>
 
     <dl class="dl-horizontal">
         <dt>
-            Project Users
+            Users Active on  <hr />
+            this Project :
         </dt>
 
         <dd>
-            @foreach (var item in Model.Users)
+            <p>@foreach (var item in Model.Users)
             {
                 <p>
                 @Html.DisplayFor(userItem => item.DisplayName)
+                </p>
+            }
                 </p>
             }
 
