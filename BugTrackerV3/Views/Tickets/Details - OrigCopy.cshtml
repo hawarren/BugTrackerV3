@@ -1,0 +1,297 @@
+﻿@model BugTrackerV3.Models.Ticket
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+
+</head>
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+
+</div>
+
+<body class="nav-md">
+<div class="container body">
+<div class="main_container">
+
+
+<p>
+    <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Back to Tickets List", "Index") </button>
+    <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
+    <button type="button" class="btn btn-info">@Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
+</p>
+<!-- page content -->
+<div class="right_col" role="main">
+<div class="">
+<div class="page-title">
+    <div class="title_left">
+        <h3><small>Tickets listed on this project</small></h3>
+    </div>
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                @*<input type="text" class="form-control" placeholder="Search for...">*@
+                <span class="input-group-btn">
+                    @*<button class="btn btn-default" type="button">Go!</button>*@
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+
+            <div class="x_content">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            @*                                    @Html.DisplayNameFor(model => model.AssignedToUser)*@
+                            Developer Assigned <br/> to Fix
+                        </th>
+
+
+
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.OwnerUser)*@
+                            Ticket opened by
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Project.Name)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.TicketPriority.Name)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.TicketStatus.Name)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.TicketType.Name)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Created)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Updated)
+                        </th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+
+
+                        <th>
+                            @if (Model.AssignedToUser == null)
+                            {
+                                <div>
+                                    Nobody Assigned
+                                    yet
+                                </div>
+                            }
+                            else
+                            {
+
+                                @Html.DisplayFor(model => model.AssignedToUser.DisplayName)
+                            }
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.OwnerUser.DisplayName)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.Project.Name)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.TicketPriority.Name)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.TicketStatus.Name)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.TicketType.Name)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.Title)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.Description)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.Created)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayFor(model => model.Updated)
+                        </th>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+
+
+
+
+            </div>
+        </div>
+
+        @*<p>
+            <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
+            <button type="button" class="btn btn-info">@Html.ActionLink("Back to Tickets List", "Index") </button>
+            <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
+            <button type="button" class="btn btn-info">@Html.ActionLink("Project Details", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
+        </p>*@
+
+
+
+
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+</div>
+</div>
+<!-- /page content -->
+
+@*</div>
+</div>*@
+
+@if (Model.AssignedToUserId == User.Identity.GetUserId()
+     || Model.OwnerUserId == User.Identity.GetUserId()
+     || Model.Project.PMID == User.Identity.GetUserId()
+     || User.IsInRole("Admin")
+    )
+{
+
+    <div>
+        @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="TicketId" value="@Model.Id" />
+            <textarea name="Comment"></textarea>
+            <input type="submit" value="Add Comment" /> }
+
+    </div>
+
+}
+
+<h2>Comments:</h2>
+
+@foreach (var comment in Model.TicketComments)
+        {
+            <ul>
+                <li>
+                    <h5> Posted by <strong> @comment.User.DisplayName</strong> at @comment.Created.ToString("MMM. dd, yyyy hh:mmtt") : </h5>
+
+                    @comment.Comment
+                </li>
+            </ul>
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+ @section scripts{
+        <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $('.table').DataTable();
+            });
+        </script>
+}

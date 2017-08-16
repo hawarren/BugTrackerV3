@@ -2711,6 +2711,7 @@
     </Content>
     <Content Include="Views\Shared\_Layoutv2.cshtml" />
     <Content Include="Views\Shared\_Navigation - OrigCopy.cshtml" />
+    <Content Include="Views\Tickets\Details - OrigCopy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
