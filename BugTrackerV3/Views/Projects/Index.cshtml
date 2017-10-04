@@ -25,10 +25,30 @@
                     </li>
                 </ol>
             </div>
+
             <h2 class="font-light m-b-xs">
                 Projects
             </h2>
             <small>List of projects.</small>
+            @*Put Project Create code here*@
+            @{
+
+
+
+                        if (User.IsInRole("Admin"))
+                        {
+
+
+<p>
+    @Html.ActionLink("Create a new project", "Create")
+</p>
+                        }
+
+                }
+
+
+
+
         </div>
     </div>
 </div>
@@ -55,8 +75,8 @@
                                         <div class="project-label">Project Manager</div>
                                         <small>
                                             @if (item.ProjectManager != null)
-                                    {
-                                        @Html.DisplayFor(modelItem => item.ProjectManager.FirstName)<div>  </div>  @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
+                                            {
+                                                @Html.DisplayFor(modelItem => item.ProjectManager.FirstName)<div>  </div>  @Html.DisplayFor(modelItem => item.ProjectManager.LastName)
                                             }
                                             else
                                             {
@@ -104,6 +124,7 @@
                                         }
                                     </div>
                                 </div>
+
                                 @*<div class="project-value">
                                         <h2 class="text-success">
                                             $1 206,40
