@@ -19,7 +19,7 @@ namespace BugTrackerV3.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data. E.g.
             //
             //    context.People.AddOrUpdate(
@@ -29,7 +29,7 @@ namespace BugTrackerV3.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            
+
 
             //seeding the roles
             var roleManager = new RoleManager<IdentityRole>(
@@ -72,6 +72,10 @@ namespace BugTrackerV3.Migrations
                 context.TicketTypes.Add(new TicketType { Name = "Software Update" });
             }
 
+            if (!context.TicketTypes.Any(r => r.Name == "Project Deliverables"))
+            {
+                context.TicketTypes.Add(new TicketType { Name = "Project Deliverables" });
+            }
 
             //seeding the ticket priorities
             if (!context.TicketPrioritys.Any(r => r.Name == "Low"))
@@ -90,7 +94,7 @@ namespace BugTrackerV3.Migrations
                 context.TicketPrioritys.Add(new TicketPriority { Name = "High" });
             }
 
-            if (!context.TicketPrioritys.Any(r => r.Name == "ExtremeDanger"))
+            if (!context.TicketPrioritys.Any(r => r.Name == "Critical"))
             {
                 context.TicketPrioritys.Add(new TicketPriority { Name = "ExtremeDanger" });
             }
@@ -155,7 +159,7 @@ namespace BugTrackerV3.Migrations
                 {
                     UserName = "DummyProjectManager@gmail.com",
                     Email = "DummyProjectManager@gmail.com",
-            
+
                     FirstName = "DummyPM",
                     LastName = "ProjectManager",
                     DisplayName = "Dummy Project Manager"
@@ -165,7 +169,7 @@ namespace BugTrackerV3.Migrations
 
             //adding all roles to dummyPM except Admin
             var userIdPM = userManager.FindByEmail("DummyProjectManager@gmail.com").Id;
-           
+
             userManager.AddToRole(userIdPM, "ProjectManager");
             userManager.AddToRole(userIdPM, "Submitter");
             userManager.AddToRole(userIdPM, "Developer");
@@ -176,7 +180,7 @@ namespace BugTrackerV3.Migrations
 
 
 
-            //testusers 
+            //testusers
             if (!context.Users.Any(u => u.Email == "testuser1@btracker.com"))
             {
                 userManager.Create(new ApplicationUser
@@ -190,9 +194,9 @@ namespace BugTrackerV3.Migrations
             }
 
             //adding all roles to dummyPM except Admin
-            var userIdt1 = userManager.FindByEmail("testuser1@btracker.com").Id;                
+            var userIdt1 = userManager.FindByEmail("testuser1@btracker.com").Id;
             userManager.AddToRole(userIdt1, "Submitter");
-            
+
 
 
             if (!context.Users.Any(u => u.Email == "testuser2@btracker.com"))

@@ -31,7 +31,7 @@ namespace BugTrackerV3.Controllers
                 vm.ProjectManager = p.PMID != null ? db.Users.Find(p.PMID) : null;
                 model.Add(vm);
             }
-           
+
 
             return View(model);
         }
@@ -100,8 +100,8 @@ namespace BugTrackerV3.Controllers
                 vm.Project = db.Projects.Find(id);
 
                 return View(vm);
-            
-            
+
+
         }
 
         //POST
@@ -139,7 +139,7 @@ namespace BugTrackerV3.Controllers
         }
 
         // POST: Projects/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -171,7 +171,7 @@ namespace BugTrackerV3.Controllers
         }
 
         // POST: Projects/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -184,7 +184,7 @@ namespace BugTrackerV3.Controllers
                 return RedirectToAction("Index");
             }
             return View(project);
-            
+
         }
 
         // GET: Projects/Delete/5
