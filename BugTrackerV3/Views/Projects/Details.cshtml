@@ -148,7 +148,7 @@
 
                     <td>
                          <button type="button" class="btn btn-info">
-                        <div> @Html.ActionLink("Details", "Details", "Tickets", new { id = item.Id }, null)</div>
+                        <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
                              </button>
                      @{
                          if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))

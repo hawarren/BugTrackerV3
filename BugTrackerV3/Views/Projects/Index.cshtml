@@ -68,7 +68,7 @@
                                 <h4><a href="@Url.Action("Details", "Projects", new {id = item.Project.Id })"> @Html.DisplayFor(modelItem => item.Project.Name)</a></h4>
                                 <p>
                                     @{
-                                        if (item.Project.ProjectDescription == null)
+                                        if (item.Project.ProjectDescription != null)
                                         {
                                         @Html.DisplayFor(modelItem => item.Project.ProjectDescription)
 
