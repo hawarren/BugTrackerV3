@@ -175,7 +175,7 @@ namespace BugTrackerV3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,PMID")] Project project)
+        public ActionResult Edit([Bind(Include = "Id,Name,PMID,ProjectDescription")] Project project)
         {
             if (ModelState.IsValid)
             {

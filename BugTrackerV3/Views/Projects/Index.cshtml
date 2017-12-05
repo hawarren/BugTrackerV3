@@ -35,16 +35,16 @@
 
 
 
-                        if (User.IsInRole("Admin"))
-                        {
+                if (User.IsInRole("Admin"))
+                {
 
 
-<p>
-    @Html.ActionLink("Create a new project", "Create")
-</p>
-                        }
-
+                    <p>
+                        @Html.ActionLink("Create a new project", "Create")
+                    </p>
                 }
+
+            }
 
 
 
@@ -67,7 +67,20 @@
                             <div class="col-sm-8">
                                 <h4><a href="@Url.Action("Details", "Projects", new {id = item.Project.Id })"> @Html.DisplayFor(modelItem => item.Project.Name)</a></h4>
                                 <p>
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has..
+                                    @{
+                                        if (item.Project.ProjectDescription == null)
+                                        {
+                                        @Html.DisplayFor(modelItem => item.Project.ProjectDescription)
+
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                No description given for project yet
+                                            </p>
+                                        }
+                                    }
+                                    @*It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has..*@
                                 </p>
 
                                 <div class="row">
