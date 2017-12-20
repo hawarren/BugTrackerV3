@@ -1,10 +1,11 @@
-﻿@model BugTrackerV3.Models.Ticket
+﻿@using BugTrackerV3.Models
+@model BugTrackerV3.Models.Ticket
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create Ticket</h2>
+<h2>Create a new Ticket for  This Project @Html.DisplayFor(model => model.Project.Name) </h2>
 
 
 @*TODO: Include project name in the view so user can see the project they're creating a ticket on.*@
@@ -20,6 +21,7 @@
         @Html.HiddenFor(m => m.TicketType)
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
@@ -35,7 +37,7 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.TicketTypeId, "TicketTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TicketTypeId, "Ticket Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("TicketTypeId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
