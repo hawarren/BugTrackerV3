@@ -46,14 +46,14 @@ namespace BugTrackerV3.Controllers
         }
 
         // POST: TicketComments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Comment,Created,TicketId,UserId")] TicketComment ticketComment)
         {
             ticketComment.Ticket = db.Tickets.Find(ticketComment.TicketId);
-            if (ticketComment.Ticket.AssignedToUserId == User.Identity.GetUserId() 
+            if (ticketComment.Ticket.AssignedToUserId == User.Identity.GetUserId()
                 || ticketComment.Ticket.OwnerUserId == User.Identity.GetUserId()
                  || ticketComment.Ticket.Project.PMID == User.Identity.GetUserId()
                  || User.IsInRole("Admin")
@@ -68,7 +68,8 @@ namespace BugTrackerV3.Controllers
                 db.TicketComments.Add(ticketComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+                    //return View(ticketComment);
+                }
             }
 
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
@@ -94,7 +95,7 @@ namespace BugTrackerV3.Controllers
         }
 
         // POST: TicketComments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
