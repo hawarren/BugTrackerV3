@@ -31,7 +31,7 @@ namespace BugTrackerV3.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset Created { get; set; }
         [Display(Name = "Date Updated")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tst}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
 
         public DateTimeOffset? Updated { get; set; }
         [Display(Name = "Project")]
