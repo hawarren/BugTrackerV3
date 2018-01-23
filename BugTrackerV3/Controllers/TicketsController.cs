@@ -313,6 +313,7 @@ namespace BugTrackerV3.Controllers
                 phelper.AddUserToProject(ticket.AssignedToUserId, ticket.ProjectId);
                 phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
                 // ticket.AssignedToUserId
+                ticket.Updated = DateTimeOffset.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
