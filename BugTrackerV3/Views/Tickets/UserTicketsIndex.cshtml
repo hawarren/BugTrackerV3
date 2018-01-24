@@ -5,7 +5,7 @@
     ViewBag.Title = "View All Tickets belonging to you";
 }
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
-<h2>Tickets Assigned to this user</h2>
+<h2>Tickets related to this user</h2>
 
 
 @{
@@ -308,7 +308,7 @@
 @{
     if (User.IsInRole("Submitter"))
     {
-        <h3>Submitter Tickets</h3>
+        <h3>Tickets submitted by this User</h3>
         if (Model.SubTickets.Count() == 0)
         {
             <p>You don't have any tickets yet. Feel free to add some (on a project of course)!</p>

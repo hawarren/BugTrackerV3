@@ -549,6 +549,7 @@
      || Model.OwnerUserId == User.Identity.GetUserId()
      || Model.Project.PMID == User.Identity.GetUserId()
      || User.IsInRole("Admin")
+     || User.Identity.IsAuthenticated == true
     )
 {
 
