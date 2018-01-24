@@ -29,23 +29,33 @@
     </dl>
 
     <dl class="dl-horizontal">
-        <dt>
-            Active Project Users :
-        </dt>
+    <dt>
+        Active Project Users :
+    </dt>
 
-        <dd>
-            <p>@foreach (var item in Model.Users)
-            {
+    <dd>
+        <p>
+            @foreach (var item in Model.Users)
+            { if (item.DisplayName == null)
+                {
+
                 <p>
-                @Html.DisplayFor(userItem => item.DisplayName)
+                    @Html.DisplayFor(userItem => item.DisplayName)
                 </p>
             }
-                </p>
+            else
+            {
+                    <p>
+                        @Html.DisplayFor(userItem => item.Email)
+                    </p>
+            }
+            }
+           </p>
 
 
-        </dd>
+           </dd>
 
-    </dl>
+        </dl>
 </div>
 
 
