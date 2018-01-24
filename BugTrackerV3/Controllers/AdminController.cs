@@ -32,6 +32,11 @@ namespace BugTrackerV3.Controllers
             }
 
             return View(users);
+
+            //get list of user objects
+            //for each user object check if displayname is null
+            //if displayname is not null, assign the email to the displayname
+            //save to the database.
         }
         // GET: Admin
         public ActionResult ManageUserRoles()
@@ -64,18 +69,18 @@ namespace BugTrackerV3.Controllers
                 {
                     nonRoles.Add(comp);
                 }
-               
+
             };
             //code to convert the list of strings to a selectlist
             ViewBag.Roles = nonRoles.Select(x =>
                                   new SelectListItem()
                                   {
-                                      Text = x                                       
+                                      Text = x
                                   });
             ViewBag.CurrentRoles = myRoles.ToList();
             ViewBag.Users = new MultiSelectList(db.Users.Where(u => u.Id == IdUser), "Id", "DisplayName");
           //  ViewBag.Roles = new MultiSelectList(nonRoles, "Name", "Name");
-           
+
             return View();
         }
 
