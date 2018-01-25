@@ -48,6 +48,7 @@ namespace BugTrackerV3.Controllers
                 vm.Roles = helper.ListUserRoles(usr.Id).ToList();
                 users.Add(vm);
             }
+            //This code assigns default displayname from admin rolemanagement console. May move to more appropriate place later
             //get list of user objects,
             var allUsers = db.Users.ToList();
             //for each user object check if displayname is null

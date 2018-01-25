@@ -30,9 +30,9 @@
 
             <div id="hbreadcrumb" class="pull-right m-t-lg">
                 <ol class="hbreadcrumb breadcrumb">
-                    <li><a href="@Url.Action("Index", "Projects")">Projects</a></li>
+                    <li><a href="@Url.Action("Index", "Projects")">@Html.DisplayFor(model => model.Project.Name) </a></li>
                     <li>
-                        <span><a href="@Url.Action("Details", "Projects", new {Id = Model.Project.Id})">Project Tickets</a></span>
+                        <span><a href="@Url.Action("Details", "Projects", new {Id = Model.Project.Id})">Tickets for @Html.DisplayFor(model => model.Project.Name) </a></span>
                     </li>
                     <li class="active">
                         <span>Ticket detail</span>
