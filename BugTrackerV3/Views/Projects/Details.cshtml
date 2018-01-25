@@ -124,6 +124,7 @@
             }
             @foreach (var item in Model.Tickets)
             {
+
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Project.Name)
@@ -131,11 +132,20 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
+                    @if (item.AssignedToUser == null)
+                    {
+
+                    <td>None assigned</td>
+                    }
+                    {
+                        else
+                    < td >
+                        Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
+                    </ td >
+                    }
+
                     <td>
-                        @Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerUser.FirstName)
+                        @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TicketPriority.Name)
@@ -157,29 +167,30 @@
                     </td>
 
                     <td>
-                         <button type="button" class="btn btn-info">
-                        <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
-                             </button>
-                     @{
-                         if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
-                         {
-                             <div>
-                                  <button type="button" class="btn btn-default">
-                         @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
-                                      </button>
-                        </div>
-                                 }
-                         if (User.IsInRole("Admin"))
-                         {
-                            <div>  <button type="button" class="btn btn-danger">
-                            @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
-                                </button>
-                         </div>
-                         }
-                         }
+                        <button type="button" class="btn btn-info">
+                            <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
+                        </button>
+                        @{
+                            if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
+                            {
+                                <div>
+                                    <button type="button" class="btn btn-default">
+                                        @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
+                                    </button>
+                                </div>
+                            }
+                            if (User.IsInRole("Admin"))
+                            {
+                                <div>
+                                    <button type="button" class="btn btn-danger">
+                                        @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
+                                    </button>
+                                </div>
+                            }
+                        }
                     </td>
                 </tr>
-            }
+                            }
 
 
 
