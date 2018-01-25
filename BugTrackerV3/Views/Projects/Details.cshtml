@@ -134,14 +134,13 @@
                     </td>
                     @if (item.AssignedToUser == null)
                     {
-
                     <td>None assigned</td>
                     }
-                    {
                         else
-                    < td >
-                        Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
-                    </ td >
+                    {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
+                    </td>
                     }
 
                     <td>
