@@ -33,10 +33,7 @@ namespace BugTrackerV3.Controllers
 
             return View(users);
 
-            //get list of user objects
-            //for each user object check if displayname is null
-            //if displayname is not null, assign the email to the displayname
-            //save to the database.
+
         }
         // GET: Admin
         public ActionResult ManageUserRoles()
@@ -51,6 +48,20 @@ namespace BugTrackerV3.Controllers
                 vm.Roles = helper.ListUserRoles(usr.Id).ToList();
                 users.Add(vm);
             }
+            //get list of user objects,
+            var allUsers = db.Users.ToList();
+            //for each user object check if displayname is null
+            //if displayname is not null, assign the email to the displayname
+            foreach (var name in allUsers)
+            {
+                if (name.DisplayName == null)
+                {
+                    name.DisplayName = name.Email;
+                }
+
+            }
+            //save to the database.
+            db.SaveChanges();
 
             return View(users);
         }
