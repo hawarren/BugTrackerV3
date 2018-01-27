@@ -57,7 +57,13 @@
 
         </dl>
 </div>
+@if (Model.PMID != null)
+{
+    <div>
 
+The Project Manager is: @Html.DisplayFor(item => Model.PMID)
+    </div>
+}
 
 <p>
     @Html.ActionLink("Back to Project List", "Index") |

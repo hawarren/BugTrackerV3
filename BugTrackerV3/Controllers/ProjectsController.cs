@@ -71,8 +71,11 @@ namespace BugTrackerV3.Controllers
         {
             if (ModelState.IsValid)
             {
+                ProjectsHelper helper = new ProjectsHelper();
                 var prj = db.Projects.Find(adminVm.Project.Id);
                 prj.PMID = adminVm.SelectedUser;
+
+                helper.AddUserToProject(prj.PMID, prj.Id);
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
