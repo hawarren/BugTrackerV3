@@ -124,7 +124,7 @@
             }
             @foreach (var item in Model.Tickets)
             {
-                if (item.TicketStatus.Name == "Open")
+                if (item.TicketStatus.Name == "Open" || item.TicketStatus.Name == "UnderReview")
                 {
                 <tr>
                     <td>
