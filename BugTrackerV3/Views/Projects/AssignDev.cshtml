@@ -5,18 +5,22 @@
 }
 
 <h2>
-    Assign Developers to @Model.Project.Name
+    Assign Developers to <u>"@Model.Project.Name"</u>
 </h2>
+<h3>
+    You may select multiple developers, including the developers currently on this project.
+
+</h3>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>@Model.Project.Name</h4>
+        <h4><strong>@Model.Project.Name</strong> </h4>
         <hr />
-        
+
         @Html.HiddenFor(item => item.Project.Name)
         @Html.HiddenFor(item => item.Project.Id)
 

@@ -88,7 +88,7 @@ namespace BugTrackerV3.Controllers
         public ActionResult AssignDEV(int id)
         {
             string PM = User.Identity.GetUserId();
-            if (PM == db.Projects.Find(id).PMID)
+            if (PM != db.Projects.Find(id).PMID)
             //|| UserRolesHelper.IsUserinRole(PM, "admin") != true)
             {
                 return RedirectToAction("Index");
@@ -99,7 +99,7 @@ namespace BugTrackerV3.Controllers
 
                 var dev = helper.UsersInRole("Developer");
                 var projdev = phelper.ProjectUsersByRole(id, "Developer").Select(u => u.Id).ToArray();
-                vm.DevUsers = new MultiSelectList(dev, "Id", "FirstName", projdev);
+                vm.DevUsers = new MultiSelectList(dev, "Id", "DisplayName", projdev);
                 vm.Project = db.Projects.Find(id);
 
                 return View(vm);
