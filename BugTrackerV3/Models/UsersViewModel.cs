@@ -9,5 +9,6 @@ namespace BugTrackerV3.Models
     {
         public ApplicationUser User { get; set; }
         public List<string> Roles { get; set; }
+        public List<string> ProjectsOn { get; set; }
     }
 }

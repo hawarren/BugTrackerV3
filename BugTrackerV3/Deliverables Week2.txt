@@ -76,3 +76,12 @@ Responsive column resets
 With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a .clearfix and our responsive utility classes.
 
 *was adding striped table when I left off.
+
+
+
+
+submitters must be able to create tickets for projects they belong to
+If user is on project, then show them add ticket button
+If user IS NOT on project, then show them everything BUT the ticket button
+Admin/PM adds user to project
+User then hits project details and clicks edit button

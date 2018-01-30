@@ -1,4 +1,5 @@
 ﻿@using BugTrackerV3.helpers;
+@using Microsoft.AspNet.Identity;
 <div id="navigation">
     <div class="profile-picture">
         @Html.ActionLink("Return to Frontpage", "Index", "Home")
@@ -42,6 +43,10 @@
 
         <li>
             @Html.ActionLink("View All Projects", "Index", "Projects")
+        </li>
+        <li>
+            @Html.ActionLink("View Only Your Projects", "IndexUserOnly", "Projects", new { userID = User.Identity.GetUserId() })
+
         </li>
         <li>
             @Html.ActionLink("View Your Tickets", "UserTicketsIndex", "Tickets")

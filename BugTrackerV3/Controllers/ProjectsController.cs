@@ -17,9 +17,11 @@ namespace BugTrackerV3.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Projects
+        // GET: All Projects
         public ActionResult Index()
         {
+            //pass in userId, check their role, and then show them relevant projects.
+            //admin and PM see all projects
             var projs = db.Projects.ToList();
             List<ProjectPMViewModel> model = new List<ProjectPMViewModel>();
 
@@ -30,6 +32,33 @@ namespace BugTrackerV3.Controllers
                 //this works because the PMID is just the User.Id, which is the primary key of Users
                 vm.ProjectManager = p.PMID != null ? db.Users.Find(p.PMID) : null;
                 model.Add(vm);
+            }
+
+
+            return View(model);
+        }
+
+        // GET: Projects for a User
+        public ActionResult IndexUserOnly(string userID)
+        {
+            //pass in userId, check their role, and then show them relevant projects.
+            //admin and PM see all projects
+            var projs = db.Projects.ToList();
+            List<ProjectPMViewModel> model = new List<ProjectPMViewModel>();
+
+            foreach (var p in projs)
+            {
+                ProjectsHelper Phelper = new ProjectsHelper();
+                if (Phelper.IsUserOnProject(userID, p.Id))
+                {
+
+                ProjectPMViewModel vm = new ProjectPMViewModel();
+                vm.Project = p;
+                //this works because the PMID is just the User.Id, which is the primary key of Users
+                //this code adds the user
+                vm.ProjectManager = p.PMID != null ? db.Users.Find(p.PMID) : null;
+                model.Add(vm);
+                };
             }
 
 
