@@ -18,6 +18,7 @@ namespace BugTrackerV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: All Projects
+        [Authorize(Roles = "Admin, ProjectManager")]
         public ActionResult Index()
         {
             //pass in userId, check their role, and then show them relevant projects.
@@ -117,9 +118,10 @@ namespace BugTrackerV3.Controllers
         [Authorize(Roles="Admin, ProjectManager")]
         public ActionResult AssignDEV(int id)
         {
+            UserRolesHelper URHelper = new UserRolesHelper();
             string PM = User.Identity.GetUserId();
-            if (PM != db.Projects.Find(id).PMID)
-            //|| UserRolesHelper.IsUserinRole(PM, "admin") != true)
+            if (PM != db.Projects.Find(id).PMID
+            && URHelper.IsUserinRole(PM, "admin") != true)
             {
                 return RedirectToAction("Index");
             }
@@ -147,10 +149,12 @@ namespace BugTrackerV3.Controllers
             if (ModelState.IsValid)
             {
                 var prj = db.Projects.Find(model.Project.Id);
-                foreach (var usr in prj.Users)
-                {
-                    helper.RemoveUserFromProject(usr.Id, prj.Id);
-                }
+                //this code removes all users currently on the project
+               // foreach (var usr in prj.Users)
+                //{
+                 //   helper.RemoveUserFromProject(usr.Id, prj.Id);
+                //}
+                //this code add all the selected users to the project
                 foreach (var dev in model.SelectedUsers)
                 {
                     helper.AddUserToProject(dev, model.Project.Id);
