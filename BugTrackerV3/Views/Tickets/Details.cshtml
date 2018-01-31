@@ -36,6 +36,7 @@
                     </li>
                     <li class="active">
                         <span>Ticket detail</span>
+
                     </li>
                 </ol>
             </div>
@@ -347,9 +348,13 @@
 
 
                 <p>
+                    @if (Model.Project.PMID == User.Identity.GetUserId())
+                    {
                     <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
-                    <button type="button" class="btn btn-info">@Html.ActionLink("All Tickets", "Index") </button>
                     <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
+                    }
+
+                    <button type="button" class="btn btn-info">@Html.ActionLink("All Tickets", "Index") </button>
                     <button type="button" class="btn btn-info">@Html.ActionLink("Project Details and Tickets", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
                 </p>
                 <!-- page content -->
@@ -545,22 +550,22 @@
                     </div>*@
 
                 @if (Model.AssignedToUserId == User.Identity.GetUserId()
- || Model.OwnerUserId == User.Identity.GetUserId()
- || Model.Project.PMID == User.Identity.GetUserId()
- || User.IsInRole("Admin")
- || User.Identity.IsAuthenticated == true
+|| Model.OwnerUserId == User.Identity.GetUserId()
+|| Model.Project.PMID == User.Identity.GetUserId()
+|| User.IsInRole("Admin")
+|| User.Identity.IsAuthenticated == true
 )
                 {
 
                     <div>
                         @*@using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
-                        {
-                            @Html.AntiForgeryToken()
+                            {
+                                @Html.AntiForgeryToken()
 
-                            <input type="hidden" name="TicketId" value="@Model.Id" />
-                            <textarea name="Comment"></textarea>
-                            <input type="submit" value="Add Comment" />
-                        }*@
+                                <input type="hidden" name="TicketId" value="@Model.Id" />
+                                <textarea name="Comment"></textarea>
+                                <input type="submit" value="Add Comment" />
+                            }*@
 
                     </div>
 
@@ -616,6 +621,7 @@
 
 
     </body>
+
 </html>
 
  @section scripts{

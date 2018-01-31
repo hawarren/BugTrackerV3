@@ -285,6 +285,7 @@ namespace BugTrackerV3.Controllers
             var dev = helper.UsersInRole("Developer");
 
 
+
             ///////////////// end of wip code
             if (id == null)
             {
@@ -295,8 +296,18 @@ namespace BugTrackerV3.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
-            ViewBag.AssignedToUserId = new SelectList(dev, "Id", "FirstName", ticket.AssignedToUserId);
+            //check if this user is the project manager on this
+            if (ticket.Project.PMID != User.Identity.GetUserId()
+                )
+            {
+
+                return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
+            }
+
+
+
+                //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
+                ViewBag.AssignedToUserId = new SelectList(dev, "Id", "FirstName", ticket.AssignedToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPrioritys, "Id", "Name", ticket.TicketPriorityId);
