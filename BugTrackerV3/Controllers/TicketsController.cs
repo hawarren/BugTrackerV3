@@ -245,6 +245,13 @@ namespace BugTrackerV3.Controllers
 
             if (ModelState.IsValid)
             {
+                //add user to project when they create a ticket
+                ProjectsHelper phelper = new ProjectsHelper();
+                if (!phelper.IsUserOnProject(User.Identity.GetUserId(), ticket.ProjectId))
+                {
+                    phelper.AddUserToProject(User.Identity.GetUserId(), ticket.ProjectId);
+                }
+
                 ticket.OwnerUserId = User.Identity.GetUserId();
                 ticket.TicketPriorityId = db.TicketPrioritys.FirstOrDefault(n => n.Name == "Low").Id;
                 ticket.TicketStatusId = 1;
