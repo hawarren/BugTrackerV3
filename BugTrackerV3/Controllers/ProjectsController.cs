@@ -39,8 +39,9 @@ namespace BugTrackerV3.Controllers
         }
 
         // GET: Projects for a User
-        public ActionResult IndexUserOnly(string userID)
+        public ActionResult UserProjectsOnly()
         {
+            var userID = User.Identity.GetUserId();
             //pass in userId, check their role, and then show them relevant projects.
             //admin and PM see all projects
             var projs = db.Projects.ToList();
@@ -58,7 +59,7 @@ namespace BugTrackerV3.Controllers
                 //this code adds the user
                 vm.ProjectManager = p.PMID != null ? db.Users.Find(p.PMID) : null;
                 model.Add(vm);
-                };
+                }
             }
 
 
