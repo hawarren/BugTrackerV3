@@ -348,7 +348,7 @@
 
                 <p>
                     <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
-                    <button type="button" class="btn btn-info">@Html.ActionLink("Back to Tickets List", "Index") </button>
+                    <button type="button" class="btn btn-info">@Html.ActionLink("All Tickets", "Index") </button>
                     <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
                     <button type="button" class="btn btn-info">@Html.ActionLink("Project Details and Tickets", "Details", "Projects", new { id = Model.ProjectId }, null) </button>
                 </p>
