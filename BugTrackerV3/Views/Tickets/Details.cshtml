@@ -348,10 +348,12 @@
 
 
                 <p>
-                    @if (Model.Project.PMID == User.Identity.GetUserId())
+                    @if (Model.Project.PMID == User.Identity.GetUserId()
+                        || Model.OwnerUserId == User.Identity.GetUserId()
+                )
                     {
-                    <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
+                        <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Add an Attachment", "Create", "TicketAttachments", new { TicketId = Model.Id }, null) </button>
                     }
 
                     <button type="button" class="btn btn-info">@Html.ActionLink("All Tickets", "Index") </button>
@@ -593,8 +595,8 @@
                         @Html.AntiForgeryToken()
 
                         <input type="hidden" name="TicketId" value="@Model.Id" />
-                            <textarea name="Comment"></textarea>
-                            <input type="submit" value="Add Comment" />
+                        <textarea name="Comment"></textarea>
+                        <input type="submit" value="Add Comment" />
                     }
 
                 </div>
@@ -621,6 +623,12 @@
 
 
     </body>
+
+
+
+
+
+
 
 </html>
 

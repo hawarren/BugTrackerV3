@@ -298,6 +298,7 @@ namespace BugTrackerV3.Controllers
             }
             //check if this user is the project manager on this
             if (ticket.Project.PMID != User.Identity.GetUserId()
+                && ticket.OwnerUserId != User.Identity.GetUserId()
                 )
             {
 
