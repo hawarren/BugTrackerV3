@@ -2689,6 +2689,7 @@
     <Content Include="Views\Projects\Details - OrigCopy.cshtml" />
     <Content Include="Views\Projects\UserProjectsOnly.cshtml" />
     <Content Include="Private.config" />
+    <Content Include="Views\Shared\Info.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />

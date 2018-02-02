@@ -9,3 +9,15 @@
 <h2 class="text-danger">An error occurred while processing your request.</h2>
 <h2 class="text-danger">Please let the site admin know so they can fix it.</h2>
 
+<h1 class="text-danger">Error.</h1>
+@{
+    if (String.IsNullOrEmpty(ViewBag.errorMessage))
+    {
+        <h2 class="text-danger">An error occurred while processing your request.</h2>
+    }
+    else
+    {
+        <h2 class="text-danger">@ViewBag.errorMessage</h2>
+    }
+}
+

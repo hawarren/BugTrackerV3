@@ -32,7 +32,7 @@ namespace BugTrackerV3
         {
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress("Joe@contoso.com", "Joe S.");
+            myMessage.From = new System.Net.Mail.MailAddress("Hanifwarren+sender@gmail.com", "Hanif W.");
             myMessage.Subject = message.Subject;
             myMessage.Text = message.Subject;
 
