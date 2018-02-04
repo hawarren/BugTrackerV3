@@ -184,6 +184,10 @@ namespace BugTrackerV3.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //automatically give a registered user submitter rights to the bugtracker
+                    helpers.UserRolesHelper helper = new helpers.UserRolesHelper();
+                    helper.AddUserToRole(user.Id, "Submitter");
+
                     // Comment the following line to prevent log in until the user is confirmed.
                     // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
@@ -191,20 +195,19 @@ namespace BugTrackerV3.Controllers
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                  //  await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                   // await UserManager.SendEmailAsync(user.Id, "Click this <a href=\"" + callbackUrl + "\"> to confirm</a>", "Please click this <a href=\"" + callbackUrl + "\">link right here</a>");
 
-                    //automatically give a registered user submitter rights to the bugtracker
-                    helpers.UserRolesHelper helper = new helpers.UserRolesHelper();
-                    helper.AddUserToRole(user.Id, "Submitter");
-
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>",
+            "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     //Uncomment to debug locally
                     // TempData["ViewBagLink"] = callbackUrl;
 
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                        + "before you can log in.";
-                    return View("Info");
+                     + "before you can log in.";
+                   return View("Info");
 
-                   // return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
