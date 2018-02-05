@@ -86,7 +86,7 @@ namespace BugTrackerV3.Controllers
                 userName = "";
             }
             //end of copied code
-
+            //Require the user to have a confirmed email before they can log on.
             var user = await UserManager.FindByNameAsync(model.Email);
             if (user != null)
             {
