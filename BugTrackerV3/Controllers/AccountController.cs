@@ -195,8 +195,6 @@ namespace BugTrackerV3.Controllers
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                  //  await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                   // await UserManager.SendEmailAsync(user.Id, "Click this <a href=\"" + callbackUrl + "\"> to confirm</a>", "Please click this <a href=\"" + callbackUrl + "\">link right here</a>");
 
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>",
             "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
