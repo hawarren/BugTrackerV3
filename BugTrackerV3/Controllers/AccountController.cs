@@ -13,6 +13,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BugTrackerV3.Controllers
 {
+    using System.Net.Cache;
+    using System.Web.Configuration;
+
+    using Microsoft.Owin.Security.Provider;
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -253,10 +258,10 @@ namespace BugTrackerV3.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -523,5 +528,15 @@ namespace BugTrackerV3.Controllers
             }
         }
         #endregion
+    }
+
+    private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
+    {
+    string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
+    var callbackUrl = Url.Action("ConfirmEmail", "Account",
+        new { userid = userID, code = code }, protocol: Request.Url.Scheme);
+    await UserManager.SendEmailAsync(userID, SubjectPublicKeyInfoAlgorithm,
+        "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+    return callbackUrl;
     }
 }

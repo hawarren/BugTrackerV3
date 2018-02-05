@@ -39,14 +39,14 @@
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
                                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                     </div>
@@ -64,19 +64,20 @@
                                         <input type="submit" value="Log in" class="btn btn-default" />
                                     </div>
                                 </div>
-                <p>
-                    <div class="btn btn-default">
+                                <p>
+                                    <div class="btn btn-default">
 
-                        <strong> @Html.ActionLink("Register as a new user", "Register") </strong>
-                    </div>
-                </p>
+                                        <strong> @Html.ActionLink("Register as a new user", "Register") </strong>
+                                    </div>
+                                </p>
 
-                            @*<small>If you don't have an account, you can register for one. </small>
+                                @*<small>If you don't have an account, you can register for one. </small>
                 @Html.Partial("Register")*@
                                 @* Enable this once you have account confirmation enabled for password reset functionality
-                                    <p>
-                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                    </p>*@
+                                *@
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
                             }
                         </section>
                     </div>
