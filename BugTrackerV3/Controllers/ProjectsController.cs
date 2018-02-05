@@ -160,6 +160,7 @@ namespace BugTrackerV3.Controllers
                     helper.AddUserToProject(dev, model.Project.Id);
                 }
 
+
                 //the helper already saves the changes to the db
                 return RedirectToAction("Details", new { id = model.Project.Id });
             }

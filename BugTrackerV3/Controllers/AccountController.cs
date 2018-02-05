@@ -98,6 +98,7 @@ namespace BugTrackerV3.Controllers
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
 
                 {
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
                     ViewBag.errorMessage = "You must have a confirmed email to log on.";
                     return View("Error");
                 }
@@ -199,7 +200,10 @@ namespace BugTrackerV3.Controllers
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                   // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+
 
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>",
             "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
@@ -252,7 +256,7 @@ namespace BugTrackerV3.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
+                    // Don't reveal that the user does not exist or is not confirmed (for security purposes)
                     return View("ForgotPasswordConfirmation");
                 }
 
@@ -260,7 +264,7 @@ namespace BugTrackerV3.Controllers
                 // Send an email with this link
                  string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                  var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                 await UserManager.SendEmailAsync(user.Id, "Reset Password <a href=\"" + callbackUrl + "\">here</a>", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                  return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -528,15 +532,16 @@ namespace BugTrackerV3.Controllers
             }
         }
         #endregion
-    }
-
     private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
     {
     string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
     var callbackUrl = Url.Action("ConfirmEmail", "Account",
         new { userid = userID, code = code }, protocol: Request.Url.Scheme);
-    await UserManager.SendEmailAsync(userID, SubjectPublicKeyInfoAlgorithm,
+    await UserManager.SendEmailAsync(userID, subject,
         "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
     return callbackUrl;
     }
+
+    }
+
 }

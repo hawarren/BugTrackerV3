@@ -254,7 +254,8 @@ namespace BugTrackerV3.Controllers
 
                 ticket.OwnerUserId = User.Identity.GetUserId();
                 ticket.TicketPriorityId = db.TicketPrioritys.FirstOrDefault(n => n.Name == "Low").Id;
-                ticket.TicketStatusId = 1;
+                //Give ticket initial status of "new"
+                ticket.TicketStatusId = 2;
                 ticket.Created = DateTimeOffset.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
@@ -332,6 +333,11 @@ namespace BugTrackerV3.Controllers
                 phelper.AddUserToProject(ticket.AssignedToUserId, ticket.ProjectId);
                 phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
                 // ticket.AssignedToUserId
+                if (ticket.AssignedToUserId != null || ticket.TicketStatusId == 2)
+                {
+                    ticket.TicketStatusId = 1;
+                }
+
                 ticket.Updated = DateTimeOffset.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();

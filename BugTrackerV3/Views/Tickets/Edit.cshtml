@@ -97,7 +97,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AssignedToUserId, "AssignedToUserId", htmlAttributes: new { @class = "control-label col-md-2" })
             @*Ensure assigned developer can't change themselves, unless they're also an Admin*@
-            @if (Model.AssignedToUserId == User.Identity.GetUserId() && !User.IsInRole("Admin"))
+            @if ((Model.AssignedToUserId == User.Identity.GetUserId() || Model.OwnerUserId ==User.Identity.GetUserId()) && !User.IsInRole("Admin"))
             {
                 <div class="col-md-10">
                     @User.Identity.Name is the current developer
