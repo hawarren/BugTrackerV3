@@ -16,6 +16,8 @@ namespace BugTrackerV3.Controllers
     using System.Net.Cache;
     using System.Web.Configuration;
 
+    using BugTrackerV3.helpers;
+
     using Microsoft.Owin.Security.Provider;
 
     [Authorize]
@@ -84,7 +86,13 @@ namespace BugTrackerV3.Controllers
             string userName;
             if (user1 != null)
             {
+                UserRolesHelper uhelper = new UserRolesHelper();
                 userName = user1.UserName;
+                //if user doesn't already have submission rights, give them submission rights
+                if (!uhelper.IsUserinRole(user1.Id, "Submitter"))
+                {
+                    uhelper.AddUserToRole(user1.Id, "Submitter");
+                }
             }
             else
             {
@@ -214,7 +222,7 @@ namespace BugTrackerV3.Controllers
                      + "before you can log in.";
                    return View("Info");
 
-                    return RedirectToAction("Index", "Home");
+                    // return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
