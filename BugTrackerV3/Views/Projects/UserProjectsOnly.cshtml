@@ -55,6 +55,11 @@
     </div>
 </div>
 @*The first table starts here*@
+
+@if (Model.Count() == 0)
+{
+    <div class="content">You aren't a part of any projects yet.</div>
+}
 <div class="content">
 
     @foreach (var item in Model)
