@@ -333,9 +333,13 @@ namespace BugTrackerV3.Controllers
                 phelper.AddUserToProject(ticket.AssignedToUserId, ticket.ProjectId);
                 phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
                 // ticket.AssignedToUserId
-                if (ticket.AssignedToUserId != null || ticket.TicketStatusId == 2)
+                if (ticket.AssignedToUserId != null && ticket.TicketStatusId == 2)
                 {
                     ticket.TicketStatusId = 1;
+                }
+                if (ticket.AssignedToUserId == null && ticket.TicketStatusId == 1)
+                {
+                    ticket.TicketStatusId = 2;
                 }
 
                 ticket.Updated = DateTimeOffset.Now;
