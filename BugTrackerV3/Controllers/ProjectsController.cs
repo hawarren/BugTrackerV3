@@ -18,7 +18,7 @@ namespace BugTrackerV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: All Projects
-        [Authorize(Roles = "Admin, ProjectManager")]
+        [Authorize]
         public ActionResult Index()
         {
             //pass in userId, check their role, and then show them relevant projects.
