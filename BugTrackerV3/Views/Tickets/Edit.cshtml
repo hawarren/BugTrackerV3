@@ -49,7 +49,7 @@
 
 
     @*This section should NOT be editable by submitters. Just display for their information.*@
-        @if (Model.OwnerUserId == User.Identity.GetUserId())
+        @if (Model.OwnerUserId == User.Identity.GetUserId() && !User.IsInRole("Admin"))
         {
         <div class="form-group">
             @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
