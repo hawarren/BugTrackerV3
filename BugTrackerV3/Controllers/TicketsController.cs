@@ -342,6 +342,11 @@ namespace BugTrackerV3.Controllers
                     ticket.TicketStatusId = 2;
                 }
 
+                if (ticket.AssignedToUserId == null && ticket.TicketStatus.Name == "Closed")
+                {
+                    ticket.AssignedToUserId = User.Identity.GetUserId();
+                }
+
                 ticket.Updated = DateTimeOffset.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
