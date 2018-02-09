@@ -1,5 +1,6 @@
 ﻿@model BugTrackerV3.Models.Ticket
 @using Microsoft.AspNet.Identity;
+@using Microsoft.Owin.Security.DataHandler.Serializer
 @{
     ViewBag.Title = "Details of This Ticket";
 }
@@ -451,6 +452,9 @@
                                                     <th>
                                                         @Html.DisplayNameFor(model => model.Updated)
                                                     </th>
+                                                    <th>
+                                                        Attachments
+                                                    </th>
 
 
                                                 </tr>
@@ -519,12 +523,18 @@
                                                     <th>
                                                         @Html.DisplayFor(model => model.Updated)
                                                     </th>
+                                                    <th>
+                                                       @foreach (var attach in Model.TicketAttachments)
+                                                       {
+                                                           @Html.DisplayFor(m => attach.FilePath) <div>|</div>
+                                                       }
+                                                    </th>
                                                 </tr>
 
                                             </tbody>
                                         </table>
 
-
+                                        <div></div>
 
 
 
