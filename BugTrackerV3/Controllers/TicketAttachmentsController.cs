@@ -41,14 +41,15 @@ namespace BugTrackerV3.Controllers
         // GET: TicketAttachments/Create
         public ActionResult Create( string TicketId)
         {
-            //made the dropdown show only 
+            //made the dropdown show only
             ViewBag.TicketId = new SelectList(db.Tickets.Where(t => t.Id.ToString() == TicketId), "Id", "Title");
             ViewBag.UserId = new SelectList(db.Users.Where(t => t.Id == User.Identity.GetUserId()), "Id", "FirstName");
+            ViewBag.Updated = DateTimeOffset.Now;
             return View();
         }
 
         // POST: TicketAttachments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -61,16 +62,17 @@ namespace BugTrackerV3.Controllers
                  || User.IsInRole("Admin")
                  )
             {
-                
+
                     if (ModelState.IsValid)
                 {
                     if (fileAdded != null && fileAdded.ContentLength > 0)
-                    { 
+                    {
                         //code to get the url from uploaded file
                         var fileName = Path.GetFileName(fileAdded.FileName);
                     fileAdded.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
                     ticketAttachment.FilePath = "/Uploads/" + fileName;
-                    
+                      ticketAttachment.Created = DateTimeOffset.Now;
+
 
                     db.TicketAttachments.Add(ticketAttachment);
                     db.SaveChanges();
@@ -81,7 +83,7 @@ namespace BugTrackerV3.Controllers
                 ViewBag.TicketId = new SelectList(db.Tickets.Where(t => t.Id == ticketAttachment.TicketId), "Id", "Title");
                 ViewBag.UserId = new SelectList(db.Users.Where(t => t.Id == User.Identity.GetUserId()), "Id", "FirstName");
                 return View(ticketAttachment);
-            
+
                 }
             return View(ticketAttachment);
         }
@@ -104,7 +106,7 @@ namespace BugTrackerV3.Controllers
         }
 
         // POST: TicketAttachments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
