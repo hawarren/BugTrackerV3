@@ -252,6 +252,7 @@
     <Compile Include="Models\TicketAttachment.cs" />
     <Compile Include="Models\TicketComment.cs" />
     <Compile Include="Models\TicketHistory.cs" />
+    <Compile Include="Models\TicketHistoryController.cs" />
     <Compile Include="Models\TicketIndexViewModel.cs" />
     <Compile Include="Models\TicketNotification.cs" />
     <Compile Include="Models\TicketPriority.cs" />
@@ -2731,6 +2732,11 @@
     <Content Include="Views\Shared\_Layoutv2.cshtml" />
     <Content Include="Views\Shared\_Navigation - OrigCopy.cshtml" />
     <Content Include="Views\Tickets\Details - OrigCopy.cshtml" />
+    <Content Include="Views\TicketHistory\Create.cshtml" />
+    <Content Include="Views\TicketHistory\Delete.cshtml" />
+    <Content Include="Views\TicketHistory\Details.cshtml" />
+    <Content Include="Views\TicketHistory\Edit.cshtml" />
+    <Content Include="Views\TicketHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
