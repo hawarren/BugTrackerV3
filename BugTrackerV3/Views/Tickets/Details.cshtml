@@ -554,7 +554,69 @@
 
 
                             </div>
-                            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            @*Table from TicketHistory/Index*@
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().TicketId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().User.FirstName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().Property)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().EditId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().OldValue)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().NewValue)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TicketHistories.FirstOrDefault().Changed)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model.TicketHistories) {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TicketId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Property)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EditId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OldValue)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NewValue)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Changed)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+
+
                         </div>
                     </div>
                 </div>
