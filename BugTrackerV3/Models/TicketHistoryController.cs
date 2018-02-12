@@ -54,7 +54,9 @@ namespace BugTrackerV3.Models
             {
                 db.TicketHistorys.Add(ticketHistory);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                //go back to ticket details
+                return RedirectToAction("Details", "Tickets", new { id = ticketHistory.TicketId });
             }
 
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketHistory.TicketId);

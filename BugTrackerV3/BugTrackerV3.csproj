@@ -235,6 +235,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="helpers\Entities.cs" />
     <Compile Include="helpers\HTMLHelperExtensions.cs" />
     <Compile Include="helpers\ProjectsHelper.cs" />
     <Compile Include="helpers\UserRolesHelper.cs" />

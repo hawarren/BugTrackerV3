@@ -351,7 +351,11 @@ namespace BugTrackerV3.Controllers
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 // return RedirectToAction("Index");
-                return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
+                //return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
+                //create tickethistory object
+                TicketHistory TicketHistoryToSave = new TicketHistory();
+
+                return RedirectToAction("Create", "TicketHistory", new { TicketHistory = TicketHistoryToSave });
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
