@@ -247,6 +247,7 @@
     <Compile Include="Models\AdminProjectViewModel.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\AssignDevViewModel.cs" />
+    <Compile Include="Models\ChangeSet.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Project.cs" />
@@ -256,7 +257,7 @@
     <Compile Include="Models\TicketAttachment.cs" />
     <Compile Include="Models\TicketComment.cs" />
     <Compile Include="Models\TicketHistory.cs" />
-    <Compile Include="Models\TicketHistoryController.cs" />
+    <Compile Include="Controllers\TicketHistoryController.cs" />
     <Compile Include="Models\TicketIndexViewModel.cs" />
     <Compile Include="Models\TicketNotification.cs" />
     <Compile Include="Models\TicketPriority.cs" />

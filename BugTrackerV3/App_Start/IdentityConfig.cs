@@ -26,7 +26,7 @@ namespace BugTrackerV3
             await configSendGridasync(message);
            // return Task.FromResult(0);
         }
-        //using version 6.3.2 of sendgrid package, as that's the last version that supports apiV2,
+        //using version 6.3.4Hi of sendgrid package, as that's the last version that supports apiV2,
         //It has the text property within it.
         private async Task configSendGridasync(IdentityMessage message)
         {
