@@ -21,29 +21,36 @@ namespace BugTrackerV3.Models
         public int Id { get; set; }
         [Required]
         [Display(Name = "Ticket Title")]
-
         public string Title { get; set; }
+
         [Required]
         [AllowHtml]
         [Display(Name = "Description of Ticket")]
         public string Description { get; set; }
+
         [Display(Name = "Date Created")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset Created { get; set; }
+
         [Display(Name = "Date Updated")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
-
         public DateTimeOffset? Updated { get; set; }
+
         [Display(Name = "Project")]
         public int ProjectId { get; set; }
+
         [Display(Name = "Status")]
         public int TicketStatusId { get; set; }
+
         [Display(Name = "Ticket Priority")]
         public int TicketPriorityId { get; set; }
+
         [Display(Name = "Ticket Type")]
         public int TicketTypeId { get; set; }
+
         [Display(Name = "Owner/Submitter of Ticket")]
         public string OwnerUserId { get; set; }
+
         [Display(Name = "Developer Ticket Assigned To")]
         public string AssignedToUserId { get; set; }
 

@@ -135,7 +135,7 @@ namespace BugTrackerV3.Models
             }
             base.Dispose(disposing);
         }
-
+        //method to generate  tickethistory
         public void AddTicketHistory(Ticket oldTicket, Ticket newTicket)
         {
             //Each of these properties can trigger a history if they change
@@ -143,6 +143,8 @@ namespace BugTrackerV3.Models
                                {
                                    "Title",
                                    "Description",
+                                   "Created",
+                                   "Updated",
                                    "TicketTypeId",
                                    "TicketStatusId",
                                    "TicketPriorityId",
