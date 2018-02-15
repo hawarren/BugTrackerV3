@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using BugTrackerV3.Models;
-using System.Data.Entity.Validation;
-
+﻿
 
 /* With the ProjectsHelper class, methods exist to help you
  * Assign/Unassign users to projects
@@ -19,6 +8,19 @@ using System.Data.Entity.Validation;
  */
 namespace BugTrackerV3.helpers
 {
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using BugTrackerV3.Models;
+using System.Data.Entity.Validation;
+using System.Web.Mvc;
+
+using Microsoft.AspNet.Identity;
+
     public class ProjectsHelper
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -43,7 +45,7 @@ namespace BugTrackerV3.helpers
 
             var projects = user.Projects.ToList();
             return (projects);
-            
+
         }
         public void AddUserToProject(string userId, int projectId)
         {
@@ -51,7 +53,7 @@ namespace BugTrackerV3.helpers
             {
                 Project proj = db.Projects.Find(projectId);
                 var newUser = db.Users.Find(userId);
-               
+
                 proj.Users.Add(newUser);
                 db.SaveChanges();
             }
@@ -72,7 +74,7 @@ namespace BugTrackerV3.helpers
 
         public ICollection<ApplicationUser> ListUsersOnProject(int projectId)
         {
-            return db.Projects.Find(projectId).Users;   
+            return db.Projects.Find(projectId).Users;
         }
 
         public ICollection<ApplicationUser> ListUsersNotOnProject(int projectId)
@@ -80,5 +82,50 @@ namespace BugTrackerV3.helpers
             return db.Users.Where(u => u.Projects.All(p => p.Id != projectId)).ToList();
         }
 
+
+        //method to generate  tickethistory
+        public void AddTicketHistory(Ticket oldTicket, Ticket newTicket)
+        {
+            //Each of these properties can trigger a history if they change
+            var propList = new List<string>
+                               {
+                                   "Title",
+                                   "Description",
+                                   "Created",
+                                   "Updated",
+                                   "TicketTypeId",
+                                   "TicketStatusId",
+                                   "TicketPriorityId",
+                                   "AssignTouserId",
+                                   "ProjectId"
+                               };
+
+            //Write a for a loop that loops through the properties of a Ticket
+            foreach (var property in propList)
+            {
+                //Having an issue with null property values...AssignToUserId
+                var newValue = newTicket.GetType().GetProperty(property) == null ? "" : newTicket.GetType().GetProperty(property).GetValue(newTicket).ToString();
+                var oldValue = oldTicket.GetType().GetProperty(property) == null ? "" : oldTicket.GetType().GetProperty(property).GetValue(oldTicket).ToString();
+
+                if (newValue != oldValue)
+                {
+                    //Add TicketHistory
+                    var newTicketHistory = new TicketHistory();
+                    newTicketHistory.UserId = HttpContext.Current.User.Identity.GetUserId();
+                    newTicketHistory.Changed = DateTime.Now;
+                    newTicketHistory.TicketId = newTicket.Id;
+
+                    //Record Property name and values
+                    newTicketHistory.Property = property;
+                    newTicketHistory.OldValue = oldValue;
+                    newTicketHistory.NewValue = newValue;
+
+                    this.db.TicketHistorys.Add(newTicketHistory);
+                    db.SaveChanges();
+
+
+                }
+            }
+        }
     }
 }

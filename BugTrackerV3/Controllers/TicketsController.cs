@@ -327,6 +327,9 @@ namespace BugTrackerV3.Controllers
         {
             if (ModelState.IsValid)
             {
+                ProjectsHelper tHelper = new ProjectsHelper();
+                //retrieve original ticket from the database, since it's not saved there yet.
+                Ticket oldTicket = this.db.Tickets.Find(ticket.Id);
                 //Use ProjectsHelper to
                 //add developer to project once they are assigned to a ticket
                 ProjectsHelper phelper = new ProjectsHelper();
@@ -350,12 +353,11 @@ namespace BugTrackerV3.Controllers
                 ticket.Updated = DateTimeOffset.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                // return RedirectToAction("Index");
-                //return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
-                //create tickethistory object
-                TicketHistory TicketHistoryToSave = new TicketHistory();
+                //save the new ticket info and pass oldticket + newticket to the AddTicketHistory helper
+                Ticket newTicket = ticket;
+                tHelper.AddTicketHistory(oldTicket, newTicket);
+                return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 
-                return RedirectToAction("Create", "TicketHistory", new { TicketHistory = TicketHistoryToSave });
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
