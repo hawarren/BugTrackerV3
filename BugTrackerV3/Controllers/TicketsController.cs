@@ -329,12 +329,8 @@ namespace BugTrackerV3.Controllers
             {
                 ProjectsHelper tHelper = new ProjectsHelper();
                 //retrieve original ticket from the database, since it's not saved there yet.
-                Ticket oldTicket = this.db.Tickets.Find(ticket.Id);
-                //Use ProjectsHelper to
-                //add developer to project once they are assigned to a ticket
-                ProjectsHelper phelper = new ProjectsHelper();
-                phelper.AddUserToProject(ticket.AssignedToUserId, ticket.ProjectId);
-                phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
+                Ticket oldTicket = db.Tickets.Find(ticket.Id);
+
                 // ticket.AssignedToUserId
                 if (ticket.AssignedToUserId != null && ticket.TicketStatusId == 2)
                 {
@@ -345,17 +341,27 @@ namespace BugTrackerV3.Controllers
                     ticket.TicketStatusId = 2;
                 }
 
-                if (ticket.AssignedToUserId == null && ticket.TicketStatus.Name == "Closed")
+                if (ticket.AssignedToUserId == null && ticket.TicketStatusId == 3)
                 {
                     ticket.AssignedToUserId = User.Identity.GetUserId();
                 }
+                if (ticket.AssignedToUserId != null && ticket.OwnerUserId != null)
+                {
+                //Use ProjectsHelper to
+                //add developer to project once they are assigned to a ticket
+                ProjectsHelper phelper = new ProjectsHelper();
+                phelper.AddUserToProject(ticket.AssignedToUserId, ticket.ProjectId);
+                phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
 
+                }
                 ticket.Updated = DateTimeOffset.Now;
-                db.Entry(ticket).State = EntityState.Modified;
+                               //save the new ticket info and pass oldticket + newticket to the AddTicketHistory helper
+
+                //db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                //save the new ticket info and pass oldticket + newticket to the AddTicketHistory helper
-                Ticket newTicket = ticket;
+                Ticket newTicket = db.Tickets.Find(ticket.Id); ;
                 tHelper.AddTicketHistory(oldTicket, newTicket);
+
                 return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 
             }

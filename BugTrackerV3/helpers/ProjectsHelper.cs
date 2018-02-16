@@ -36,7 +36,16 @@ using Microsoft.AspNet.Identity;
         {
             var project = db.Projects.Find(projectId);
             var flag = project.Users.Any(u => u.Id == userId);
-            return (flag);
+           // if (flag != null)
+            //{
+                return (flag);
+            //}
+            //else
+            //{
+            //    flag = false;
+            //    return (flag);
+            //}
+
         }
 
         public ICollection<Project> ListUserProjects(string userId)
@@ -92,11 +101,12 @@ using Microsoft.AspNet.Identity;
                                    "Title",
                                    "Description",
                                    "Created",
-                                   "Updated",
-                                   "TicketTypeId",
-                                   "TicketStatusId",
-                                   "TicketPriorityId",
-                                   "AssignTouserId",
+                                   //"Updated",
+                                   //"TicketTypeId",
+                                   //"TicketStatusId",
+                                   //"TicketPriorityId",
+                                   //"AssignTouserId",
+                                   //"AssignedToUserId",
                                    "ProjectId"
                                };
 
