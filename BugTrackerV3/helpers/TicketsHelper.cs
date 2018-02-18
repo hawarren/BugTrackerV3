@@ -12,9 +12,7 @@ using  System.Web.Configuration;
 namespace BugTrackerV3.helpers
 {
     using System.Web.Configuration;
-
     using BugTrackerV3.Models;
-
     public class TicketsHelper
     {
         private static ApplicationDbContext db = new ApplicationDbContext();
@@ -62,6 +60,7 @@ namespace BugTrackerV3.helpers
             //Iterate over the properties of a Ticket Object
             foreach (var property in oldTicket.GetType().GetProperties())
             {
+                //why are watchedProperties in the web.config file?
                 var watchedProperties = WebConfigurationManager.AppSettings["watchedProperties"].Split(',');
                 var currentProp = property.ToString().Split(' ')[1];
                 if (watchedProperties.Contains(currentProp))

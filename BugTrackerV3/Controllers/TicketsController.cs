@@ -13,6 +13,8 @@ using BugTrackerV3.helpers;
 
 namespace BugTrackerV3.Controllers
 {
+    // TODO: refactor to rely on helpers for most controller functionality, rather than mucking up controllers with code
+
     [Authorize]
     public class TicketsController : Controller
     {
@@ -325,12 +327,12 @@ namespace BugTrackerV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
-            //retrieve original ticket form database
+            //retrieve original ticket from database, but do not cache it in this dbcontext
             var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
             if (ModelState.IsValid)
             {
 
-                // ticket.AssignedToUserId
+                // rewrite to use switch statement
                 if (ticket.AssignedToUserId != null && ticket.TicketStatusId == 2)
                 {
                     ticket.TicketStatusId = 1;
@@ -361,8 +363,11 @@ namespace BugTrackerV3.Controllers
 
 
                 //ticketshelper to create the ticket history
-
-
+                if (TicketsHelper.HasTicketChanged(oldTicket, ticket))
+                {
+                    TicketsHelper.GenerateTicketHistories(oldTicket, ticket);
+                }
+                //return to ticket details so user can see updated changes.
                 return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 
             }
