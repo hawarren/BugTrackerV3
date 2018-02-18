@@ -299,9 +299,10 @@ namespace BugTrackerV3.Controllers
             {
                 return HttpNotFound();
             }
-            //check if this user is the project manager on this
+            //check if this user is either an admin, the project manager, or owner on this ticket
             if (ticket.Project.PMID != User.Identity.GetUserId()
                 && ticket.OwnerUserId != User.Identity.GetUserId()
+                && !User.IsInRole("Admin")
                 )
             {
 

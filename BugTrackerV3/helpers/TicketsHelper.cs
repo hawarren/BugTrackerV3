@@ -63,8 +63,11 @@ namespace BugTrackerV3.helpers
                 //why are watchedProperties in the web.config file?
                 var watchedProperties = WebConfigurationManager.AppSettings["watchedProperties"].Split(',');
                 var currentProp = property.ToString().Split(' ')[1];
+
+
                 if (watchedProperties.Contains(currentProp))
                 {
+
                     var message = "Name: " + property.Name + ", Value: " + property.GetValue(oldTicket, null).ToString();
                     //Set values for old & new property values
                     var oldValue = property.GetValue(oldTicket, null).ToString();
