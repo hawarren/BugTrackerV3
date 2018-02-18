@@ -325,11 +325,10 @@ namespace BugTrackerV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
+            //retrieve original ticket form database
+            var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
             if (ModelState.IsValid)
             {
-                ProjectsHelper tHelper = new ProjectsHelper();
-                //retrieve original ticket from the database, since it's not saved there yet.
-                Ticket oldTicket = db.Tickets.Find(ticket.Id);
 
                 // ticket.AssignedToUserId
                 if (ticket.AssignedToUserId != null && ticket.TicketStatusId == 2)
@@ -355,12 +354,14 @@ namespace BugTrackerV3.Controllers
 
                 }
                 ticket.Updated = DateTimeOffset.Now;
-                               //save the new ticket info and pass oldticket + newticket to the AddTicketHistory helper
 
-                //db.Entry(ticket).State = EntityState.Modified;
+
+                db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                Ticket newTicket = db.Tickets.Find(ticket.Id); ;
-                tHelper.AddTicketHistory(oldTicket, newTicket);
+
+
+                //ticketshelper to create the ticket history
+
 
                 return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 

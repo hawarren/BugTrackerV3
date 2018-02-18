@@ -131,6 +131,7 @@ using Microsoft.AspNet.Identity;
                     newTicketHistory.NewValue = newValue;
 
                     this.db.TicketHistorys.Add(newTicketHistory);
+                    db.Entry(newTicketHistory).State = EntityState.Modified;
                     db.SaveChanges();
 
 

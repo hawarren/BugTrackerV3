@@ -241,6 +241,7 @@
     </Compile>
     <Compile Include="helpers\HTMLHelperExtensions.cs" />
     <Compile Include="helpers\ProjectsHelper.cs" />
+    <Compile Include="helpers\TicketsHelper.cs" />
     <Compile Include="helpers\UserRolesHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
