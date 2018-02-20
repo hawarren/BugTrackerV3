@@ -329,7 +329,6 @@ namespace BugTrackerV3.Controllers
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
             //retrieve original ticket from database, but do not cache it in this dbcontext
-            var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
             if (ModelState.IsValid)
             {
 
@@ -356,6 +355,9 @@ namespace BugTrackerV3.Controllers
                 phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
 
                 }
+
+                var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
+
                 ticket.Updated = DateTimeOffset.Now;
 
 
