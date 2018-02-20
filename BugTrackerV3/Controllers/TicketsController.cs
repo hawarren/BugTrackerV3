@@ -328,10 +328,13 @@ namespace BugTrackerV3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
-            //retrieve original ticket from database, but do not cache it in this dbcontext
+            //retrieve original ticket from database, but do not cache it in this dbcontext. This will be the "oldTicket"
+            var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
+
             if (ModelState.IsValid)
             {
 
+                //Sets ticket status according to whether it's been assigned or not.
                 // rewrite to use switch statement
                 if (ticket.AssignedToUserId != null && ticket.TicketStatusId == 2)
                 {
@@ -340,11 +343,21 @@ namespace BugTrackerV3.Controllers
                 if (ticket.AssignedToUserId == null && ticket.TicketStatusId == 1)
                 {
                     ticket.TicketStatusId = 2;
+                    if (User.IsInRole("Admin"))
+                    {
+                        ticket.AssignedToUserId = User.Identity.GetUserId();
+                    }
+                    else
+                    {
+                        ticket.AssignedToUserId = ticket.Project.PMID;
+                    }
                 }
 
                 if (ticket.AssignedToUserId == null && ticket.TicketStatusId == 3)
                 {
-                    ticket.AssignedToUserId = User.Identity.GetUserId();
+                    //ticket.AssignedToUserId = User.Identity.GetUserId();
+                    ticket.AssignedToUserId = ticket.Project.PMID;
+                    //this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
                 }
                 if (ticket.AssignedToUserId != null && ticket.OwnerUserId != null)
                 {
@@ -355,14 +368,17 @@ namespace BugTrackerV3.Controllers
                 phelper.AddUserToProject(ticket.OwnerUserId, ticket.ProjectId);
 
                 }
+                if (ticket.OwnerUserId == null)
+                {
+                    ticket.OwnerUserId = User.Identity.GetUserId();
 
-                var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
 
                 ticket.Updated = DateTimeOffset.Now;
 
 
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
+                }
 
 
                 //ticketshelper to create the ticket history
