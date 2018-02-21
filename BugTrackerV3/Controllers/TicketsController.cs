@@ -330,6 +330,9 @@ namespace BugTrackerV3.Controllers
         {
             //retrieve original ticket from database, but do not cache it in this dbcontext. This will be the "oldTicket"
             var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
+            //make sure ticket has a project Id attached.
+            //ticket.ProjectId = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id).ProjectId;
+            //ticket.Project = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id).Project;
 
             if (ModelState.IsValid)
             {
@@ -374,9 +377,13 @@ namespace BugTrackerV3.Controllers
 
 
                 ticket.Updated = DateTimeOffset.Now;
+                    ticket.ProjectId = oldTicket.ProjectId;
+                    //ticket.Project = oldTicket.Project;
 
 
-                db.Entry(ticket).State = EntityState.Modified;
+
+
+                    db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 }
 
