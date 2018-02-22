@@ -76,7 +76,9 @@ namespace BugTrackerV3.Controllers
 
                     db.TicketAttachments.Add(ticketAttachment);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    // return RedirectToAction("Index");
+                        //return to ticket details so user can see updated changes.
+                        return RedirectToAction("Details", "Tickets", new { id = ticketAttachment.Ticket.Id });
                     }
                 }
 
@@ -116,11 +118,15 @@ namespace BugTrackerV3.Controllers
             {
                 db.Entry(ticketAttachment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                // return RedirectToAction("Index");
+            //return to ticket details so user can see updated changes.
+            return RedirectToAction("Details", "Tickets", new { id = ticketAttachment.Ticket.Id });
             }
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketAttachment.UserId);
             return View(ticketAttachment);
+
+
         }
 
         // GET: TicketAttachments/Delete/5
