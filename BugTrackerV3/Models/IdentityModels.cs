@@ -7,19 +7,33 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BugTrackerV3.Models
 {
+    using System.Security.Policy;
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser()
         {
             this.Projects = new HashSet<Project>();
+            this.TicketNotifications = new HashSet<TicketNotification>();
+            this.TicketHistories = new HashSet<TicketHistory>();
+            this.TicketComments = new HashSet<TicketComment>();
+            this.TicketAttachments = new HashSet<TicketAttachment>();
+            this.Tickets = new HashSet<Ticket>();
         }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string DisplayName { get; set; }
+        public string Gender { get; set; }
+        public string MediaUrl { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; }
+        public virtual ICollection<TicketNotification> TicketNotifications { get; set; }
+        public virtual ICollection<TicketHistory> TicketHistories { get; set; }
+        public virtual ICollection<TicketComment> TicketComments { get; set; }
+        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
