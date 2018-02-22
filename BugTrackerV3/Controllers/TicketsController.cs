@@ -375,17 +375,16 @@ namespace BugTrackerV3.Controllers
                 {
                     ticket.OwnerUserId = User.Identity.GetUserId();
 
+                }
 
                 ticket.Updated = DateTimeOffset.Now;
-                    ticket.ProjectId = oldTicket.ProjectId;
-                    //ticket.Project = oldTicket.Project;
+
 
 
 
 
                     db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                }
 
 
                 //ticketshelper to create the ticket history

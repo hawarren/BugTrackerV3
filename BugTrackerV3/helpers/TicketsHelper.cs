@@ -67,7 +67,8 @@ namespace BugTrackerV3.helpers
 
                 if (watchedProperties.Contains(currentProp))
                 {
-
+                    if (property.GetValue(oldTicket, null) != null)
+                    {
                     var message = "Name: " + property.Name + ", Value: " + property.GetValue(oldTicket, null).ToString();
                     //Set values for old & new property values
                     var oldValue = property.GetValue(oldTicket, null).ToString();
@@ -86,6 +87,7 @@ namespace BugTrackerV3.helpers
 
                         db.TicketHistorys.Add(newTicketHistory);
                         db.SaveChanges();
+                    }
                     }
                 }
             }
