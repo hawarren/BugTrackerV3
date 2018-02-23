@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BugTrackerV3.Models.TicketNotification>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sender.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ticket.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateNotified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sender.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ticket.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateNotified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

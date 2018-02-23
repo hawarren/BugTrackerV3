@@ -5,6 +5,8 @@ using System.Web;
 
 namespace BugTrackerV3.Models
 {
+    using System.Dynamic;
+
     public class TicketNotification
     {
     public int Id { get; set; }
@@ -15,8 +17,15 @@ namespace BugTrackerV3.Models
     public string SenderId { get; set; }
     public string RecipientId { get; set; }
 
-    public virtual Ticket Ticket { get; set; }
-    public virtual ApplicationUser User { get; set; }
+
+        #region Nav Section
+
+
+
+        public virtual Ticket Ticket { get; set; }
+    //public virtual ApplicationUser User { get; set; }
     public virtual  ApplicationUser Sender { get; set; }
+    public virtual ApplicationUser Recipient { get; set; }
+        #endregion
     }
 }

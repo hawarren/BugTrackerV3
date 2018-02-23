@@ -1,0 +1,64 @@
+﻿@model BugTrackerV3.Models.TicketNotification
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TicketNotification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sender.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sender.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateNotified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateNotified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecipientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecipientId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
