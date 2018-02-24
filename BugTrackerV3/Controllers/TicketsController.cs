@@ -390,7 +390,7 @@ namespace BugTrackerV3.Controllers
                 //ticketshelper to create the ticket history
                 if (TicketsHelper.HasTicketChanged(oldTicket, ticket))
                 {
-                    TicketsHelper.GenerateTicketHistories(oldTicket, ticket);
+                    TicketsHelper.AddTicketHistory(oldTicket, ticket);
                 }
                 //return to ticket details so user can see updated changes.
                 return RedirectToAction("Details", "Tickets", new { id = ticket.Id });

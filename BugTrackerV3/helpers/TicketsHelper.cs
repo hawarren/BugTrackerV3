@@ -8,11 +8,15 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using BugTrackerV3.Models;
 using System.Reflection;
 using  System.Web.Configuration;
+using System.Threading.Tasks;
 
 namespace BugTrackerV3.helpers
 {
     using System.Web.Configuration;
     using BugTrackerV3.Models;
+
+    using Microsoft.Owin.Infrastructure;
+
     public class TicketsHelper
     {
         private static ApplicationDbContext db = new ApplicationDbContext();
@@ -47,6 +51,38 @@ namespace BugTrackerV3.helpers
             }
             return myTickets;
         }
+
+        public List<Ticket> GetProjectTickets(int projectId)
+        {
+            var project = db.Projects.Find(projectId);
+            return project.Tickets.ToList();
+        }
+
+        public List<Ticket> GetPMTickets()
+        {
+            var pmTickets = new List<Ticket>();
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            var pmProjects = this.projHelper.ListUserProjects(userId);
+
+            foreach (var project in pmProjects)
+            {
+                foreach (var ticket in project.Tickets)
+                {
+                    pmTickets.Add(ticket);
+                }
+            }
+            return pmTickets;
+        }
+
+
+
+
+
+
+
+
+
+
         #region TicketHistory Helper(s)
         //Abstracting away the work necessary to record a TicketHistory
 
@@ -55,7 +91,7 @@ namespace BugTrackerV3.helpers
             return !oldTicket.Equals(newTicket);
         }
 
-        public static void GenerateTicketHistories(Ticket oldTicket, Ticket newTicket)
+        public static void AddTicketHistory(Ticket oldTicket, Ticket newTicket)
         {
             //Iterate over the properties of a Ticket Object
             foreach (var property in oldTicket.GetType().GetProperties())
@@ -99,12 +135,45 @@ namespace BugTrackerV3.helpers
         #region TicketNotification Helper(s)
         //Abstracting away the work necessary to record a TicketNotification
 
-        public void GenerateTicketNotification(Ticket oldTicket, Ticket newTicket)
+        public void AddTicketNotification(int ticketId, string recipientId, string message)
         {
-
+            var notification = new TicketNotification
+                                   {
+                                       TicketId = ticketId,
+                                       SenderId = HttpContext.Current.User.Identity.GetUserId(),
+                                       RecipientId = recipientId,
+                                       Body = message,
+                                       DateNotified = DateTime.Now
+                                   };
+            db.TicketNotifications.Add(notification);
+            db.SaveChanges();
         }
 
+        //finish this method after adding Utilities helper class so you don't get errors when calling the utilites line.
+        public async Task GenerateNotifications(Ticket oldTicket, Ticket ticket)
+        {
+            var ticketState = "";
+            if (oldTicket.AssignedToUserId == null)
+            {
+                if (ticket.AssignedToUserId == null) ticketState = "NotAssigned";
+                else ticketState = "Assigned";
+            }
+            else
+            {
+                if (ticket.AssignedToUserId == null)
+                    ticketState = "Unassigned";
+                else if (oldTicket.AssignedToUserId != ticket.AssignedToUserId)
+                    ticketState = "Reassigned";
 
+
+
+            }
+            //switch (ticketState)
+            //{
+            //    case "Assigned":
+            //        AddTicketNotification(ticket.Id, ticket.AssignedToUserId, Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+            //}
+        }
 
         #endregion
 
