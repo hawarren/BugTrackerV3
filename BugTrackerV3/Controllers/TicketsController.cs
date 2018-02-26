@@ -13,12 +13,16 @@ using BugTrackerV3.helpers;
 
 namespace BugTrackerV3.Controllers
 {
+    using System.Threading.Tasks;
+
     // TODO: refactor to rely on helpers for most controller functionality, rather than mucking up controllers with code
 
     [Authorize]
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private TicketsHelper tixHelper = new TicketsHelper();
+        private UserRolesHelper rolesHelper = new UserRolesHelper();
 
         // GET: Tickets
 
@@ -326,13 +330,12 @@ namespace BugTrackerV3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
+       //public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
+       public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
             //retrieve original ticket from database, but do not cache it in this dbcontext. This will be the "oldTicket"
             var oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
-            //make sure ticket has a project Id attached.
-            //ticket.ProjectId = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id).ProjectId;
-            //ticket.Project = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id).Project;
+
 
             if (ModelState.IsValid)
             {
@@ -392,6 +395,10 @@ namespace BugTrackerV3.Controllers
                 {
                     TicketsHelper.AddTicketHistory(oldTicket, ticket);
                 }
+
+                //Send the relevant data to create notifications
+                await this.tixHelper.GenerateNotifications(oldTicket, ticket);
+
                 //return to ticket details so user can see updated changes.
                 return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 

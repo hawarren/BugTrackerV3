@@ -168,11 +168,33 @@ namespace BugTrackerV3.helpers
 
 
             }
-            //switch (ticketState)
-            //{
-            //    case "Assigned":
-            //        AddTicketNotification(ticket.Id, ticket.AssignedToUserId, Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
-            //}
+            switch (ticketState)
+            {
+                case "Assigned":
+                    AddTicketNotification(ticket.Id, ticket.AssignedToUserId, Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+                    await Utilities.SendEmailNotification(
+                        ticket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+                    break;
+                case "UnAssigned":
+                    AddTicketNotification(
+                        ticket.Id,
+                        oldTicket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("UnAssigned", oldTicket.Id, oldTicket.AssignedToUserId));
+                    break;
+
+                case "ReAssigned":
+                    AddTicketNotification(
+                        ticket.Id,
+                        ticket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+                    await Utilities.SendEmailNotification(
+                        ticket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+                    break;
+                case "NotAssigned":
+                    break;
+            }
         }
 
         #endregion
