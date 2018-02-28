@@ -195,6 +195,14 @@ namespace BugTrackerV3.helpers
                 case "NotAssigned":
                     break;
             }
+            //test to send emails regardless of assigned status
+            AddTicketNotification(
+                        ticket.Id,
+                        ticket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+            await Utilities.SendEmailNotification(
+                ticket.AssignedToUserId,
+                Utilities.BuildNotificationMessage("TestEmail", ticket.Id, ticket.AssignedToUserId));
         }
 
         #endregion

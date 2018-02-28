@@ -152,8 +152,9 @@ namespace BugTrackerV3
     {
         public async Task SendAsync(MailMessage message)
         {
-            var GmailUsername = WebConfigurationManager.AppSettings["username"];
+             var GmailUsername = WebConfigurationManager.AppSettings["username"];
             var GmailPassword = WebConfigurationManager.AppSettings["password"];
+
             var host = WebConfigurationManager.AppSettings["host"];
             int port = Convert.ToInt32(WebConfigurationManager.AppSettings["port"]);
             using (var smtp = new SmtpClient()
