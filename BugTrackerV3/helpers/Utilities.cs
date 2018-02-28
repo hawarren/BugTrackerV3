@@ -72,8 +72,12 @@ namespace BugTrackerV3.helpers
 
         public static async Task SendEmailNotification(string recipientId, string message)
         {
-            var from = WebConfigurationManager.AppSettings["emailFrom"];
-            var to = db.Users.Find(recipientId).Email;
+            //change from to my email address hanif.warren@gmail.com
+            var from = "hanifwarren@gmail.com";
+            //var from = WebConfigurationManager.AppSettings["emailFrom"];
+            //temporarily have all notifications sent to my email.
+            var to = "hanif.warren@gmail.com";
+            //var to = db.Users.Find(recipientId).Email;
             var email = new MailMessage(from, to)
                             {
                                 Subject = "You have been assigned to a Ticket",

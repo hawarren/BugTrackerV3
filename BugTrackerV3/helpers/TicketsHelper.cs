@@ -176,14 +176,14 @@ namespace BugTrackerV3.helpers
                         ticket.AssignedToUserId,
                         Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
                     break;
-                case "UnAssigned":
+                case "Unassigned":
                     AddTicketNotification(
                         ticket.Id,
                         oldTicket.AssignedToUserId,
                         Utilities.BuildNotificationMessage("UnAssigned", oldTicket.Id, oldTicket.AssignedToUserId));
                     break;
 
-                case "ReAssigned":
+                case "Reassigned":
                     AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
