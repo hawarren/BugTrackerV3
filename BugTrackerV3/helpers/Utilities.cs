@@ -73,8 +73,8 @@ namespace BugTrackerV3.helpers
         public static async Task SendEmailNotification(string recipientId, string message)
         {
             //change from to my email address hanif.warren@gmail.com
-            var from = "hanifwarren@gmail.com";
-            //var from = WebConfigurationManager.AppSettings["emailFrom"];
+            //var from = "hanifwarren@gmail.com";
+            var from = WebConfigurationManager.AppSettings["emailFrom"];
             //temporarily have all notifications sent to my email.
             var to = "hanif.warren@gmail.com";
             //var to = db.Users.Find(recipientId).Email;
