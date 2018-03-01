@@ -199,7 +199,7 @@ namespace BugTrackerV3.helpers
             AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
-                        Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
+                        Utilities.BuildNotificationMessage("This is a superfluous test", ticket.Id, ticket.AssignedToUserId));
             await Utilities.SendEmailNotification(
                 ticket.AssignedToUserId,
                 Utilities.BuildNotificationMessage("TestEmail", ticket.Id, ticket.AssignedToUserId));
