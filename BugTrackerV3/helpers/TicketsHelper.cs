@@ -195,14 +195,17 @@ namespace BugTrackerV3.helpers
                 case "NotAssigned":
                     break;
             }
-            //test to send emails regardless of assigned status
+            //send emails listing all ticket changes
+            if (HasTicketChanged())
+            {
             AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
-                        Utilities.BuildNotificationMessage("This is a superfluous test", ticket.Id, ticket.AssignedToUserId));
+                        Utilities.BuildNotificationMessage("This ticket has changed", ticket.Id, ticket.AssignedToUserId));
             await Utilities.SendEmailNotification(
                 ticket.AssignedToUserId,
-                Utilities.BuildNotificationMessage("TestEmail", ticket.Id, ticket.AssignedToUserId));
+                Utilities.BuildNotificationMessage("Ticket Changelog", ticket.Id, ticket.AssignedToUserId));
+            }
         }
 
         #endregion

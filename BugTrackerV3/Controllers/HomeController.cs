@@ -63,7 +63,7 @@ namespace BugTrackerV3.Controllers
                 try
                 {
                     var body = "<p>Email From: <bold>{0}</bold> ({1})</p><p> Message:</p><p>{2}</p>";
-                    var from = "BugTracker<hanif.warren@gmail.com>";
+                    var from = "BugTracker<hwarrendev@gmail.com>";
                     model.Body = emailBody.ToString();
 
                     var email =
