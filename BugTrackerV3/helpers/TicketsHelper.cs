@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 namespace BugTrackerV3.helpers
 {
     using System.Web.Configuration;
+    using System.Web.Mvc;
+
     using BugTrackerV3.Models;
 
     using Microsoft.Owin.Infrastructure;
@@ -135,6 +137,7 @@ namespace BugTrackerV3.helpers
         #region TicketNotification Helper(s)
         //Abstracting away the work necessary to record a TicketNotification
 
+            //Generates a notification that is then saved in the database, separately from any emails that go out.
         public void AddTicketNotification(int ticketId, string recipientId, string message)
         {
             var notification = new TicketNotification
@@ -149,9 +152,10 @@ namespace BugTrackerV3.helpers
             db.SaveChanges();
         }
 
-        //finish this method after adding Utilities helper class so you don't get errors when calling the utilites line.
+
         public async Task GenerateNotifications(Ticket oldTicket, Ticket ticket)
         {
+            //tailor message according to whether it's reassigned/assigned/unassigned etc.
             var ticketState = "";
             if (oldTicket.AssignedToUserId == null)
             {
@@ -168,6 +172,9 @@ namespace BugTrackerV3.helpers
 
 
             }
+            // add if statement for if developer is the same but ticket changed
+            // switch state is "modified"
+            // use .OrderByDescending, .Select, and .First().ToString to get latest ticket history item.
             switch (ticketState)
             {
                 case "Assigned":
@@ -196,9 +203,11 @@ namespace BugTrackerV3.helpers
                     break;
             }
             //send emails listing all ticket changes
-            if (HasTicketChanged())
+            if (HasTicketChanged(oldTicket, ticket))
             {
-            AddTicketNotification(
+                // LINQ statement to get last tickethistory object to pass to NotificationBuilder
+                //  var changelog = db.Tickets.Where(t => t.Id == ticket.Id)
+                AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
                         Utilities.BuildNotificationMessage("This ticket has changed", ticket.Id, ticket.AssignedToUserId));

@@ -40,19 +40,19 @@ namespace BugTrackerV3.helpers
         {
             return db.TicketStatus.Find(id).Name;
         }
-
-        public static string BuildNotificationMessage(string type, int ticketId, string recipientId)
+        // Builds messages and concatenates to string for delivery in an email or other notification
+        public static string BuildNotificationMessage(string msgType, int ticketId, string recipientId)
         {
             var ticket = db.Tickets.Find(ticketId);
 
             var message = new StringBuilder();
+
             message.AppendFormat("Dear {0},", db.Users.Find(recipientId).FirstName);
             message.AppendLine(System.Environment.NewLine);
-            //add remainder of BuildNotifcationMessage here
-
+            //alter message based on whether dev has been assigned or unassigned from a ticket
             message.AppendFormat(
                 "You have been {0} a Ticket. Please review the following details",
-                type == "Assigned" ? " assigned to " : " unassigned from ");
+                msgType == "Assigned" ? " assigned to " : " unassigned from ");
             message.AppendLine(System.Environment.NewLine);
 
             message.AppendFormat("Assignment Date: {0}", DateTime.Now);
