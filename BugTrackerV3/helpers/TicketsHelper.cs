@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BugTrackerV3.helpers
 {
+    using System.Drawing;
     using System.Web.Configuration;
     using System.Web.Mvc;
 
@@ -168,13 +169,16 @@ namespace BugTrackerV3.helpers
                     ticketState = "Unassigned";
                 else if (oldTicket.AssignedToUserId != ticket.AssignedToUserId)
                     ticketState = "Reassigned";
+                //generate notification even if dev doesn't change
+                else if (oldTicket.AssignedToUserId == ticket.AssignedToUserId)
+                {
+                    if (HasTicketChanged(oldTicket, ticket)) ticketState = "SameAssigned";
+                }
 
 
 
             }
-            // add if statement for if developer is the same but ticket changed
-            // switch state is "modified"
-            // use .OrderByDescending, .Select, and .First().ToString to get latest ticket history item.
+
             switch (ticketState)
             {
                 case "Assigned":
@@ -201,26 +205,19 @@ namespace BugTrackerV3.helpers
                     break;
                 case "NotAssigned":
                     break;
-            }
-            //send emails listing all ticket changes
-            if (HasTicketChanged(oldTicket, ticket))
-            {
-                // LINQ statement to get last tickethistory object to pass to NotificationBuilder
-                var changelog = db.TicketHistorys.Where(t => t.TicketId == ticket.Id)
-                    .Where(t => t.TicketId == ticket.Id).GroupBy(c => c.Id)
-                    .Select(g => g.OrderByDescending(c => c.Id).FirstOrDefault());
-                var changelog2 = changelog.ToString();
-
-                AddTicketNotification(
+                    //if dev is the same but other changes to ticket
+                case "SameAssigned":
+                    AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
-                        Utilities.BuildNotificationMessage("Ticket Changelog", ticket.Id, ticket.AssignedToUserId));
-            await Utilities.SendEmailNotification(
-                ticket.AssignedToUserId,
-                Utilities.BuildNotificationMessage2(changelog.FirstOrDefault(),  ticket.Id, ticket.AssignedToUserId));
+                        Utilities.BuildNotificationMessage("SameAssigned", ticket.Id,
+                        ticket.AssignedToUserId));
+                    await Utilities.SendEmailNotification(
+                        ticket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("SameAssigned", ticket.Id, ticket.AssignedToUserId));
+                    break;
             }
-        }
-
+          }
         #endregion
 
 
