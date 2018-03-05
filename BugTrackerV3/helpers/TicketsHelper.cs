@@ -206,14 +206,18 @@ namespace BugTrackerV3.helpers
             if (HasTicketChanged(oldTicket, ticket))
             {
                 // LINQ statement to get last tickethistory object to pass to NotificationBuilder
-                //  var changelog = db.Tickets.Where(t => t.Id == ticket.Id)
+                var changelog = db.TicketHistorys.Where(t => t.TicketId == ticket.Id)
+                    .Where(t => t.TicketId == ticket.Id).GroupBy(c => c.Id)
+                    .Select(g => g.OrderByDescending(c => c.Id).FirstOrDefault());
+                var changelog2 = changelog.ToString();
+
                 AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
-                        Utilities.BuildNotificationMessage("This ticket has changed", ticket.Id, ticket.AssignedToUserId));
+                        Utilities.BuildNotificationMessage("Ticket Changelog", ticket.Id, ticket.AssignedToUserId));
             await Utilities.SendEmailNotification(
                 ticket.AssignedToUserId,
-                Utilities.BuildNotificationMessage("Ticket Changelog", ticket.Id, ticket.AssignedToUserId));
+                Utilities.BuildNotificationMessage2(changelog.FirstOrDefault(),  ticket.Id, ticket.AssignedToUserId));
             }
         }
 
