@@ -158,6 +158,7 @@ namespace BugTrackerV3.helpers
         {
             //tailor message according to whether it's reassigned/assigned/unassigned etc.
             var ticketState = "";
+            string subject = "";
             if (oldTicket.AssignedToUserId == null)
             {
                 if (ticket.AssignedToUserId == null) ticketState = "NotAssigned";
@@ -182,9 +183,10 @@ namespace BugTrackerV3.helpers
             switch (ticketState)
             {
                 case "Assigned":
+                    subject = "You have been assigned a BugTracker ticket: : \" " + ticket.Title + "\"";
                     AddTicketNotification(ticket.Id, ticket.AssignedToUserId, Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
                     await Utilities.SendEmailNotification(
-                        ticket.AssignedToUserId,
+                        ticket.AssignedToUserId, subject,
                         Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
                     break;
                 case "Unassigned":
@@ -195,25 +197,27 @@ namespace BugTrackerV3.helpers
                     break;
 
                 case "Reassigned":
+                    subject = "You have been assigned a BugTracker ticket: \" " + ticket.Title + "\"";
                     AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
                         Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
                     await Utilities.SendEmailNotification(
-                        ticket.AssignedToUserId,
+                        ticket.AssignedToUserId, subject,
                         Utilities.BuildNotificationMessage("Assigned", ticket.Id, ticket.AssignedToUserId));
                     break;
                 case "NotAssigned":
                     break;
                     //if dev is the same but other changes to ticket
                 case "SameAssigned":
+                     subject = "Update on BugTracker ticket: \" " + ticket.Title + "\"";
                     AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,
                         Utilities.BuildNotificationMessage("SameAssigned", ticket.Id,
                         ticket.AssignedToUserId));
                     await Utilities.SendEmailNotification(
-                        ticket.AssignedToUserId,
+                        ticket.AssignedToUserId, subject,
                         Utilities.BuildNotificationMessage("SameAssigned", ticket.Id, ticket.AssignedToUserId));
                     break;
             }

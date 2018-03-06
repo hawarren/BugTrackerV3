@@ -52,12 +52,12 @@ namespace BugTrackerV3.helpers
             //alter message based on whether dev has been assigned or unassigned from a ticket
             if (msgType == "SameAssigned")
             {
-                message.AppendFormat("Please be advised that the ticket referenced herein has been changed. You are still the developer on this ticket, and here are the following details");
+                message.AppendFormat("Please be advised that the ticket referenced herein has been changed. You are still the developer on this ticket, and here are the following details \n");
             }
             else
             {
             message.AppendFormat(
-                "You have been {0} a Ticket. Please review the following details",
+                "You have been {0} a Ticket. Please review the following details \n",
                 msgType == "Assigned" ? " have been assigned to a " : " have been unassigned from ");
             }
             message.AppendLine(System.Environment.NewLine);
@@ -68,49 +68,17 @@ namespace BugTrackerV3.helpers
             message.AppendFormat("Ticket Id: {0}", ticket.Id);
             message.AppendLine(System.Environment.NewLine);
 
-            message.AppendFormat("Ticket Title: {0}", ticket.Project.Name);
+            message.AppendFormat("Ticket Title: {0}", ticket.Title);
             message.AppendLine(System.Environment.NewLine);
 
             message.AppendFormat("Project Name: {0}", ticket.Project.Name);
             message.AppendLine(System.Environment.NewLine);
-
-            return message.ToString();
+            return  message.ToString();
         }
 
-        //public static string BuildNotificationMessage2(TicketHistory changelog, int ticketId, string recipientId)
-        //{
-        //    var ticket = db.Tickets.Find(ticketId);
-        //    //this unnecessary but didnt' want to change the conditional involving it
-        //    var msgType = "Assigned";
-        //    var message = new StringBuilder();
 
-        //    message.AppendFormat("Dear {0},", db.Users.Find(recipientId).FirstName);
-        //    message.AppendLine(System.Environment.NewLine);
-        //    //alter message based on whether dev has been assigned or unassigned from a ticket
-        //    message.AppendFormat(
-        //        "You have been {0} a Ticket. Please review the following details",
-        //        msgType == "Assigned" ? " assigned to " : " unassigned from ");
-        //    message.AppendLine(System.Environment.NewLine);
 
-        //    message.AppendFormat("Assignment Date: {0}", DateTime.Now);
-        //    message.AppendLine(System.Environment.NewLine);
-
-        //    message.AppendFormat("Ticket Id: {0}", ticket.Id);
-        //    message.AppendLine(System.Environment.NewLine);
-
-        //    message.AppendFormat("Ticket Title: {0}", ticket.Project.Name);
-        //    message.AppendLine(System.Environment.NewLine);
-
-        //    message.AppendFormat("Project Name: {0}", ticket.Project.Name);
-        //    message.AppendLine(System.Environment.NewLine);
-
-        //    message.AppendFormat("Project Changes: {0}", changelog.ToString());
-        //    message.AppendLine(System.Environment.NewLine);
-
-        //    return message.ToString();
-        //}
-
-        public static async Task SendEmailNotification(string recipientId, string message)
+        public static async Task SendEmailNotification(string recipientId, string subject, string message)
         {
 
             var from = WebConfigurationManager.AppSettings["emailFrom"];
@@ -119,9 +87,10 @@ namespace BugTrackerV3.helpers
             //var to = db.Users.Find(recipientId).Email;
             var email = new MailMessage(from, to)
                             {
-                                Subject = "You have been assigned to a Ticket",
+                                Subject = subject,
+                                //"Notification from BugTracker Regarding Your Ticket",
                                 Body = message,
-                                IsBodyHtml = true
+                                IsBodyHtml = false
                             };
             var svc = new PersonalEmail();
             await svc.SendAsync(email);
