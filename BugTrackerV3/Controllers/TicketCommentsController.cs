@@ -11,9 +11,14 @@ using Microsoft.AspNet.Identity;
 
 namespace BugTrackerV3.Controllers
 {
+    using System.Threading.Tasks;
+
+    using BugTrackerV3.helpers;
+
     public class TicketCommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private TicketsHelper tixHelper = new TicketsHelper();
 
         // GET: TicketComments
         public ActionResult Index()
@@ -50,14 +55,16 @@ namespace BugTrackerV3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Comment,Created,TicketId,UserId")] TicketComment ticketComment)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Comment,Created,TicketId,UserId")] TicketComment ticketComment)
         {
+            Ticket oldTicket = this.db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticketComment.TicketId);
             ticketComment.Ticket = db.Tickets.Find(ticketComment.TicketId);
             if (ticketComment.Ticket.AssignedToUserId == User.Identity.GetUserId()
                 || ticketComment.Ticket.OwnerUserId == User.Identity.GetUserId()
                  || ticketComment.Ticket.Project.PMID == User.Identity.GetUserId()
                  || User.IsInRole("Admin")
                  )
+
             {
 
             if (ModelState.IsValid)
@@ -65,9 +72,15 @@ namespace BugTrackerV3.Controllers
                 var user = db.Users.Find(User.Identity.GetUserId());
                 ticketComment.User = user;
                 ticketComment.Created = DateTimeOffset.Now;
+
+                    //update the ticket last updated time
+                ticketComment.Ticket.Updated = DateTimeOffset.Now;
+                    this.db.Entry(ticketComment.Ticket).State = EntityState.Modified;
                 db.TicketComments.Add(ticketComment);
+
                 db.SaveChanges();
                     //return RedirectToAction("Index");
+                await this.tixHelper.GenerateNotifications(oldTicket, ticketComment.Ticket);
                     return RedirectToAction("Details", "Tickets", new { id = ticketComment.TicketId });
 
                 }

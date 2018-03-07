@@ -91,6 +91,8 @@ namespace BugTrackerV3.helpers
 
         public static bool HasTicketChanged(Ticket oldTicket, Ticket newTicket)
         {
+
+
             return !oldTicket.Equals(newTicket);
         }
 
@@ -211,6 +213,18 @@ namespace BugTrackerV3.helpers
                     //if dev is the same but other changes to ticket
                 case "SameAssigned":
                      subject = "Update on BugTracker ticket: \" " + ticket.Title + "\"";
+                    AddTicketNotification(
+                        ticket.Id,
+                        ticket.AssignedToUserId,
+                        Utilities.BuildNotificationMessage("SameAssigned", ticket.Id,
+                        ticket.AssignedToUserId));
+                    await Utilities.SendEmailNotification(
+                        ticket.AssignedToUserId, subject,
+                        Utilities.BuildNotificationMessage("SameAssigned", ticket.Id, ticket.AssignedToUserId));
+                    break;
+                //check if comments are altered
+                case "NewComments":
+                    subject = "Update on BugTracker ticket: \" " + ticket.Title + "\"";
                     AddTicketNotification(
                         ticket.Id,
                         ticket.AssignedToUserId,

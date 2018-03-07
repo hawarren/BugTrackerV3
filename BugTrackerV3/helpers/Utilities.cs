@@ -6,9 +6,13 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Configuration;
+using System.Web.Mvc.Html;
 
 namespace BugTrackerV3.helpers
 {
+    using System.Security.Policy;
+    using System.Web.Mvc;
+
     using BugTrackerV3.Models;
 
     public class Utilities
@@ -59,7 +63,9 @@ namespace BugTrackerV3.helpers
             message.AppendFormat(
                 "You have been {0} a Ticket. Please review the following details \n",
                 msgType == "Assigned" ? " have been assigned to a " : " have been unassigned from ");
+
             }
+
             message.AppendLine(System.Environment.NewLine);
 
             message.AppendFormat("Assignment Date: {0}", DateTime.Now);
