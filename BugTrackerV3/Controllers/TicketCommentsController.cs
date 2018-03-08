@@ -73,8 +73,8 @@ namespace BugTrackerV3.Controllers
                 ticketComment.User = user;
                 ticketComment.Created = DateTimeOffset.Now;
 
-                    //update the ticket last updated time
-                ticketComment.Ticket.Updated = DateTimeOffset.Now;
+                    //update the ticket last updated time to match comment created time
+                ticketComment.Ticket.Updated = ticketComment.Created;
                     this.db.Entry(ticketComment.Ticket).State = EntityState.Modified;
                 db.TicketComments.Add(ticketComment);
 

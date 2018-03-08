@@ -122,7 +122,8 @@ namespace BugTrackerV3.helpers
                         newTicketHistory.Property = currentProp;
                         newTicketHistory.OldValue = oldValue.ToString();
                         newTicketHistory.NewValue = newValue.ToString();
-                        newTicketHistory.Changed = DateTime.Now;
+                        //make the ticket edit date match the ticket history creation date, watch for null value
+                        newTicketHistory.Changed = newTicket.Updated ?? DateTimeOffset.Now;
                         newTicketHistory.TicketId = oldTicket.Id;
                         newTicketHistory.UserId = HttpContext.Current.User.Identity.GetUserId();
 

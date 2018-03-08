@@ -49,8 +49,9 @@ namespace BugTrackerV3.helpers
         {
             var ticket = db.Tickets.Find(ticketId);
             var ticketComment = ticket.TicketComments.OrderByDescending(t => t.Id).FirstOrDefault();
+            var ticketChange = ticket.TicketHistories.OrderByDescending(t => t.Id).FirstOrDefault();
             var message = new StringBuilder();
-            var CMessage = new StringBuilder();
+
 
             message.AppendFormat("Dear {0},", db.Users.Find(recipientId).FirstName);
             message.AppendLine(System.Environment.NewLine);
@@ -81,14 +82,17 @@ namespace BugTrackerV3.helpers
             message.AppendFormat("Project Name: {0}", ticket.Project.Name);
             message.AppendLine(System.Environment.NewLine);
 
-            //Message is for including comments in the email
-            message.AppendFormat("Comment text: {0} left at {1}", ticketComment.Comment, ticketComment.Created);
+            if (ticketComment.Created == ticket.Updated)
+            {
+
+            // Only mention comments if there was a comment left.
+            message.AppendFormat("The Last Comment reads: {0} left at {1}", ticketComment.Comment, ticketComment.Created);
             message.AppendLine(System.Environment.NewLine);
 
+            }
 
-
-
-
+            message.AppendFormat("The Most recent change involved the {0} field. It was made at {1}", ticketChange.Property, ticketChange.Changed);
+            message.AppendLine(System.Environment.NewLine);
 
 
             return  message.ToString();
