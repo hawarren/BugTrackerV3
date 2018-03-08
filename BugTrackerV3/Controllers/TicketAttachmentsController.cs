@@ -12,9 +12,14 @@ using Microsoft.AspNet.Identity;
 
 namespace BugTrackerV3.Controllers
 {
+    using System.Threading.Tasks;
+
+    using BugTrackerV3.helpers;
+
     public class TicketAttachmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private TicketsHelper tixHelper = new TicketsHelper();
 
         // GET: TicketAttachments
         public ActionResult Index()
@@ -53,9 +58,10 @@ namespace BugTrackerV3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FilePath,Description,Created,UserId,TicketId")] TicketAttachment ticketAttachment, HttpPostedFileBase fileAdded)
+        public async Task<ActionResult> Create([Bind(Include = "Id,FilePath,Description,Created,UserId,TicketId")] TicketAttachment ticketAttachment, HttpPostedFileBase fileAdded)
         {
             ticketAttachment.Ticket = db.Tickets.Find(ticketAttachment.TicketId);
+            var oldTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticketAttachment.TicketId);
             if (ticketAttachment.Ticket.AssignedToUserId == User.Identity.GetUserId()
                 || ticketAttachment.Ticket.OwnerUserId == User.Identity.GetUserId()
                  || ticketAttachment.Ticket.Project.PMID == User.Identity.GetUserId()
@@ -72,12 +78,16 @@ namespace BugTrackerV3.Controllers
                     fileAdded.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
                     ticketAttachment.FilePath = "/Uploads/" + fileName;
                       ticketAttachment.Created = DateTimeOffset.Now;
-
+                        //let ticket update reflect time attachment was added.
+                        ticketAttachment.Ticket.Updated = ticketAttachment.Created;
+                        this.db.Entry(ticketAttachment.Ticket).State = EntityState.Modified;
 
                     db.TicketAttachments.Add(ticketAttachment);
                     db.SaveChanges();
                     // return RedirectToAction("Index");
                         //return to ticket details so user can see updated changes.
+                        await this.tixHelper.GenerateNotifications(oldTicket, ticketAttachment.Ticket);
+
                         return RedirectToAction("Details", "Tickets", new { id = ticketAttachment.Ticket.Id });
                     }
                 }

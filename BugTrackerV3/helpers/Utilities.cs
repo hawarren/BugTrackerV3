@@ -50,6 +50,9 @@ namespace BugTrackerV3.helpers
             var ticket = db.Tickets.Find(ticketId);
             var ticketComment = ticket.TicketComments.OrderByDescending(t => t.Id).FirstOrDefault();
             var ticketChange = ticket.TicketHistories.OrderByDescending(t => t.Id).FirstOrDefault();
+            var attachmentChange = ticket.TicketAttachments.OrderByDescending(t => t.Id).FirstOrDefault();
+
+
             var message = new StringBuilder();
 
 
@@ -90,7 +93,13 @@ namespace BugTrackerV3.helpers
             message.AppendLine(System.Environment.NewLine);
 
             }
-
+            if (attachmentChange.Created == ticket.Updated)
+            {
+                message.AppendFormat(
+                    "The most recent attachment is called {0}. The url is {1}",
+                    attachmentChange.Description,
+                    attachmentChange.FilePath);
+            }
             message.AppendFormat("The Most recent change involved the {0} field. It was made at {1}", ticketChange.Property, ticketChange.Changed);
             message.AppendLine(System.Environment.NewLine);
 
