@@ -160,7 +160,8 @@ namespace BugTrackerV3.helpers
         {
             //tailor message according to whether it's reassigned/assigned/unassigned etc.
             var ticketState = "";
-            string subject = "";
+            var subject = "";
+
             if (oldTicket.AssignedToUserId == null)
             {
                 if (ticket.AssignedToUserId == null) ticketState = "NotAssigned";
@@ -180,6 +181,10 @@ namespace BugTrackerV3.helpers
 
 
 
+            }
+            if (oldTicket.TicketComments.Count() != ticket.TicketComments.Count())
+            {
+                ticketState = "NewComments";
             }
 
             switch (ticketState)
