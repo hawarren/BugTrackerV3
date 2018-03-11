@@ -73,8 +73,8 @@ namespace BugTrackerV3.helpers
 
             message.AppendLine(System.Environment.NewLine);
 
-            message.AppendFormat("Assignment Date: {0}", DateTime.Now);
-            message.AppendLine(System.Environment.NewLine);
+            //message.AppendFormat("Assignment Date: {0}", DateTime.Now);
+            //message.AppendLine(System.Environment.NewLine);
 
             message.AppendFormat("Ticket Id: {0}", ticket.Id);
             message.AppendLine(System.Environment.NewLine);
@@ -85,20 +85,23 @@ namespace BugTrackerV3.helpers
             message.AppendFormat("Project Name: {0}", ticket.Project.Name);
             message.AppendLine(System.Environment.NewLine);
 
-            if (ticketComment.Created == ticket.Updated)
+            if (ticket.Updated != null && ticketComment != null)
             {
+                if (ticketComment.Created == ticket.Updated)
+                {
 
-            // Only mention comments if there was a comment left.
-            message.AppendFormat("The Last Comment reads: {0} left at {1}", ticketComment.Comment, ticketComment.Created);
-            message.AppendLine(System.Environment.NewLine);
+                // Only mention comments if there was a comment left.
+                message.AppendFormat("The Last Comment reads: {0} left at {1}", ticketComment.Comment, ticketComment.Created);
+                message.AppendLine(System.Environment.NewLine);
 
-            }
-            if (attachmentChange.Created == ticket.Updated)
-            {
-                message.AppendFormat(
-                    "The most recent attachment is called {0}. The url is {1}",
-                    attachmentChange.Description,
-                    attachmentChange.FilePath);
+                }
+                if (attachmentChange.Created == ticket.Updated)
+                {
+                    message.AppendFormat(
+                        "The most recent attachment is called {0}. The url is {1}",
+                        attachmentChange.Description,
+                        attachmentChange.FilePath);
+                }
             }
             message.AppendFormat("The Most recent change involved the {0} field. It was made at {1}", ticketChange.Property, ticketChange.Changed);
             message.AppendLine(System.Environment.NewLine);

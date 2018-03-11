@@ -408,11 +408,67 @@ namespace BugTrackerV3.Migrations
             userManager.AddToRole(userPMan4, "ProjectManager");
             userManager.AddToRole(userPMan4, "Submitter");
 
+            /////////Seeding guest roles
+            ///  if (!context.Users.Any(u => u.Email == "GuestAdmin@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "GuestAdmin",
+                    Email = "GuestAdmin@btracker.com",
+                    FirstName = "GuestA",
+                    LastName = "GAdmin",
+                    DisplayName = "GuestAdmin"
+                }, "Abc&123!");
+            }
+            var GuestAdmin = userManager.FindByEmail("GuestAdmin@btracker.com").Id;
+            userManager.AddToRole(GuestAdmin, "Admin");
+            userManager.AddToRole(GuestAdmin, "Submitter");
 
 
+            ///  if (!context.Users.Any(u => u.Email == "GuestPM@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "GuestPM",
+                    Email = "GuestPM@btracker.com",
+                    FirstName = "GuestP",
+                    LastName = "GPM",
+                    DisplayName = "GuestPM"
+                }, "Abc&123!");
+            }
+            var GuestPM = userManager.FindByEmail("GuestPM@btracker.com").Id;
+            userManager.AddToRole(GuestPM, "ProjectManager");
+            userManager.AddToRole(GuestPM, "Submitter");
 
+            ///  if (!context.Users.Any(u => u.Email == "GuestDev@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "GuestDev",
+                    Email = "GuestDev@btracker.com",
+                    FirstName = "GuestD",
+                    LastName = "GDev",
+                    DisplayName = "GuestDev"
+                }, "Abc&123!");
+            }
+            var GuestDev = userManager.FindByEmail("GuestDev@btracker.com").Id;
+            userManager.AddToRole(userPMan4, "Developer");
+            userManager.AddToRole(userPMan4, "Submitter");
 
+            ///  if (!context.Users.Any(u => u.Email == "GuestSubmitter@btracker.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "GuestSubmitter",
+                    Email = "GuestSubmitter@btracker.com",
+                    FirstName = "GuestS",
+                    LastName = "GSubmitter",
+                    DisplayName = "GuestSubmitter"
+                }, "Abc&123!");
+            }
+            var GuestSubmitter = userManager.FindByEmail("GuestSubmitter@btracker.com").Id;
 
+            userManager.AddToRole(GuestSubmitter, "Submitter");
         }
     }
 }

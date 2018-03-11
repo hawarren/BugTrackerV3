@@ -64,6 +64,49 @@
                                         <input type="submit" value="Log in" class="btn btn-default" />
                                     </div>
                                 </div>
+                                //Remember to finish implementing this
+
+                                 @{
+
+                    List<SelectListItem> guestTypes = new List<SelectListItem>();
+                    guestTypes.Add(new SelectListItem
+                    {
+                        Text = "Administrator",
+                        Value = "admin@bugtracker.com"
+                    });
+                    guestTypes.Add(new SelectListItem
+                    {
+                        Text = "Project Manager",
+                        Value = "project.manager@bugtracker.com",
+                        Selected = true
+                    });
+                    guestTypes.Add(new SelectListItem
+                    {
+                        Text = "Developer",
+                        Value = "developer@bugtracker.com"
+                    });
+                    guestTypes.Add(new SelectListItem
+                    {
+                        Text = "Submitter",
+                        Value = "submitter@bugtracker.com"
+                    });
+
+
+
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.DropDownListFor(m => m.Email, guestTypes, "(Select a Guest Role)", htmlAttributes: new { Style = "width:210px" })
+
+                        @Html.HiddenFor(m => m.Password, new { @class = "form-control", Value = "Password-1" })
+                        <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-default" />
+                    }
+
+
+
+
+
+
                                 <p>
                                     <div class="btn btn-default">
 
@@ -75,11 +118,14 @@
                 @Html.Partial("Register")*@
                                 @* Enable this once you have account confirmation enabled for password reset functionality
                                 *@
-                <p>
-                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                </p>
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>
                             }
                         </section>
+
+
+
                     </div>
 
                 </div>
