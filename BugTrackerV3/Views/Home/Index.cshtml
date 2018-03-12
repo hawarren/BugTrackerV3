@@ -11,10 +11,12 @@
         Authored using ASP.NET framework and related technologies <br />
         (including C#, HTML, CSS, JavaScript, Bootstrap and jQuery).
     </p>
+
     @if (!Request.IsAuthenticated)
     {
 
-        <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Register and Log in</a></p>
+        <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Click to Register or Log in</a></p>
+
     }
     else
 
@@ -27,5 +29,7 @@
             <br />(Select <i class="fa fa-bars"> Menu </i> to toggle the sidebar)
         </p>
     }
+
+
 </div>
 

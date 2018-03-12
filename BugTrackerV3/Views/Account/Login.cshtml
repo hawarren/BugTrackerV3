@@ -24,12 +24,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-center m-b-md">
-                <h3>PLEASE LOGIN, REGISTER, OR USE A GUEST LOGIN TO ACCESS THE BUGTRACKER</h3>
+                <h3>To Access the BugTracker please select a login method, or register for an account</h3>
 
             </div>
             <div class="hpanel">
                 <div class="panel-body">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <section id="loginForm">
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -52,20 +52,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <div class="checkbox">
+                                    @*<div class="col-md-offset-2 col-md-10">*@
+                                    <div class="col-md-12">
+
+                                        <div class="checkbox col-md-6">
                                             @Html.CheckBoxFor(m => m.RememberMe)
                                             @Html.LabelFor(m => m.RememberMe)
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <input type="submit" value="Log in" class="btn btn-default" />
-                                    </div>
-                                <div  class="col-md-8">
+                                <div  class="col-md-12 btn btn-default">
                                     @Html.ActionLink("Forgot your password?", "ForgotPassword")
                                 </div>
+                                        </div>
+                                <div class="form-group">
+                                </div>
+                                    <div class="col-md-6">
+                                        <input type="submit" value="Log in" class="btn btn-default" />
+                                    </div>
+                                    </div>
                                 </div>
                                 <p>
                                     <div class="btn btn-default">
@@ -113,7 +115,8 @@
                             @Html.DropDownListFor(m => m.Email, guestTypes, "(Select a Guest Role)", htmlAttributes: new { Style = "width:210px" })
 
                             @Html.HiddenFor(m => m.Password, new { @class = "form-control", Value = "Abc&123!" })
-                            <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-default" />
+
+                            <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-info" />
                         }
                     </div>
                 </div>
