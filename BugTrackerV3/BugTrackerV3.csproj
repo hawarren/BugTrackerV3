@@ -19,8 +19,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44352</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -218,6 +217,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DashboardVMController.cs" />
     <Compile Include="Controllers\HomerControllers\AnalyticsController.cs" />
     <Compile Include="Controllers\HomerControllers\AppViewsController.cs" />
     <Compile Include="Controllers\HomerControllers\BoxTransitionsController.cs" />
@@ -247,29 +247,30 @@
     <Compile Include="helpers\UserRolesHelper.cs" />
     <Compile Include="helpers\Utilities.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdminProjectViewModel.cs" />
-    <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\AssignDevViewModel.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\AdminProjectViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\AssignDevViewModel.cs" />
     <Compile Include="Models\ChangeSet.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\DashboardVM.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Project.cs" />
-    <Compile Include="Models\ProjectDEVViewModel.cs" />
-    <Compile Include="Models\ProjectPMViewModel.cs" />
+    <Compile Include="ViewModels\ProjectDEVViewModel.cs" />
+    <Compile Include="ViewModels\ProjectPMViewModel.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketAttachment.cs" />
     <Compile Include="Models\TicketComment.cs" />
     <Compile Include="Models\TicketHistory.cs" />
     <Compile Include="Controllers\TicketHistoryController.cs" />
-    <Compile Include="Models\TicketIndexViewModel.cs" />
+    <Compile Include="ViewModels\TicketIndexViewModel.cs" />
     <Compile Include="Models\TicketNotification.cs" />
     <Compile Include="Models\TicketNotificationsController.cs" />
     <Compile Include="Models\TicketPriority.cs" />
     <Compile Include="Models\TicketStatus.cs" />
     <Compile Include="Models\TicketType.cs" />
-    <Compile Include="Models\PTURViewModel.cs" />
-    <Compile Include="Models\UsersViewModel.cs" />
+    <Compile Include="ViewModels\PTURViewModel.cs" />
+    <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2703,6 +2704,7 @@
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Dashboard\BasicDashboard.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
@@ -2773,6 +2775,7 @@
     <Folder Include="Vendor\moment\src\locale\" />
     <Folder Include="Vendor\moment\templates\" />
     <Folder Include="Vendor\pdfmake\libs\FileSaver.js\" />
+    <Folder Include="Views\DashboardVM\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
