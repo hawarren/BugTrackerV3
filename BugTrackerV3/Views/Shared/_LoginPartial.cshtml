@@ -10,8 +10,14 @@
             <li>
             </li>
     </ul>*@
-                @Html.ActionLink("You are logged in as " + User.Identity.GetUserName() + "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+
+        @Html.ActionLink("You are logged in as " + User.Identity.GetUserName() + "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                 <a href="javascript:document.getElementById('logoutForm').submit()">(Log Out)</a>
+
+
+        {
+            <div> THIS ACCOUNT FOR DEMONSTRATION PURPOSES ONLY </div>
+        }
 
     }
 }
