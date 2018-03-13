@@ -2704,7 +2704,7 @@
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-    <Content Include="Views\Dashboard\BasicDashboard.cshtml" />
+    <Content Include="Views\DashboardVM\BasicDashboard.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
@@ -2775,7 +2775,6 @@
     <Folder Include="Vendor\moment\src\locale\" />
     <Folder Include="Vendor\moment\templates\" />
     <Folder Include="Vendor\pdfmake\libs\FileSaver.js\" />
-    <Folder Include="Views\DashboardVM\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
