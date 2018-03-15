@@ -159,7 +159,7 @@ else
                             @Html.DisplayFor(modelItem => ticket.Description)
                         </td>
                         <td>
-                            @Html.ActionLink("Details", "Details", new { id = ticket.Id }) |
+                            @Html.ActionLink("Details or not", "Details", "Tickets", new { id = ticket.Id }) |
                             @Html.ActionLink("Edit", "Edit", new { id = ticket.Id }) |
                             @Html.ActionLink("Delete", "Delete", new { id = ticket.Id })
                         </td>
