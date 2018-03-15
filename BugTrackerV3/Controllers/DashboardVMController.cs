@@ -19,7 +19,7 @@ namespace BugTrackerV3.Controllers
         private TicketsHelper tixHelper = new TicketsHelper();
         private UserRolesHelper roleHelper = new UserRolesHelper();
 
-
+       [Authorize]
         public ActionResult BasicDashboard()
         {
             var dashboardData = new DashboardVM();
