@@ -1,4 +1,5 @@
-﻿@model BugTrackerV3.ViewModels.DashboardVM
+﻿@using Microsoft.AspNet.Identity
+@model BugTrackerV3.ViewModels.DashboardVM
 @{
     ViewBag.Title = "Basic Dashboard";
 }
@@ -42,7 +43,7 @@ else
 
                     <div id="collapse@(index)" class="panel-collapse collapse">
                         <table class="table">
-                            <thead>
+                            @*<thead>*@
                             <tr>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
@@ -53,9 +54,7 @@ else
                                 <th></th>
                             </tr>
 
-                            </thead>
 
-                            <tbody>
 
                             @foreach (var ticket in project.Tickets)
                             {
@@ -73,8 +72,7 @@ else
                                     </td>
                                 </tr>
                             }
-                            </tbody>
-                        </table>
+</table>
 
 
 </div>
@@ -90,11 +88,11 @@ else
         <div id="projects" class="tab-pane fade">
             <h2>Project Index</h2>
             <p>
-                @Html.ActionLink("Create New Project", "Create")
+                @Html.ActionLink("Create New Project", "Create", "Projects", null)
             </p>
 
             <table class="table">
-                <thead>
+
 
                     <tr>
                         <th>
@@ -105,8 +103,8 @@ else
                         </th>
                         <th></th>
                     </tr>
-                </thead>
-                <tbody>
+
+
 
                 <!-- Body -->
                 @foreach (var project in Model.Projects)
@@ -119,13 +117,22 @@ else
                             @Html.DisplayFor(modelItem => project.ProjectDescription)
                         </td>
                         <td>
-                            @Html.ActionLink("Details", "Details", new { id = project.Id }) |
-                            @Html.ActionLink("Edit", "Edit", new { id = project.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = project.Id })
+                            @Html.ActionLink("Details", "Details", "Projects", new { id = project.Id }, null) |
+                            @Html.ActionLink("Edit", "Edit", "Projects", new { id = project.Id }, null)
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div>
+                                | @Html.ActionLink("Delete", "Delete", "Projects", new
+                                {
+                                    id = project.Id
+                                }, null)
+
+                                </div>
+                            }
                         </td>
                     </tr>
                 }
-                </tbody>
+
             </table>
         </div>
         <div id="tickets" class="tab-pane fade">
@@ -135,7 +142,7 @@ else
             </p>
 
             <table class="table">
-                <thead>
+
 
                     <tr>
                         <th>
@@ -146,8 +153,7 @@ else
                         </th>
                         <th></th>
                     </tr>
-                </thead>
-                <tbody>
+
                 <!-- Body -->
                 @foreach (var ticket in Model.Tickets)
                 {
@@ -159,13 +165,13 @@ else
                             @Html.DisplayFor(modelItem => ticket.Description)
                         </td>
                         <td>
-                            @Html.ActionLink("Details or not", "Details", "Tickets", new { id = ticket.Id }) |
-                            @Html.ActionLink("Edit", "Edit", new { id = ticket.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = ticket.Id })
+                            @Html.ActionLink("Details or not", "Details", "Tickets", new { id = ticket.Id }, null) |
+                            @Html.ActionLink("Edit", "Edit", "Tickets", new { id = ticket.Id }, null) |
+                            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = ticket.Id }, null)
                         </td>
                     </tr>
                 }
-                </tbody>
+
             </table>
         </div>
     </div>
@@ -174,9 +180,7 @@ else
 }
 
 @section scripts {
-    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
-
-    </script>
+   
     <script>
         // find and uncollapse next section:
         $("#tickettab").tab("show");
@@ -186,7 +190,9 @@ else
                 $('.table').DataTable();
             });
         </script>
+     <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
 
+    </script>
 }
 
 
