@@ -91,7 +91,7 @@ else
         <div id="projects" class="tab-pane fade">
             <h2>Project Index</h2>
             <p>
-                @Html.ActionLink("Create New Project", "Create", "Projects", null)
+                @Html.ActionLink("Create New Project", "Create", "Projects")
             </p>
 
             <table class="table">
@@ -104,14 +104,15 @@ else
                         <th>
                             @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().ProjectDescription)
                         </th>
+                        <th>Last Modified</th>
                         <th></th>
                     </tr>
                     </thead>
 
-                <tbody>
 
 
                 <!-- Body -->
+                <tbody>
                 @foreach (var project in Model.Projects)
                 {
                     <tr>
