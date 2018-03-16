@@ -43,7 +43,7 @@ else
 
                     <div id="collapse@(index)" class="panel-collapse collapse">
                         <table class="table">
-                            @*<thead>*@
+                            <thead>
                             <tr>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
@@ -53,7 +53,9 @@ else
                                 </th>
                                 <th></th>
                             </tr>
+                                </thead>
 
+                            <tbody>
 
 
                             @foreach (var ticket in project.Tickets)
@@ -72,7 +74,8 @@ else
                                     </td>
                                 </tr>
                             }
-</table>
+                                </tbody>
+                        </table>
 
 
 </div>
@@ -92,7 +95,7 @@ else
             </p>
 
             <table class="table">
-
+                <thead>
 
                     <tr>
                         <th>
@@ -103,7 +106,9 @@ else
                         </th>
                         <th></th>
                     </tr>
+                    </thead>
 
+                <tbody>
 
 
                 <!-- Body -->
@@ -132,7 +137,7 @@ else
                         </td>
                     </tr>
                 }
-
+</tbody>
             </table>
         </div>
         <div id="tickets" class="tab-pane fade">
@@ -142,18 +147,19 @@ else
             </p>
 
             <table class="table">
+                <thead>
 
-
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => Model.Tickets.FirstOrDefault().Title)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => Model.Tickets.FirstOrDefault().Description)
-                        </th>
-                        <th></th>
-                    </tr>
-
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Tickets.FirstOrDefault().Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Tickets.FirstOrDefault().Description)
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
                 <!-- Body -->
                 @foreach (var ticket in Model.Tickets)
                 {
@@ -165,13 +171,13 @@ else
                             @Html.DisplayFor(modelItem => ticket.Description)
                         </td>
                         <td>
-                            @Html.ActionLink("Details or not", "Details", "Tickets", new { id = ticket.Id }, null) |
+                            @Html.ActionLink("Details", "Details", "Tickets", new { id = ticket.Id }, null) |
                             @Html.ActionLink("Edit", "Edit", "Tickets", new { id = ticket.Id }, null) |
                             @Html.ActionLink("Delete", "Delete", "Tickets", new { id = ticket.Id }, null)
                         </td>
                     </tr>
                 }
-
+                    </tbody>
             </table>
         </div>
     </div>
@@ -180,7 +186,7 @@ else
 }
 
 @section scripts {
-   
+
     <script>
         // find and uncollapse next section:
         $("#tickettab").tab("show");
