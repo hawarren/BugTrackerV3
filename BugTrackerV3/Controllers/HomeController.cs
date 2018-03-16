@@ -12,7 +12,7 @@ namespace BugTrackerV3.Controllers
 {
     using System.Text;
     using System.Threading.Tasks;
-
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()

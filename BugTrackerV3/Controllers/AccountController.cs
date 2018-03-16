@@ -20,6 +20,7 @@ namespace BugTrackerV3.Controllers
 
     using Microsoft.Owin.Security.Provider;
 
+    [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {

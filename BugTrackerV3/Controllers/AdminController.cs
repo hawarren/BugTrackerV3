@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BugTrackerV3.Controllers
 {
+    [RequireHttps]
     [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {

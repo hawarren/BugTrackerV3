@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BugTrackerV3.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class ProjectsController : Controller
     {

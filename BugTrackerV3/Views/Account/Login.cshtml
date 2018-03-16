@@ -8,14 +8,14 @@
 @*<h2>@ViewBag.Title</h2>*@
 
 @*Todo: add 3rd party logins and then uncomment this*@
-@*<div class="row">
+<div class="row">
 
         <div class="col-md-4">
             <section id="socialLoginForm">
                 @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </section>
         </div>
-    </div>*@
+    </div>
 
 
 
@@ -118,6 +118,15 @@
 
                             <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-info" />
                         }
+
+                        <div class="row">
+
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+    </div>
                     </div>
                 </div>
             </div>
