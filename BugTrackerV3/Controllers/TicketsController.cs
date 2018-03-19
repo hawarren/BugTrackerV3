@@ -16,7 +16,7 @@ namespace BugTrackerV3.Controllers
     using System.Threading.Tasks;
 
     // TODO: refactor to rely on helpers for most controller functionality, rather than mucking up controllers with code
-
+    [RequireHttps]
     [Authorize]
     public class TicketsController : Controller
     {

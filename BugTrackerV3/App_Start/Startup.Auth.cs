@@ -57,8 +57,8 @@ namespace BugTrackerV3
             app.UseFacebookAuthentication(
                //appId: "168882980588172",
                //appSecret: "6822f9ca4086d1e32b4e9420f862098a");
-                appId: "168882980588172",
-               appSecret: "6822f9ca4086d1e32b4e9420f862098a");
+                appId: "1506688819381578",
+               appSecret: "c8641041b982197ab8a36b79b6c96f28");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
