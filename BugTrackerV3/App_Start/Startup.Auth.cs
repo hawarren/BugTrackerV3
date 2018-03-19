@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using BugTrackerV3.Models;
+using Owin.Security.Providers.LinkedIn;
 
 namespace BugTrackerV3
 {
@@ -65,6 +66,9 @@ namespace BugTrackerV3
                 ClientId = "113781749497-uae2ju29hbovmiu35v4ltnop3u2gafh1.apps.googleusercontent.com",
                 ClientSecret = "jfcYTg4q8qdbhJNs1Ggku3tk"
             });
+
+            //adding linked credentials
+            app.UseLinkedInAuthentication("77gqgikdnbfkui", "AkYLnFmppBwGXV3j");
         }
     }
 }
