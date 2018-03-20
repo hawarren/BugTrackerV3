@@ -1,5 +1,6 @@
 ﻿@model BugTrackerV3.Models.Project
 @using Microsoft.AspNet.Identity
+@using Newtonsoft.Json.Linq
 
 @{
     ViewBag.Title = "Details";
@@ -35,21 +36,40 @@
 
         <dd>
             <p>
+                @*@foreach (var item in Model.Users)
+                    {
+                        if (item.DisplayName == null)
+                        {
+
+                        <p>
+                            @Html.DisplayFor(userItem => item.DisplayName)
+                        </p>
+                        }
+                        else
+                        {
+                            <p>
+                                @Html.DisplayFor(userItem => item.Email)
+                            </p>
+                        }
+                    }*@
                 @foreach (var item in Model.Users)
                 {
-                    if (item.DisplayName == null)
+                    if (item.DisplayName != null)
                     {
 
-                    <p>
+
+
                         @Html.DisplayFor(userItem => item.DisplayName)
-                    </p>
+
+
                     }
                     else
                     {
-                        <p>
-                            @Html.DisplayFor(userItem => item.Email)
-                        </p>
+                        <div>
+                        @Html.DisplayFor(userItem => item.Email)
+                    </div>
                     }
+
                 }
                 </p>
 
@@ -57,6 +77,7 @@
             </dd>
 
         </dl>
+
     </div>
     @if (Model.PMID == null)
     {<div>There is no Project Manager Right now</div>
