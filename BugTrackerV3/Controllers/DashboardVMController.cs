@@ -28,7 +28,26 @@ namespace BugTrackerV3.Controllers
             var userId = User.Identity.GetUserId();
             var myRole = "Guest";
             if (userId != null)
-                myRole = this.roleHelper.ListUserRoles(User.Identity.GetUserId()).FirstOrDefault();
+            {
+
+            //Order of assignment is Admin rights -> PM rights -> Dev rights -> Sub rights
+                if (this.roleHelper.IsUserinRole(userId, "Admin"))
+                {
+                    myRole = "Admin";
+                }
+                else if (this.roleHelper.IsUserinRole(userId, "ProjectManager"))
+                {
+                    myRole = "ProjectManager";
+                }
+                else if (this.roleHelper.IsUserinRole(userId, "Developer"))
+                {
+                    myRole = "Developer";
+                }
+                else
+                {
+                    myRole = this.roleHelper.ListUserRoles(User.Identity.GetUserId()).FirstOrDefault();
+                }
+            }
 
             switch (myRole)
             {
