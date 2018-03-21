@@ -32,7 +32,7 @@
                     <div class="col-md-12">
                         <section id="loginForm">
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
+                            {
                                 @Html.AntiForgeryToken()
                                 <h4>Use a local account to log in.</h4>
                                 <hr />
@@ -58,15 +58,15 @@
                                         <div class="checkbox col-md-6">
                                             @Html.CheckBoxFor(m => m.RememberMe)
                                             @Html.LabelFor(m => m.RememberMe)
-                                <div  class="col-md-12 btn btn-default">
-                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                </div>
+                                            <div  class="col-md-12 btn btn-default">
+                                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                            </div>
                                         </div>
-                                <div class="form-group">
-                                </div>
-                                    <div class="col-md-6">
-                                        <input type="submit" value="Log in" class="btn btn-info" />
-                                    </div>
+                                        <div class="form-group">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="submit" value="Log in" class="btn btn-info" />
+                                        </div>
                                     </div>
                                 </div>
                                 <p>
@@ -87,26 +87,26 @@
                         @{
                             List<SelectListItem> guestTypes = new List<SelectListItem>();
                             guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Administrator",
-                                Value = "GuestAdmin@btracker.com"
-                            });
+                                               {
+                                                   Text = "Administrator",
+                                                   Value = "GuestAdmin@btracker.com"
+                                               });
                             guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Project Manager",
-                                Value = "GuestPM@btracker.com",
-                                Selected = true
-                            });
+                                               {
+                                                   Text = "Project Manager",
+                                                   Value = "GuestPM@btracker.com",
+                                                   Selected = true
+                                               });
                             guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Developer",
-                                Value = "GuestDev@btracker.com"
-                            });
+                                               {
+                                                   Text = "Developer",
+                                                   Value = "GuestDev@btracker.com"
+                                               });
                             guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Submitter",
-                                Value = "GuestSubmitter@btracker.com"
-                            });
+                                               {
+                                                   Text = "Submitter",
+                                                   Value = "GuestSubmitter@btracker.com"
+                                               });
                         }
                         @* Second snippet goes here*@
                         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -121,12 +121,12 @@
 
                         <div class="row">
 
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>
-    </div>
+                            <div class="col-md-4">
+                                <section id="socialLoginForm">
+                                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,6 +139,7 @@
             </div>
         </div>*@
 </div>
+<div></div>
 
 
 @section Scripts {
