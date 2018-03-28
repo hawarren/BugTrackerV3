@@ -30,7 +30,7 @@ namespace BugTrackerV3.Controllers
             if (userId != null)
             {
 
-            //Order of assignment is Admin rights -> PM rights -> Dev rights -> Sub rights
+            //Take the users most privileged role: Order of assignment is Admin rights -> PM rights -> Dev rights -> Sub rights
                 if (this.roleHelper.IsUserinRole(userId, "Admin"))
                 {
                     myRole = "Admin";

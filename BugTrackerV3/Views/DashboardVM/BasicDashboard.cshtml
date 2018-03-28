@@ -16,11 +16,172 @@
 }
 else
 {
-    <!-- Add a Bootstrap Dynamic pills component  -->
+
+      @*reimplemented code begins here*@
+    <!-- Add a Bootstrap Dynamic pills componenet -->
     <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="pill" href="#general">General Information</a></li>
+        <li><a data-toggle="pill" href="#projects">Projects</a></li>
+        <li><a id="tickettab" data-toggle="pill" href="#tickets">Tickets</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="general" class="tab-pane fade in active">
+            @{
+                var index = 1;
+            }
+            @foreach (var project in Model.Projects)
+            {
+
+
+
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse@(index)"><strong><u>@project.Name</u></strong></a>
+                            </h4>
+                        </div>
+                        <div id="collapse@(index)" class="panel-collapse collapse">
+                            <table class="table">
+                                <thead>
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Description)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                @foreach (var ticket in project.Tickets)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => ticket.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => ticket.Description)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Details", "Details", new { id = ticket.Id }) |
+                                            @Html.ActionLink("Edit", "Edit", new { id = ticket.Id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = ticket.Id })
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                index++;
+
+            }
+
+        </div>
+        <div id="projects" class="tab-pane fade">
+            <h2>Project Index</h2>
+            <p>
+                @Html.ActionLink("Create New Project", "Create")
+            </p>
+
+            <table class="table">
+                <thead>
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().ProjectDescription)
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- Body -->
+                @foreach (var project in Model.Projects)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => project.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => project.ProjectDescription)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = project.Id }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = project.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = project.Id })
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div id="tickets" class="tab-pane fade">
+            <h2>Ticket Index</h2>
+            <p>
+                @Html.ActionLink("Create New Ticket", "Create")
+            </p>
+
+            <table class="table">
+                <thead>
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Tickets.FirstOrDefault().Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Tickets.FirstOrDefault().Description)
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- Body -->
+                @foreach (var ticket in Model.Tickets)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => ticket.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => ticket.Description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = ticket.Id }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = ticket.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = ticket.Id })
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @*Reimplmented code ends here*@
+
+
+
+
+
+
+    @*problem code*@
+    <!-- Add a Bootstrap Dynamic pills component  -->
+    @*<ul class="nav nav-pills">
         <li><a id="tickettab" data-toggle="pill" href="#general">General Information</a></li>
         <li class="active"><a data-toggle="pill" href="#projects">Projects</a></li>
-        <li><a  data-toggle="pill" href="#tickets">Tickets</a></li>
+        <li><a data-toggle="pill" href="#tickets">Tickets</a></li>
     </ul>
 
     <div class="tab-content">
@@ -41,44 +202,44 @@ else
                             </h4>
                         </div>
 
-                    <div id="collapse@(index)" class="panel-collapse collapse">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Description)
-                                </th>
-                                <th></th>
-                            </tr>
+                        <div id="collapse@(index)" class="panel-collapse collapse">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Description)
+                                    </th>
+                                    <th></th>
+                                </tr>
                                 </thead>
 
-                            <tbody>
+                                <tbody>
 
 
-                            @foreach (var ticket in project.Tickets)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => ticket.Title)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => ticket.Description)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Details", "Details", "Tickets", new { id = ticket.Id }, null) |
-                                        @Html.ActionLink("Edit", "Edit", "Tickets", new { id = ticket.Id }, null) |
-                                        @Html.ActionLink("Delete", "Delete", "Tickets", new { id = ticket.Id }, null)
-                                    </td>
-                                </tr>
-                            }
+                                @foreach (var ticket in project.Tickets)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => ticket.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => ticket.Description)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Details", "Details", "Tickets", new { id = ticket.Id }, null) |
+                                            @Html.ActionLink("Edit", "Edit", "Tickets", new { id = ticket.Id }, null) |
+                                            @Html.ActionLink("Delete", "Delete", "Tickets", new { id = ticket.Id }, null)
+                                        </td>
+                                    </tr>
+                                }
                                 </tbody>
-                        </table>
+                            </table>
 
 
-</div>
+                        </div>
 
                     </div>
                 </div>
@@ -96,23 +257,22 @@ else
 
             <table class="table">
                 <thead>
-
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().ProjectDescription)
-                        </th>
-                        <th>Last Modified</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => Model.Projects.FirstOrDefault().ProjectDescription)
+                    </th>
+                    <th>Last Modified</th>
+                    <th></th>
+                </tr>
+                </thead>
 
 
-                <!-- Body -->
+
                 <tbody>
+                <!-- Body -->
                 @foreach (var project in Model.Projects)
                 {
                     <tr>
@@ -128,17 +288,17 @@ else
                             @if (User.IsInRole("Admin"))
                             {
                                 <div>
-                                | @Html.ActionLink("Delete", "Delete", "Projects", new
-                                {
-                                    id = project.Id
-                                }, null)
+                                    | @Html.ActionLink("Delete", "Delete", "Projects", new
+                                                                                           {
+                                                                                               id = project.Id
+                                                                                           }, null)
 
                                 </div>
                             }
                         </td>
                     </tr>
                 }
-</tbody>
+                </tbody>
             </table>
         </div>
         <div id="tickets" class="tab-pane fade">
@@ -178,11 +338,11 @@ else
                         </td>
                     </tr>
                 }
-                    </tbody>
+                </tbody>
             </table>
         </div>
-    </div>
-
+    </div>*@
+@*End of problem code*@
 
 }
 
@@ -193,11 +353,11 @@ else
         $("#tickettab").tab("show");
     </script>
     <script>
-            $(document).ready(function () {
-                $('.table').DataTable();
-            });
-        </script>
-     <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
 
     </script>
 }
