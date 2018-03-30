@@ -221,7 +221,7 @@ namespace BugTrackerV3.Controllers
 
         // GET: Tickets/Create
         [Authorize(Roles = "Submitter")]
-        public ActionResult Create(int projectId)
+        public ActionResult Create([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketStatusId,TicketPriorityId,TicketTypeId,OwnerUserId,AssignedToUserId")]int projectId)
         {
             Ticket ticket = new Ticket();
             ticket.ProjectId = projectId;
@@ -236,7 +236,7 @@ namespace BugTrackerV3.Controllers
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
 
             ViewBag.ProjectName = db.Projects.Find(ticket.ProjectId).Name;
-
+            ViewBag.ProjectDescription = this.db.Projects.Find(ticket.ProjectId).ProjectDescription;
             return View(ticket);
         }
 

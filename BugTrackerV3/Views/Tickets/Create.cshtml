@@ -5,9 +5,8 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create a new Ticket for  This Project @Html.DisplayFor(model => model.Project.Name) </h2>
-
-
+<h2>Create a new Ticket for @ViewBag.ProjectName </h2>
+<h3>Description: @ViewBag.ProjectDescription</h3>
 @*TODO: Include project name in the view so user can see the project they're creating a ticket on.*@
 @using (Html.BeginForm())
 {
