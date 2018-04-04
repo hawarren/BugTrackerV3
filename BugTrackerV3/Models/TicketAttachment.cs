@@ -5,11 +5,15 @@ using System.Web;
 
 namespace BugTrackerV3.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class TicketAttachment
     {
         public int Id { get; set; }
         public string FilePath { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Date Uploaded")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yy hh:mmtt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset Created { get; set; }
         //public string FileUrl { get; set; }
 

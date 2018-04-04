@@ -29,11 +29,11 @@ namespace BugTrackerV3.Models
         public string Description { get; set; }
 
         [Display(Name = "Date Created")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yy hh:mmtt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset Created { get; set; }
 
         [Display(Name = "Date Updated")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yy hh:mmtt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset? Updated { get; set; }
 
         [Display(Name = "Project")]

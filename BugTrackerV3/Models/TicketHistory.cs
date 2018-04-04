@@ -15,6 +15,8 @@ namespace BugTrackerV3.Models
         public string EditId { get; set; }
         public string OldValue { get; set; }
         public string NewValue { get; set; }
+        [Display(Name = "Date Changed")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yy hh:mmtt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset Changed { get; set; }
         public string UserId { get; set; }
 

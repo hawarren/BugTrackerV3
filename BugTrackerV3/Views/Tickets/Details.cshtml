@@ -460,76 +460,99 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+
+
+                                                <th>
+                                                    @if (Model.AssignedToUser == null)
+                                                    {
+                                                        <div>
+                                                            Nobody Assigned
+                                                            yet
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        @Html.DisplayFor(model => model.AssignedToUser.DisplayName)
+                                                    }
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.OwnerUser.DisplayName)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.Project.Name)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.TicketPriority.Name)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.TicketStatus.Name)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.TicketType.Name)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.Title)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.Description)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.Created)
+                                                </th>
+
+
+                                                <th>
+                                                    @Html.DisplayFor(model => model.Updated)
+                                                </th>
+                                                <th>
+                                                    @foreach (var attach in Model.TicketAttachments)
+                                                    {
+                                                        @Html.DisplayFor(m => attach.FilePath) <br />
+                                                    }
+                                                </th>
+                                            </tr>
                                                 <tr>
-                                                    <th scope="row">1</th>
-
-
-                                                    <th>
-                                                        @if (Model.AssignedToUser == null)
-                                                        {
-                                                            <div>
-                                                                Nobody Assigned
-                                                                yet
-                                                            </div>
-                                                        }
-                                                        else
-                                                        {
-
-                                                            @Html.DisplayFor(model => model.AssignedToUser.DisplayName)
-                                                        }
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.OwnerUser.DisplayName)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.Project.Name)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.TicketPriority.Name)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.TicketStatus.Name)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.TicketType.Name)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.Title)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.Description)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.Created)
-                                                    </th>
-
-
-                                                    <th>
-                                                        @Html.DisplayFor(model => model.Updated)
-                                                    </th>
-                                                    <th>
-                                                       @foreach (var attach in Model.TicketAttachments)
-                                                       {
-                                                           @Html.DisplayFor(m => attach.FilePath) <br />
-                                                       }
-                                                    </th>
-                                                </tr>
+                                <td>
+                                    <span class="label label-success">Fixed</span>
+                                </td>
+                                <td class="issue-info">
+                                    <a href="#">
+                                        Meeting
+                                    </a>
+                                    <br />
+                                    <small>
+                                        Injected humour, or randomised words which don't l
+                                    </small>
+                                    00        </td>
+                                <td>
+                                    Anna Johnson
+                                </td>
+                                <td>
+                                    13.05.2014
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-default btn-xs"> Action</button>
+                                </td>
+                            </tr>
 
                                             </tbody>
                                         </table>
@@ -613,7 +636,37 @@
                                     </td>
                                 </tr>
                             }
+                            <tr>
+                                <td>
+                                    <span class="label label-success">Fixed</span>
+                                </td>
+                                <td class="issue-info">
+                                    <a href="#">
+                                        Meeting
+                                    </a>
+                                    <br />
+                                    <small>
+                                        Injected humour, or randomised words which don't l
+                                    </small>
+                                    00        </td>
+                                <td>
+                                    Anna Johnson
+                                </td>
+                                <td>
+                                    13.05.2014
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-default btn-xs"> Action</button>
+                                </td>
+                                <td>
+                                    13.05.2014
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-default btn-xs"> Action</button>
+                                </td>
 
+
+                            </tr>
                         </table>
 
 
@@ -681,10 +734,296 @@
 
 
 
+                @* start of panel code from homer project details *@
+      <div class="hpanel">
+
+                <div class="panel-body">
+
+                    <p>
+                        <strong>These sweet mornings of spring</strong> which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="label label-success">Added</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Message
+                                        </a>
+                                        <br />
+                                        <small>
+                                            This is issue with the coresponding note
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Adrian Novak
+                                    </td>
+                                    <td>
+                                        12.02.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-info">Added</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Call
+                                        </a>
+                                        <br />
+                                        <small>
+                                            Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Anna Smith
+                                    </td>
+                                    <td>
+                                        10.02.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-success">Added</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Message
+                                        </a>
+                                        <br />
+                                        <small>
+                                            It is a long established fact that a reader will be
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Anthony Jackson
+                                    </td>
+                                    <td>
+                                        02.03.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-info">Added</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Message
+                                        </a>
+                                        <br />
+                                        <small>
+                                            There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Monica Proven
+                                    </td>
+                                    <td>
+                                        01.10.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-info">Fixed</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Meeting
+                                        </a>
+                                        <br />
+                                        <small>
+                                            Always free from repetition, injected humour, or non-characteristic words etc.
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Alex Ferguson
+                                    </td>
+                                    <td>
+                                        28.11.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-success">Fixed</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Message
+                                        </a>
+                                        <br />
+                                        <small>
+                                            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit am
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Mark Conor
+                                    </td>
+                                    <td>
+                                        18.09.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-success">Fixed</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Call
+                                        </a>
+                                        <br />
+                                        <small>
+                                            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit am
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Carol Jackson
+                                    </td>
+                                    <td>
+                                        11.03.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-success">Fixed</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Message
+                                        </a>
+                                        <br />
+                                        <small>
+                                            Content here, content here', making it look like readable English. Many desktop
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Carol Jackson
+                                    </td>
+                                    <td>
+                                        05.04.2015
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-info">Fixed</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a href="#">
+                                            Meeting
+                                        </a>
+                                        <br />
+                                        <small>
+                                            Virginia, looked up one of the more obscure Latin words, consectetur
+                                        </small>
+                                    </td>
+                                    <td>
+                                        Monica Smith
+                                    </td>
+                                    <td>
+                                        10.06.2014
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-xs"> Action</button>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td>
+                                    <span class="label label-success">Fixed</span>
+                                </td>
+                                <td class="issue-info">
+                                    <a href="#">
+                                        Meeting
+                                    </a>
+                                    <br />
+                                    <small>
+                                        Injected humour, or randomised words which don't l
+                                    </small>
+                                    00        </td>
+                                <td>
+                                    Anna Johnson
+                                </td>
+                                <td>
+                                    13.05.2014
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-default btn-xs"> Action</button>
+                                </td>
+                                 <td>
+                                    13.05.2014
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-default btn-xs"> Action</button>
+                                </td>
+                            </tr>
+                                @foreach (var item in Model.TicketHistories)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TicketId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Property)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EditId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OldValue)
+                                        </td>
+                                                <td>
+                                                @Html.DisplayFor(modelItem => item.NewValue)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Changed)
+                                            </td>
+                                        @*
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                                            </td>*@
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
 
 
-
-
+                @* End of panel code from homer project details  *@
 
 
             </div>
@@ -719,6 +1058,46 @@
      </script>
 
       @Scripts.Render("~/bundles/chartjs/js")
+
+     <script type="text/javascript">
+
+
+         $(function () {
+
+             /**
+               * Options for Line chart
+               */
+             var lineData = {
+                 labels: ["January", "February", "March", "April"],
+                 datasets: [
+                     {
+                         label: "Example dataset",
+                         backgroundColor: "rgba(98,203,49,0.5)",
+                         borderColor: "rgba(98,203,49,0.7)",
+                         pointBackgroundColor: "rgba(98,203,49,1)",
+                         pointBorderColor: "#fff",
+                         pointHoverBackgroundColor: "#fff",
+                         pointHoverBorderColor: "rgba(26,179,148,1)",
+                         data: [17, 21, 19, 24]
+                     }
+                 ]
+             };
+
+             var lineOptions = {
+                 responsive: true,
+                 legend: {
+                     display: false
+                 }
+             };
+
+             var ctx = document.getElementById("lineOptions").getContext("2d");
+             new Chart(ctx, { type: 'line', data: lineData, options: lineOptions });
+
+
+         })
+
+     </script>
+
 
     <script type="text/javascript">
 
