@@ -42,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TicketTypeId, "Ticket Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TicketTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TicketTypeId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -135,7 +135,7 @@
                 else
                 {
                     <div class="col-md-10">
-                        @Html.DropDownList("AssignedToUserId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("AssignedToUserId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
                     </div>
                 }
@@ -169,7 +169,7 @@
                 @Html.LabelFor(model => model.Project.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.DisplayFor(model => model.Project.Name, new { htmlAttributes = new { @class = "form-control" } })*@
-                    @Html.DropDownList("ProjectId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("ProjectId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -177,7 +177,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TicketStatusId, "Ticket Status", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("TicketStatusId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("TicketStatusId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.TicketStatusId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -185,7 +185,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TicketPriorityId, "Ticket Priority", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("TicketPriorityId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("TicketPriorityId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.TicketPriorityId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -194,7 +194,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.OwnerUserId, "Owner of This Ticket", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("OwnerUserId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("OwnerUserId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.OwnerUserId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -220,7 +220,7 @@
                 else
                 {
                     <div class="col-md-10">
-                        @Html.DropDownList("AssignedToUserId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("AssignedToUserId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
                     </div>
                 }
