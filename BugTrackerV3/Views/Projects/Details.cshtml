@@ -250,7 +250,8 @@
     </div>
 
 
-    @*Second Table added for all non-open tickets (for ease of viewing, may revert in final design)*@
+@*Second Table added for all non-open tickets (for ease of viewing, may revert in final design)*@
+@if (User.IsInRole("Admin")) {
     <div>
         <table class="table">
             <thead>
@@ -377,7 +378,7 @@
         </table>
 
     </div>
-
+}
 
 
     @section scripts{

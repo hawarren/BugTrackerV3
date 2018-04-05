@@ -85,3 +85,12 @@ If user is on project, then show them add ticket button
 If user IS NOT on project, then show them everything BUT the ticket button
 Admin/PM adds user to project
 User then hits project details and clicks edit button
+
+4/5/18
+Decide on 2 -3 elements to use in all views
+Projects view (appviews/projects)
+Project Details view table details  (appviews)
+Standard Table (Tables/datatables)
+
+*All details are in cards (project/tickets and ticket/comments tickets/history should be in homer datatable)
+-reduce details shown, if necessary to create concise pages/cards
