@@ -43,7 +43,7 @@
                 @Html.DropDownList("TicketTypeId", String.Empty, htmlAttributes: new { @class = "form-control" })
                     @Html.DropDownList("TicketTypeId", String.Empty, htmlAttributes: new { @class = "form-control" })*@
 
-                @Html.DropDownList("TicketTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TicketTypeId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
