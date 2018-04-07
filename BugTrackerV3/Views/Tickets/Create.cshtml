@@ -5,65 +5,89 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create a new Ticket for @ViewBag.ProjectName </h2>
-<h3>Description: @ViewBag.ProjectDescription</h3>
-@*TODO: Include project name in the view so user can see the project they're creating a ticket on.*@
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="normalheader ">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
 
-    <div class="form-horizontal" title="On this screen you can
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                    <li>
+                        <span>Tables</span>
+                    </li>
+                    <li class="active">
+                        <span>DataTables</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+               Create a new Ticket for: @ViewBag.ProjectName
+            </h2>
+            <small>Description: @ViewBag.ProjectDescription</small>
+        </div>
+    @*</div>
+</div>
+
+<div class="hpanel">
+<div class="panel-body">*@
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" title="On this screen you can
          -manually enter a Title,
          -manually enter a description of what the ticket is
          -select a predefined Ticket type from the dropdown menu">
-        @*<h4>Ticket</h4>*@
+            @*<h4>Ticket</h4>*@
 
-        <hr />
-        @Html.HiddenFor(m => m.ProjectId)
-        @Html.HiddenFor(m => m.TicketType)
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group" >
+            <hr />
+            @Html.HiddenFor(m => m.ProjectId)
+            @Html.HiddenFor(m => m.TicketType)
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group" >
 
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" title="This is a dropdown menu for selecting the type of ticket">
+                @Html.LabelFor(model => model.TicketTypeId, "Ticket Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+
+                    @Html.DropDownList("TicketTypeId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create a brand new ticket" class="btn btn-default" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group" title="This is a dropdown menu for selecting the type of ticket">
-            @Html.LabelFor(model => model.TicketTypeId, "Ticket Type", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @* TODO: add empty option to dropdownlist *@
-                @*
-                @Html.DropDownList("TicketTypeId", String.Empty, htmlAttributes: new { @class = "form-control" })
-                    @Html.DropDownList("TicketTypeId", String.Empty, htmlAttributes: new { @class = "form-control" })*@
-
-                @Html.DropDownList("TicketTypeId", null, String.Empty, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create a brand new ticket" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
+    }
 <div>
     @Html.ActionLink("Back to All Tickets List", "Index")
 </div>
+</div>
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
