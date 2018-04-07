@@ -1,4 +1,5 @@
-﻿@using BugTrackerV3.Models
+﻿@using System.Web.UI.WebControls
+@using BugTrackerV3.Models
 @model BugTrackerV3.Models.Ticket
 
 @{
@@ -30,11 +31,7 @@
             </h2>
             <small>Description: @ViewBag.ProjectDescription</small>
         </div>
-    @*</div>
-</div>
 
-<div class="hpanel">
-<div class="panel-body">*@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -43,7 +40,7 @@
          -manually enter a Title,
          -manually enter a description of what the ticket is
          -select a predefined Ticket type from the dropdown menu">
-            @*<h4>Ticket</h4>*@
+
 
             <hr />
             @Html.HiddenFor(m => m.ProjectId)
@@ -83,11 +80,17 @@
             </div>
         </div>
     }
-<div>
-    @Html.ActionLink("Back to All Tickets List", "Index")
-</div>
-</div>
+        <div>
+            @Html.ActionLink(Model.Id, "Details", "Projects",  new { id = m  })
+        </div>
+        <div>
+            @Html.ActionLink("Back to All Tickets", "Index")
+        </div>
+        <div>
+        @Html.ActionLink("Back to All Tickets", "Index")
     </div>
+</div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
