@@ -12,7 +12,10 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal" title="You should know what to do here">
+    <div class="form-horizontal" title="On this screen you can
+         -manually enter a Title,
+         -manually enter a description of what the ticket is
+         -select a predefined Ticket type from the dropdown menu">
         @*<h4>Ticket</h4>*@
 
         <hr />
@@ -35,7 +38,7 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" title="This is a dropdown menu for selecting the type of ticket">
             @Html.LabelFor(model => model.TicketTypeId, "Ticket Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
                 @* TODO: add empty option to dropdownlist *@
@@ -52,7 +55,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create a brand new ticket" class="btn btn-default" />
             </div>
         </div>
     </div>
