@@ -72,8 +72,8 @@
                     </div>
                 </div>
 
-                <div>
-                    @Html.ActionLink("Back to All Tickets", "Index")
+                <div title="Click here to return to view all the tickets on this project without creating a new ticket">
+                    @Html.ActionLink("Return to All Tickets", "Index")
                 </div>
 
 
@@ -87,8 +87,8 @@
         <div>
 
 
-    @Url.Action("Details", "Projects", new { id = Model.Project.Id }, null)
-    <a href="@Url.Action("Details", "Projects", new {Id = Model.Project.Id})">Tickets for @Html.DisplayFor(model => model.Project.Name)
+    @*@.Action("Details", "Projects", new { id = Model.Project.Id }, null)*@
+    @*<a href="@Url.Action("Details", "Projects", new {Id = Model.Project.Id})">Tickets for @Html.DisplayFor(model => model.Project.Name)*@
 
         </div>
 
