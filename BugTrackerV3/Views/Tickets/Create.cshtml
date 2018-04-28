@@ -87,12 +87,12 @@
         <div>
 
 
-    @*@.Action("Details", "Projects", new { id = Model.Project.Id }, null)*@
-    @*<a href="@Url.Action("Details", "Projects", new {Id = Model.Project.Id})">Tickets for @Html.DisplayFor(model => model.Project.Name)*@
+    <a href="@Url.Action("Details", "Projects", new {Id = Model.ProjectId})">Tickets for @Model.Project.Name @*@Html.DisplayFor(model => model.Project.Name)*@
 
         </div>
 
         <div>
+    @Html.ActionLink("Details", "Projects", new { id = Model.ProjectId})
             @Html.ActionLink("Back to All Tickets", "Index")
         </div>
     </div>

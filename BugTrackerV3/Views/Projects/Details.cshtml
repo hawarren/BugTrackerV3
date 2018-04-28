@@ -29,13 +29,24 @@
         </dd>
     </dl>
 
-    <dl class="dl-horizontal">
-        <dt>
-            Active Project Users :
-        </dt>
+  @*  <dl class="dl-horizontal">*@
+        <table class="table">
+        <thead>
+        <tr>
+            <th>
+
+            <dt>
+                Active Project Users :
+            </dt>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
 
         <dd>
-            <p>
+            <div>
                 @*@foreach (var item in Model.Users)
                     {
                         if (item.DisplayName == null)
@@ -56,29 +67,27 @@
                 {
                     if (item.DisplayName != null)
                     {
-
-
-                        <div>
-
-                        @Html.DisplayFor(userItem => item.DisplayName) ,
-                        </div>
-
-
+                <div>
+                    @Html.DisplayFor(userItem => item.DisplayName) ,
+                </div>
                     }
                     else
                     {
-                        <div>
-                        @Html.DisplayFor(userItem => item.Email)
-                    </div>
+                <div>
+                    @Html.DisplayFor(userItem => item.Email)
+                </div>
                     }
 
                 }
-                </p>
+            </div>
 
 
-            </dd>
-
-        </dl>
+        </dd>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    @*</dl>*@
 
     </div>
     @if (Model.PMID == null)
