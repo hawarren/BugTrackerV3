@@ -42,38 +42,37 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
 
-                    <dd>
 
-                        @foreach (var item in Model.Users)
+                <dd>
+
+                    @foreach (var item in Model.Users)
+                    {
+                        if (item.DisplayName != null)
                         {
-                            if (item.DisplayName != null)
-                            {
-                                <div>
-                              Username:      @Html.DisplayFor(userItem => item.DisplayName) | Email Address: (@Html.DisplayFor((userItem => item.Email))
-                                </div>
-                            }
-                            else
-                            {
-                                <div>
-                                    No Username | @Html.DisplayFor(userItem => item.Email)
-                                </div>
-                            }
-
-                        }
+                    <tr>
+                            <div>
+                        <td>   Username:      @Html.DisplayFor(userItem => item.DisplayName) </td>
+                        <td> | Email Address: (@Html.DisplayFor((userItem => item.Email))</td>
 </div>
+                            </tr>
+                        }
+                        else
+                        {
+                            <div>
+                                No Username   @Html.DisplayFor(userItem => item.Email)
+                            </div>
+                        }
 
+                    }
 
-                            </dd>
-                            </td>
-                        </tr>
+                </dd>
+
         </tbody>
-        </table>
-@*</dl>*@
+    </table>
+    @*</dl>*@
 
-    </div>
+</div>
 @if (Model.PMID == null)
 {<div>There is no Project Manager Right now</div>
 }
@@ -164,78 +163,78 @@ else
                         No Tickets yet, feel free to add some.
                     </td>
                 </tr>
-                }
+            }
             @foreach (var item in Model.Tickets)
             {
                 if (item.TicketStatus.Name == "Open" || item.TicketStatus.Name == "UnderReview")
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    @if (item.AssignedToUser == null)
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Project.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        @if (item.AssignedToUser == null)
                     {
                             <td>None assigned</td>
-                            }
-                            else
-                            {
+                        }
+                        else
+                        {
                             <td>
                                 @Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
                             </td>
-                            }
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketPriority.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketStatus.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketType.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Created)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Updated)
-                    </td>
-
-                    <td>
-                        <button type="button" class="btn btn-info">
-                            <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
-                        </button>
-                        @{
-                                    if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
-                                    {
-                                <div>
-                                    <button type="button" class="btn btn-default">
-                                        @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
-                                    </button>
-                                </div>
-                                    }
-                                    if (User.IsInRole("Admin"))
-                                    {
-                                <div>
-                                    <button type="button" class="btn btn-danger">
-                                        @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
-                                    </button>
-                                </div>
-                                    }
                         }
-                    </td>
-                </tr>
-                                        }
 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketType.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated)
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-info">
+                                <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
+                            </button>
+                            @{
+                                if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
+                                {
+                                    <div>
+                                        <button type="button" class="btn btn-default">
+                                            @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
+                                        </button>
+                                    </div>
+                                }
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <div>
+                                        <button type="button" class="btn btn-danger">
+                                            @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
+                                        </button>
+                                    </div>
+                                }
+                            }
+                        </td>
+                    </tr>
                                     }
+
+                                }
 
         </tbody>
     </table>
