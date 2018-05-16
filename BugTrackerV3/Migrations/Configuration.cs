@@ -9,6 +9,7 @@ namespace BugTrackerV3.Migrations
     using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<BugTrackerV3.Models.ApplicationDbContext>
+
     {
         public Configuration()
         {

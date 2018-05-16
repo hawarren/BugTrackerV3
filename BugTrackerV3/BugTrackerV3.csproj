@@ -597,6 +597,8 @@
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\homer.js" />
+    <None Include="Properties\PublishProfiles\FTP A2 profile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTP a2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
