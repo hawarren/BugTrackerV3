@@ -14,62 +14,66 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-center m-b-md">
-                <h3>To Access the BugTracker please select a login method, or register for an account</h3>
+                <h3>Please login to access the bugtracker</h3>
 
             </div>
             <div class="hpanel">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <section id="loginForm">
+                        <form id="loginForm">
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <h4>Use a local account to log in.</h4>
-                                <hr />
+                                <h4>Use a local account to log in:</h4>
+                                <hr/>
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    <div class="col-md-10">
-                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    <div>
+                                        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder="example@gmail.com" })
                                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-10">
-                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    <div>
+                                        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder="********" })
                                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div>
 
-                                        <div class="checkbox col-md-6">
-                                            @Html.CheckBoxFor(m => m.RememberMe)
-                                            @Html.LabelFor(m => m.RememberMe)
-                                            <div class="col-md-12 btn btn-default">
-                                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                        <div class="checkbox">
+                                            <div>
+
+                                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "i-checks", @checked = "checked" })
+                                            Remember Me?
+                                            </div>
+
+                                            <div class="col-md-6 btn btn-default">
+                                                @Html.ActionLink("Forgot password?", "ForgotPassword")
                                             </div>
                                         </div>
                                         <div class="form-group">
                                         </div>
-                                        <div class="col-md-6">
+                                        <div>
                                             <input type="submit" value="Log in" class="btn btn-success btn-block" title="click to login using your own registration" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div>
                                     @*<section id="socialLoginForm">*@
                                     @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                                    <div class="btn btn-info">
-                                        @Html.ActionLink("Register as a new user", "Register")
-                                    </div>
                                     @*                                </section>*@
                                 </div>
+                                <div class="btn btn-default btn-block">
+                                        @Html.ActionLink("Register as a new user", "Register")
+                                    </div>
 
                             }
-                        </section>
-
+                        </form>
+                        <h4>Login as Guest</h4>
                         <div class="GuestLogin">
                         @*first snippet*@
                         @{
@@ -144,6 +148,54 @@
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
                                 <span class="help-block small">Your unique username to app</span>
                             </div>
+                            <div class="form-group">
+
+                                <label class="control-label" for="username"></label>
+                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Password</label>
+                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
+                                <span class="help-block small">Yur strong password</span>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" class="i-checks" checked>
+                                Remember login
+                                <p class="help-block small">(if this is a private computer)</p>
+                            </div>
+                            <button class="btn btn-success btn-block">Login</button>
+                            <a class="btn btn-default btn-block" href="#">Register</a>
+                        }
+                    </form>
+                </div>
+            </div>
+
+
+                <div class="hpanel">
+                <div class="panel-body">
+                    <form action="#" id="loginForm">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4>Use a local account to log in.</h4>
+                            <hr/>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label" for="username">Username</label>
+                                <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
+                                <span class="help-block small">Your unique username to app</span>
+                            </div>
+                            <div class="form-group">
+
+                                        <label class="control-label" for="username"></label>
+                                        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                                </div>
                             <div class="form-group">
                                 <label class="control-label" for="password">Password</label>
                                 <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
