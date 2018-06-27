@@ -1,0 +1,147 @@
+﻿@using BugTrackerV3.Models
+@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layoutv2.cshtml";
+    ViewBag.Title = "Login Screen";
+}
+
+@*<h2>@ViewBag.Title</h2>*@
+
+@*Todo: add 3rd party logins and then uncomment this*@
+<div class="row">
+
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+    </div>
+
+
+
+
+<div class="login-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <h3>To Access the BugTracker please select a login method, or register for an account</h3>
+
+            </div>
+            <div class="hpanel">
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <section id="loginForm">
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h4>Use a local account to log in.</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @*<div class="col-md-offset-2 col-md-10">*@
+                                    <div class="col-md-12">
+
+                                        <div class="checkbox col-md-6">
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe)
+                                            <div  class="col-md-12 btn btn-default">
+                                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="submit" value="Log in" class="btn btn-info" title="click to login using a preexisting registration" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>
+                                    <div class="btn btn-info">
+
+                                        <strong> @Html.ActionLink("Register as a new user", "Register") </strong>
+                                    </div>
+                                </p>
+
+                                @*<small>If you don't have an account, you can register for one. </small>
+                                    @Html.Partial("Register")*@
+                                @* Enable this once you have account confirmation enabled for password reset functionality
+                                *@
+                            }
+                        </section>
+
+                        @*first snippet*@
+                        @{
+                            List<SelectListItem> guestTypes = new List<SelectListItem>();
+                            guestTypes.Add(new SelectListItem
+                                               {
+                                                   Text = "Administrator",
+                                                   Value = "GuestAdmin@btracker.com"
+                                               });
+                            guestTypes.Add(new SelectListItem
+                                               {
+                                                   Text = "Project Manager",
+                                                   Value = "GuestPM@btracker.com",
+                                                   Selected = true
+                                               });
+                            guestTypes.Add(new SelectListItem
+                                               {
+                                                   Text = "Developer",
+                                                   Value = "GuestDev@btracker.com"
+                                               });
+                            guestTypes.Add(new SelectListItem
+                                               {
+                                                   Text = "Submitter",
+                                                   Value = "GuestSubmitter@btracker.com"
+                                               });
+                        }
+                        @* Second snippet goes here*@
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.DropDownListFor(m => m.Email, guestTypes, "(Select a Guest Role)", htmlAttributes: new { Style = "width:210px" })
+
+                            @Html.HiddenFor(m => m.Password, new { @class = "form-control", Value = "Abc&123!" })
+
+                            <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-info" />
+                        }
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                @*<section id="socialLoginForm">*@
+                                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+@*                                </section>*@
+                            </div>
+                        </divclass="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+            <div class="col-md-12 text-center">
+                <strong>Hanif Warren BugTracker Version 3</strong> -
+                AngularJS Responsive WebApp <br /> 2015 Copyright Company Name
+            </div>
+        </div>*@
+</div>
+<div></div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

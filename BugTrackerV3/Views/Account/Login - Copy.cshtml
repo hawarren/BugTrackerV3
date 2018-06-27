@@ -20,7 +20,7 @@
             <div class="hpanel">
                 <div class="panel-body">
                     <div class="col-md-12">
-                        <section id="loginForm">
+                        <form id="loginForm">
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
@@ -62,8 +62,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            }
-                        </section>
                                 <div>
                                     @*<section id="socialLoginForm">*@
                                     @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
@@ -73,6 +71,8 @@
                                     @Html.ActionLink("Register as a new user", "Register")
                                 </div>
 
+                            }
+                        </form>
                         <h4>Login as Guest</h4>
                         <div class="GuestLogin">
                             @*first snippet*@
