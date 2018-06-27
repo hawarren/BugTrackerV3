@@ -99,7 +99,7 @@
 
     </div>
     @if (Model.PMID == null)
-    {<div>There is no Project Manager Right now</div>
+    {<div>There is currently no Project Manager</div>
     }
     else
     {
@@ -142,9 +142,139 @@
             </p>
         }
     }
-    <div>
-        <table class="table">
-            <thead>
+<div>
+    Resolved Tickets
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().ProjectId)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().AssignedToUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().OwnerUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketPriorityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketStatusId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Updated)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.Tickets.Count() == 0)
+        {
+            <tr>
+                <td>
+                    No Tickets yet, feel free to add some.
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model.Tickets)
+        {
+            if (item.TicketStatus.Name == "Open" || item.TicketStatus.Name == "UnderReview")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    @if (item.AssignedToUser == null)
+                    {
+                        <td>None assigned</td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
+                        </td>
+                    }
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Updated)
+                    </td>
+
+                    <td>
+                        <button type="button" class="btn btn-info">
+                            <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
+                        </button>
+                        @{
+                            if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
+                            {
+                                <div>
+                                    <button type="button" class="btn btn-default">
+                                        @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
+                                    </button>
+                                </div>
+                            }
+                            if (User.IsInRole("Admin"))
+                            {
+                                <div>
+                                    <button type="button" class="btn btn-danger">
+                                        @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
+                                    </button>
+                                </div>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+
+        }
+
+        </tbody>
+    </table>
+
+</div>
+
+
+    @*Second Table added for all non-open tickets (for ease of viewing, may revert in final design)*@
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            Open Tickets
+            <table class="table">
+                <thead>
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().ProjectId)
@@ -179,10 +309,10 @@
                     </th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 @if (Model.Tickets.Count() == 0)
-            {
+                {
                     <tr>
                         <td>
                             No Tickets yet, feel free to add some.
@@ -190,9 +320,10 @@
                     </tr>
                 }
                 @foreach (var item in Model.Tickets)
-            {
-                if (item.TicketStatus.Name == "Open" || item.TicketStatus.Name == "UnderReview")
                 {
+                    if (item.TicketStatus.Name != "Open" && item.TicketStatus.Name != "UnderReview")
+                    {
+
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Project.Name)
@@ -201,7 +332,7 @@
                                 @Html.DisplayFor(modelItem => item.Title)
                             </td>
                             @if (item.AssignedToUser == null)
-                    {
+                            {
                                 <td>None assigned</td>
                             }
                             else
@@ -257,138 +388,9 @@
                                 }
                             </td>
                         </tr>
-                                        }
 
-                                    }
-
-            </tbody>
-        </table>
-
-    </div>
-
-
-    @*Second Table added for all non-open tickets (for ease of viewing, may revert in final design)*@
-    @if (User.IsInRole("Admin"))
-    {
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().ProjectId)
-
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Title)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().AssignedToUserId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().OwnerUserId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketPriorityId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketStatusId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().TicketTypeId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Description)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Created)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Tickets.FirstOrDefault().Updated)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.Tickets.Count() == 0)
-                {
-                        <tr>
-                            <td>
-                                No Tickets yet, feel free to add some.
-                            </td>
-                        </tr>
                     }
-                    @foreach (var item in Model.Tickets)
-                {
-                    if (item.TicketStatus.Name != "Open" && item.TicketStatus.Name != "UnderReview")
-                    {
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Project.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Title)
-                                </td>
-                                @if (item.AssignedToUser == null)
-                                {
-                                    <td>None assigned</td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
-                                    </td>
-                                }
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TicketStatus.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TicketType.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Created)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Updated)
-                                </td>
-
-                                <td>
-                                    <button type="button" class="btn btn-info">
-                                        <div> @Html.ActionLink("Ticket Details", "Details", "Tickets", new { id = item.Id }, null)</div>
-                                    </button>
-                                    @{
-                                        if (User.Identity.GetUserId() == item.Project.PMID || User.Identity.GetUserId() == item.AssignedToUserId || User.IsInRole("Admin"))
-                                        {
-                                            <div>
-                                                <button type="button" class="btn btn-default">
-                                                    @Html.ActionLink("Edit Ticket ", "Edit", "Tickets", new { id = item.Id }, null)
-                                                </button>
-                                            </div>
-                                        }
-                                        if (User.IsInRole("Admin"))
-                                        {
-                                            <div>
-                                                <button type="button" class="btn btn-danger">
-                                                    @Html.ActionLink("Delete Ticket", "Delete", "Tickets", new { id = item.Id }, null)
-                                                </button>
-                                            </div>
-                                        }
-                                    }
-                                </td>
-                            </tr>
-
-                                            }
-                                        }
+                }
 
 
 
