@@ -2960,6 +2960,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\DashboardVM\BasicDashboard.cshtml" />
+    <Content Include="Views\Account\LoginTwo.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
     <None Include="Views\Shared\_Layoutv1.cshtml" />
     <Content Include="Views\Shared\_LayoutHomer.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />

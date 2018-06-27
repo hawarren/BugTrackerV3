@@ -7,7 +7,7 @@
 }
 
 <div class="jumbotron">
-    <h1>Warren's Better BugTracker</h1>
+    <h1>BugTrackerV3</h1>
     <p class="lead">
         Authored using ASP.NET framework and related technologies <br />
         (including C#, HTML, CSS, JavaScript, Bootstrap and jQuery).
@@ -16,45 +16,8 @@
     @if (!Request.IsAuthenticated)
     {
 
-        <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Click to Register or Log in <br/> Or Use a Guest Login below</a></p>
-        <div>
+        <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Click to Register or Log in</a></p>
 
-     @*first snippet*@
-                        @{
-                            List<SelectListItem> guestTypes = new List<SelectListItem>();
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Administrator",
-                                Value = "GuestAdmin@btracker.com"
-                            });
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Project Manager",
-                                Value = "GuestPM@btracker.com",
-                                Selected = true
-                            });
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Developer",
-                                Value = "GuestDev@btracker.com"
-                            });
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Submitter",
-                                Value = "GuestSubmitter@btracker.com"
-                            });
-                        }
-                        @* Second snippet goes here*@
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-primary btn-lg" />
-                            @Html.DropDownListFor(m => m.Email, guestTypes, "(Select a Guest Role)", htmlAttributes: new { Style = "width:210px" })
-
-                            @Html.HiddenFor(m => m.Password, new { @class = "form-control", Value = "Abc&123!" })
-
-                        }
-        </div>
     }
     else
 
