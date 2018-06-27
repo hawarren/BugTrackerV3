@@ -10,22 +10,22 @@
     <h1>BugTrackerV3</h1>
     <p class="lead">
 
-                    @*TODO: Use a card or modal for the description of the app*@
-        Authored using ASP.NET framework and related technologies <br/>
-        (including C#, HTML, CSS, JavaScript, Bootstrap and jQuery).
+        @*TODO: Use a card or modal for the description of the app*@
+
     </p>
+
 
     @if (!Request.IsAuthenticated)
     {
 
-        <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Click to Register or Log in</a></p>
+        <p><a href="@Url.Action("Login", "Account")" class="btn btn-success btn-lg">Click to Register or Log in</a></p>
 
             }
             else
             {
 
 
-        <p class="btn btn-primary btn-lg">
+        <p class="btn btn-success btn-lg">
             Now that you are logged in,
             <br />check out Projects and Tickets,
             <br /> Using the sidebar on the left

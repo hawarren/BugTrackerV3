@@ -4,6 +4,7 @@
 <div id="logo" class="light-version">
     <span>
         BugTracker Version 3
+
     </span>
 </div>
 <nav role="navigation">
@@ -13,14 +14,15 @@
         <span class="text-primary">BugTracker Version 3 Navigation</span>
 
     </div>
-            <form role="search" class="navbar-form-custom" method="post" action="#">
-    @*
+    <form role="search" class="navbar-form-custom" method="post" action="#">
+        @*
             <div class="form-group">
                 <input type="text" placeholder="Search something special" class="form-control" name="search">
             </div>
     *@
-    <div>@Html.Partial("_LoginPartial")</div>
-        </form>
+        <div class="btn-info">@Html.Partial("_LoginPartial")</div>
+
+    </form>
     <div class="mobile-menu">
         <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
 
@@ -36,9 +38,12 @@
             <li>
                 @Html.ActionLink("View Your Tickets", "UserTicketsIndex", "Tickets")
             </li>
-            <li>
-                @Html.ActionLink("View All Tickets", "Index", "Tickets")
-            </li>
+                <li>
+                    @Html.ActionLink("View All Tickets", "Index", "Tickets")
+                </li>
+                <li>
+                     @Html.ActionLink("Return to Frontpage", "Index", "Home", new {@class = "btn btn-success"})
+                </li>
         </ul>
 
 
