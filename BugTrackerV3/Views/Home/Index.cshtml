@@ -9,7 +9,9 @@
 <div class="jumbotron">
     <h1>BugTrackerV3</h1>
     <p class="lead">
-        Authored using ASP.NET framework and related technologies <br />
+
+                    @*TODO: Use a card or modal for the description of the app*@
+        Authored using ASP.NET framework and related technologies <br/>
         (including C#, HTML, CSS, JavaScript, Bootstrap and jQuery).
     </p>
 
@@ -18,10 +20,10 @@
 
         <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Click to Register or Log in</a></p>
 
-    }
-    else
+            }
+            else
+            {
 
-    {
 
         <p class="btn btn-primary btn-lg">
             Now that you are logged in,
