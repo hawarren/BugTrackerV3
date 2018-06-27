@@ -47,8 +47,8 @@
                                         <div class="checkbox">
                                             <div>
 
-                                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "i-checks", @checked = "checked" })
-                                            Remember Me?
+                                                @Html.CheckBoxFor(m => m.RememberMe, new { @class = "i-checks", @checked = "checked" })
+                                                Remember Me?
                                             </div>
 
                                             <div class="col-md-6 btn btn-default">
@@ -68,54 +68,59 @@
                                     @*                                </section>*@
                                 </div>
                                 <div class="btn btn-default btn-block">
-                                        @Html.ActionLink("Register as a new user", "Register")
-                                    </div>
+                                    @Html.ActionLink("Register as a new user", "Register")
+                                </div>
 
                             }
                         </form>
                         <h4>Login as Guest</h4>
                         <div class="GuestLogin">
-                        @*first snippet*@
-                        @{
-                            List<SelectListItem> guestTypes = new List<SelectListItem>();
-                            guestTypes.Add(new SelectListItem
+                            @*first snippet*@
+                            @{
+                                List<SelectListItem> guestTypes = new List<SelectListItem>();
+                                guestTypes.Add(new SelectListItem
+                                                   {
+                                                       Text = "Administrator",
+                                                       Value = "GuestAdmin@btracker.com"
+                                                   });
+                                guestTypes.Add(new SelectListItem
+                                                   {
+                                                       Text = "Project Manager",
+                                                       Value = "GuestPM@btracker.com",
+                                                       Selected = true
+                                                   });
+                                guestTypes.Add(new SelectListItem
+                                                   {
+                                                       Text = "Developer",
+                                                       Value = "GuestDev@btracker.com"
+                                                   });
+                                guestTypes.Add(new SelectListItem
+                                                   {
+                                                       Text = "Submitter",
+                                                       Value = "GuestSubmitter@btracker.com"
+                                                   });
+                            }
+                            @* Second snippet goes here*@
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
-                                Text = "Administrator",
-                                Value = "GuestAdmin@btracker.com"
-                            });
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Project Manager",
-                                Value = "GuestPM@btracker.com",
-                                Selected = true
-                            });
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Developer",
-                                Value = "GuestDev@btracker.com"
-                            });
-                            guestTypes.Add(new SelectListItem
-                            {
-                                Text = "Submitter",
-                                Value = "GuestSubmitter@btracker.com"
-                            });
-                        }
-                        @* Second snippet goes here*@
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.DropDownListFor(m => m.Email, guestTypes, "(Select a Guest Role)", htmlAttributes: new { @*Style = "width:210px",*@ @class = "btn-block" })
+                                @Html.AntiForgeryToken()
+                                @Html.DropDownListFor(m => m.Email, guestTypes, "(Select a Guest Role)", htmlAttributes: new { @*Style = "width:210px",*@ @class = "btn-block" })
 
-                            @Html.HiddenFor(m => m.Password, new { @class = "form-control", Value = "Abc&123!" })
+                                @Html.HiddenFor(m => m.Password, new { @class = "form-control", Value = "Abc&123!" })
 
-                            <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-success btn-block" />
-                        }
+                                <input type="submit" value="GUEST LOGIN" title="Sign in as a Guest for a demo of my application" class="btn btn-success btn-block" />
+                            }
 
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+        <div class="col-md-12 text-center">
+            <strong>Bugtracker</strong> -  Responsive WebApp <br /> 2018 Copyright Hanif Warren
+        </div>
+        </div>
         </div>
         @*<div class="row">
                 <div class="col-md-12 text-center">
@@ -126,100 +131,6 @@
     </div>
 
 
-@* New Login Screen *@
-<div class="login-container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="text-center m-b-md">
-                <h3>To Access the BugTracker please select a login method, or register for an account</h3>
-                <small>Or choose a guest login for a demo of the app</small>
-            </div>
-            <div class="hpanel">
-                <div class="panel-body">
-                    <form action="#" id="loginForm">
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <h4>Use a local account to log in.</h4>
-                            <hr/>
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <label class="control-label" for="username">Username</label>
-                                <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
-                                <span class="help-block small">Your unique username to app</span>
-                            </div>
-                            <div class="form-group">
-
-                                <label class="control-label" for="username"></label>
-                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="password">Password</label>
-                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
-                                <span class="help-block small">Yur strong password</span>
-                            </div>
-                            <div class="checkbox">
-                                <input type="checkbox" class="i-checks" checked>
-                                Remember login
-                                <p class="help-block small">(if this is a private computer)</p>
-                            </div>
-                            <button class="btn btn-success btn-block">Login</button>
-                            <a class="btn btn-default btn-block" href="#">Register</a>
-                        }
-                    </form>
-                </div>
-            </div>
-
-
-                <div class="hpanel">
-                <div class="panel-body">
-                    <form action="#" id="loginForm">
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <h4>Use a local account to log in.</h4>
-                            <hr/>
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <label class="control-label" for="username">Username</label>
-                                <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
-                                <span class="help-block small">Your unique username to app</span>
-                            </div>
-                            <div class="form-group">
-
-                                        <label class="control-label" for="username"></label>
-                                        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-
-                                </div>
-                            <div class="form-group">
-                                <label class="control-label" for="password">Password</label>
-                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
-                                <span class="help-block small">Yur strong password</span>
-                            </div>
-                            <div class="checkbox">
-                                <input type="checkbox" class="i-checks" checked>
-                                Remember login
-                                <p class="help-block small">(if this is a private computer)</p>
-                            </div>
-                            <button class="btn btn-success btn-block">Login</button>
-                            <a class="btn btn-default btn-block" href="#">Register</a>
-                        }
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <strong>HOMER</strong> - AngularJS Responsive WebApp <br /> 2015 Copyright Company Name
-        </div>
-    </div>
-</div>
 
 
 @section Scripts {
