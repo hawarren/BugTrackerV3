@@ -46,8 +46,16 @@
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title" title="click here to view dropdown">
-                            <a data-toggle="collapse" href="#collapse@(index)"><strong><u>Active Project Users</u></strong> (click to view)</a>
+                        <h4 class="panel-title" title="click here to view users associated with this project">
+                            <a data-toggle="collapse" href="#collapse@(index)">
+                                <strong>
+                                    <u>
+                                        <div class="btn btn-info">
+                                        Active Project Users
+                                        </div>
+                                    </u>
+                                </strong> (click to view)
+                            </a>
                         </h4>
                     </div>
                     <div id="collapse@(index)" class="panel-collapse collapse">
@@ -202,7 +210,7 @@ else
             }
             @foreach (var item in Model.Tickets)
             {
-                if (item.TicketStatus.Name == "Open" || item.TicketStatus.Name == "UnderReview")
+                if (item.TicketStatus.Name == "Open" || item.TicketStatus.Name == "UnderReview" || item.TicketStatus.Name == "New")
                 {
                     <tr>
                         <td>
@@ -335,7 +343,7 @@ else
                 }
                 @foreach (var item in Model.Tickets)
                 {
-                    if (item.TicketStatus.Name != "Open" && item.TicketStatus.Name != "UnderReview")
+                    if (item.TicketStatus.Name != "Open" && item.TicketStatus.Name != "UnderReview" && item.TicketStatus.Name != "New")
                     {
 
                         <tr>
