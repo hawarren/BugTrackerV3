@@ -90,7 +90,7 @@
                             <!--Standard Button -->
                              <button type="button" class="btn btn-default"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button>
 
-                            <button type="button" class="btn btn-info">
+                            <button type="button" class="btn btn-success">
                                 @Html.ActionLink("Details", "Details", new { id = item.Id })
                             </button>
                             <button type="button" class="btn btn-danger btn-block">
@@ -188,7 +188,7 @@
                       <button type="button" class="btn btn-default">
             @Html.ActionLink("Edit", "Edit", new { id=item.Id })
                  </button>
-             <button type="button" class="btn btn-info">
+             <button type="button" class="btn btn-success">
             @Html.ActionLink("Details", "Details", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-danger">
@@ -288,7 +288,7 @@
                            <button type="button" class="btn btn-default">
             @Html.ActionLink("Edit", "Edit", new { id=item.Id })
                  </button>
-             <button type="button" class="btn btn-info">
+             <button type="button" class="btn btn-success">
             @Html.ActionLink("Details", "Details", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-danger">
@@ -316,7 +316,7 @@
         else
         {
 
-        <table class="table">
+        <table class="table table-bordered table-striped">
             <thead>
 
                 <tr>
@@ -391,10 +391,10 @@
                             @Html.DisplayFor(modelItem => item.Updated)
                         </td>
                         <td>
-                          <button type="button" class="btn btn-default">
+                          <button type="button" class="btn btn-success">
             @Html.ActionLink("Edit", "Edit", new { id=item.Id })
                  </button>
-             <button type="button" class="btn btn-info">
+             <button type="button" class="btn btn-success">
             @Html.ActionLink("Details", "Details", new { id=item.Id })
                  </button>
              <button type="button" class="btn btn-danger">

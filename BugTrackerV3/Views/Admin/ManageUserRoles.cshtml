@@ -7,14 +7,14 @@
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
 <h2>User and Role Management Console</h2>
 
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
 
         <tr>
             <th>
                 Display Name
             </th>
-           
+
             <th>
                 Email Address
             </th>
@@ -47,7 +47,7 @@
                         <p>
                             <div>
                                 @role |
-                            
+
 
                             @Html.ActionLink("Remove this Role", "RemoveUserRole", new { Users = item.User.Id, Roles = role }, null)
                             </div>

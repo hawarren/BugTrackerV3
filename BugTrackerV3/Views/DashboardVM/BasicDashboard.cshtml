@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @model BugTrackerV3.ViewModels.DashboardVM
 @{
-    ViewBag.Title = "Basic Dashboard";
+    ViewBag.Title = "User Dashboard";
 }
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
 
@@ -43,7 +43,7 @@ else
                             </h4>
                         </div>
                         <div id="collapse@(index)" class="panel-collapse collapse">
-                            <table class="table">
+                            <table class="table table-bordered table-striped">
                                 <thead>
 
                                 <tr>
@@ -68,9 +68,16 @@ else
                                             @Html.DisplayFor(modelItem => ticket.Description)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Details", "Details", new { id = ticket.Id }) |
+                                            <div class="btn btn-success">
+                                                @Html.ActionLink("Details", "Details", new { id = ticket.Id }) |
+
+                                            </div>
+                                            <div class="btn btn-success">
                                             @Html.ActionLink("Edit", "Edit", new { id = ticket.Id }) |
+                                                </div>
+                                                <div class="btn btn-success">
                                             @Html.ActionLink("Delete", "Delete", new { id = ticket.Id })
+                                                </div>
                                         </td>
                                     </tr>
                                 }
@@ -251,7 +258,7 @@ else
         </div>
         <div id="projects" class="tab-pane fade">
             <h2>Listing of All Projects</h2>
-            <p class="btn btn-info">
+            <p class="btn btn-success">
                 @Html.ActionLink("Create New Project", "Create", "Projects")
             </p>
 
@@ -303,7 +310,7 @@ else
         </div>
         <div id="tickets" class="tab-pane fade">
             <h2>Ticket Index</h2>
-            <p class="btn btn-info">
+            <p class="btn btn-success">
                 @Html.ActionLink("Create New Ticket", "Create")
             </p>
 

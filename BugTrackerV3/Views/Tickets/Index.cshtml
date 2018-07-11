@@ -23,7 +23,7 @@
     if (User.IsInRole("Admin"))
     {
         <h3>Admin Tickets View</h3>
-        <table class="table">
+        <table class="table table-bordered table-striped">
             <thead>
 
                 <tr>
@@ -103,7 +103,7 @@
                             <button type="button" class="btn btn-default">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                             </button>
-                            <button type="button" class="btn btn-info">
+                            <button type="button" class="btn btn-success">
                                 @Html.ActionLink("Details", "Details", new { id = item.Id })
                             </button>
                             <button type="button" class="btn btn-danger">
@@ -205,7 +205,7 @@
                                 <button type="button" class="btn btn-default">
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                                 </button>
-                                <button type="button" class="btn btn-info">
+                                <button type="button" class="btn btn-success">
                                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                                 </button>
                                 <button type="button" class="btn btn-danger">
@@ -309,7 +309,7 @@
                                 <button type="button" class="btn btn-default">
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                                 </button>
-                                <button type="button" class="btn btn-info">
+                                <button type="button" class="btn btn-success">
                                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                                 </button>
                                 <button type="button" class="btn btn-danger">
@@ -409,7 +409,7 @@
                             </td>
                             <td>
 
-                                <button type="button" class="btn btn-info">
+                                <button type="button" class="btn btn-success">
                                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                                 </button>
 
